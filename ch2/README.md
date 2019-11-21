@@ -246,18 +246,19 @@
   + 使用 YUM 進行安裝
     <pre><code>#yum install nginx
     #systemctl enable --now nginx
-    #firewall-cmd --add-service=http</code></pre>
+    #firewall-cmd --add-service=http
+    #firewall-cmd --runtime-to-permanent</code></pre>
   + 利用瀏覽器查看一下站台預設網頁是否開啟
 + PHP 套件安裝與啟用
   + 使用 YUM 進行安裝
-    <pre><code>#yum install php php-fpm php-mcrypt php-json php-gd php-mbstring</code></pre>
+    <pre><code>#yum install php php-fpm php-json php-gd php-mbstring</code></pre>
   + 檢查 php-fpm 設定檔內容，通常是 www.conf :
     ```md
     (只需修改需要的部份，其他的設定項目保留原狀)
-    #vim /etc/opt/php73/php-fpm.d/www.conf
+    #nano /etc/php-fpm.d/www.conf
       user = nginx
       group = nginx
-      listen = /var/opt/remi/php73/run/php-fpm/php-fpm.sock
+      listen = /run/php-fpm/www.sock
       listen.acl_users = nginx
       slowlog = /var/log/php-fpm/www-slow.log
       php_admin_value[error_log] = /var/log/php-fpm/www-error.log
@@ -266,10 +267,36 @@
   + 啟動 php-fpm 套件
     <pre><code>#mkdir /var/log/php-fpm
     #systemctl enable --now php-fpm</code></pre>
-  + 修改 nginx 內的設定，將 /etc/nginx/nginx.conf 的 Server 區段註解
+  + 修改 nginx 內的設定，將 /etc/nginx/nginx.conf 的 Server 區段註解 :
+    ```md
+    #nano /etc/nginx/nginx.conf
+    (以下為該檔案的片段...)
+      #  server {
+      #  listen       80 default_server;
+      #  listen       [::]:80 default_server;
+      #  server_name  _;
+      #  root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        #以下這行保留下來，不要註解
+        include /etc/nginx/default.d/*.conf;
+
+      #  location / {
+      #  }
+
+      #  error_page 404 /404.html;
+      #      location = /40x.html {
+      #  }
+
+      #  error_page 500 502 503 504 /50x.html;
+      #      location = /50x.html {
+      #  }
+      # }
+    ```
+
   + 新增 /etc/nginx/conf.d/default.conf 內容如下：
     ```md
-    #vim /etc/nginx/conf.d/default.conf
+    #nano /etc/nginx/conf.d/default.conf
     server {
       listen       80 default_server;
       listen       [::]:80 default_server;
@@ -281,7 +308,7 @@
       location ~ \.php$ {
         root           /usr/share/nginx/html;
         try_files $uri = 404;
-        fastcgi_pass unix:/var/opt/remi/php73/run/php-fpm/php-fpm.sock;
+        fastcgi_pass unix:/run/php-fpm/www.sock;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         include        /etc/nginx/fastcgi_params;
@@ -295,11 +322,17 @@
     }
     ```
   + 重新啟動 nginx 
-    <pre><code>#systemctl restart nginx</code></pre>
+    <pre><code>#nginx -t
+    #nginx -s reload</code></pre>
   + 佈署網頁至 nginx 網站
-    <pre><code>#cd /usr/share/nginx/html
-    #git clone http://xxxxx/xxx.git (取得您的project內容)
-    #restorecon -Rvv /usr/share/nginx/html</code></pre>
+    ```php
+    #cd /usr/share/nginx/html
+    #nano index.php
+    (輸入下列程式碼)
+      <?php
+        phpinfo();
+      ?>
+    #restorecon -Rvv /usr/share/nginx/html
   + 利用瀏覽器查看一下站台網頁
 
 #### 基本安全設定

@@ -31,6 +31,12 @@
       #firewall-cmd --add-service=xrdp --permanent
       #firewall-cmd --reload
     </code></pre>
+  + 開啟 Web 操控介面
+    <pre><code># systemctl enable --now cockpit.service  (啟動 Web 操控介面)
+    # systemctl status cockpit.service -l  (檢查是否正常運作)
+    </code></pre>
+    + 開啟瀏覽器，輸入網址 http://IP位置:9090
+    + 使用 root 帳號、密碼即可登入！
 
 #### 開發環境建置
 + 安裝開發工具 [VSCode](https://code.visualstudio.com/docs/?dv=win) 
@@ -43,9 +49,12 @@
       ```php
         <?php
           phpinfo();
-        />
+        ?>
     + 存檔後，送上 github
 
 #### 參考文獻
 ##### Visual Studio Code
++ [VS Code 官網](https://code.visualstudio.com/)
 + [安裝/設定 Visual Studio Code 編輯器](https://ithelp.ithome.com.tw/articles/10195139?sc=iThelpR)
++ [推薦的 VS Code Extensions 整理](https://medium.com/itsoktomakemistakes/vs-code-extensions-a453e5d1e926)
++ [Visual Studio Code 必裝擴充套件（Extensions）](https://blog.goodjack.tw/2018/03/visual-studio-code-extensions.html#markdown-%E7%9B%B8%E9%97%9C)

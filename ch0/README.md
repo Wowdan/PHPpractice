@@ -36,12 +36,15 @@
 + 國外證照考試
   + [Zend PHP](https://www.zend.com/training/php-certification-exam)
     + ZCE 線上查詢
-    + ![ZCE 線上查詢](img/p1.png "PHP 5.3 ZCE 查詢")
+  
+     ![ZCE 線上查詢](img/p1.png "PHP 5.3 ZCE 查詢")
     + ZCE 證照
-    + ![ZCE 證照](img/ZCE_Php53.jpg "ZCE 證照")
+  
+     ![ZCE 證照](img/ZCE_Php53.jpg "ZCE 證照")
   + [Oracle MySQL](https://education.oracle.com/mysql/mysql-database-administration/product_159)
     + MySQL 證照
-    + ![MySQL 證照](img/MySQL5_OCA.jpg "MySQL 5 證照")
+  
+     ![MySQL 證照](img/MySQL5_OCA.jpg "MySQL 5 證照")
 
 #### 課程後該學會的事
 + 了解網站應用系統架構
