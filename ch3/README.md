@@ -4,8 +4,8 @@
   + 利用 YUM 進行安裝
     <pre><code>#yum install mysql mysql-server
     </code></pre>
-  + 修改設定檔 /etc/my.cnf
-    <pre><code>#vim /etc/my.cnf
+  + 修改設定檔 /etc/my.cnf.d/mysql-server.cnf
+    <pre><code>#nano /etc/my.cnf.d/mysql-server.cnf
     [mysqld]
     default-authentication-plugin=mysql_native_password</code></pre>
   + 啟動 MySQL 服務，並修改預設密碼
@@ -27,7 +27,7 @@
   + 修改 phpMyAdmin 設定檔
     <pre><code>#cd phpMyAdmin
     #cp config.sample.inc.php config.inc.php
-    #vim config.inc.php
+    #nano config.inc.php
     $cfg['blowfish_secret'] = md5($srcret_string.date("Ymd",time()));
     </code></pre>
   + 打開瀏覽器，以 root 身份登入！
@@ -191,7 +191,7 @@
     + 操作範例：
       <pre><code>#mysql -u root -p
       >USE mysql;
-      >CREATE USER 'peter'@'localhost' IDENTIFIED BY 'a123456789';
+      >CREATE USER 'peter'@'localhost' IDENTIFIED BY 'Aa12345678!';
       </code></pre>
   + 授與資料庫使用權限
     + 利用 GRANT 指令，授與使用者使用資料庫的權限
@@ -215,7 +215,7 @@
     + 操作範例：
       <pre><code>#mysql -u root -p
       >USE mysql;
-      >REVOKE ALL PRIVILEGES FROM 'peter'@'localhost';
+      >REVOKE ALL ON cars.* FROM 'peter'@'localhost';
       >FLUSH PRIVILEGES;
       </code></pre>
   + 刪除資料庫使用者帳號
@@ -230,12 +230,12 @@
 + 備份與還原資料庫
   + 備份資料庫
     + 操作範例：
-      <pre><code>#mysqldump -u root -p --result-file=c:/workspace/cars.sql cars
+      <pre><code>#mysqldump -u root -p --result-file=/tmp/cars.sql cars
       </code></pre>
 
   + 還原資料庫
     + 操作範例：
-      <pre><code>#mysqlimport -u root -p --replace cars c:/workspace/cars.sql
+      <pre><code>#mysql -u root -p cars < /tmp/cars.sql
       </code></pre>
 
 + 練習使用 phpMyAdmin 完成上述練習
