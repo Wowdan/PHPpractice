@@ -8,10 +8,12 @@ echo "總合: $sum";
 
 <?php
 $sum = 0;
+$i = 1;
 while ( $i <= 50 ){
     $sum += $i;
     $i++;
 }
+echo "總合: $sum";
 ?>
 
 <?php
@@ -21,6 +23,7 @@ do {
     $sum += $i;
     $i++;
 }while ($i <= 50);
+echo "總合: $sum";
 ?>
 
 <?php
