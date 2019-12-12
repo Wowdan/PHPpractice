@@ -11,5 +11,5 @@ function table99 $i=2,$j=1) {
         table($i,$j);
     }
 }
-echo table();
+echo table99();
 ?>
