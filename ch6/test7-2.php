@@ -7,5 +7,5 @@ function sum (...$numbers) {
     return $total;
 }
 
-echo "總共是 : ".sum(1,3,5,7,9);
+echo "總共是 : ".sum(1,9,10,2,8);
 ?>
