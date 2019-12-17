@@ -20,8 +20,8 @@ class dog {
         echo "狗叫...";
     }
 
-    /*public function __destruct(){
+    public function __destruct(){
         echo "狗狗回家了...";
-    }*/
+    }
 }
 ?>
