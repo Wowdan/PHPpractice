@@ -1,6 +1,6 @@
 <?php
 include "dog.php";
-$mydog = new dog();
-$mydog->age = 10;
-echo "My Dog age is:" .$mydog->getAge();
+$mydog = new dog("來福","白色","土狗");
+$mydog->dogRun();
+
 ?>
