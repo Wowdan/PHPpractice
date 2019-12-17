@@ -5,7 +5,7 @@
     class Shepherd extends dog{
         //定義子類別需要的屬性
         protected $age;
-{
+
         public function __construct($name,$color,$style,$age){
             //繼承父類別屬性
             parent::__construct($name,$color,$style);
