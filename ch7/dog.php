@@ -1,5 +1,6 @@
 <?php
-class dog {
+include "Bark.php";
+abstract class dog implements Bark {
     //設定屬性
     public $name;
     public $color;
@@ -15,9 +16,9 @@ class dog {
     public function dogRun(){
         echo "狗狗跑步中...";
     }
-
+    //修改狗叫的功能
     public function dogBark(){
-        echo "狗叫...";
+        //保持空白
     }
 
     public function __destruct(){
