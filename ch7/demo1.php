@@ -5,6 +5,7 @@
   echo $mydog->color."<br />";
   echo $mydog->style."<br />";
   echo $mydog->doWork()."<br />";
+  echo $mydog->age = $age;
   //子類別未改寫父類別的方法
   echo $mydog->dogRun()."<br />";
 ?>
