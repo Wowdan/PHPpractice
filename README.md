@@ -167,19 +167,51 @@
 + 命名空間(Namespace)
 + 特徵(Trait)
 #### 例外處理
-+ 例外的情況分類
++ 掌握錯誤與例外
++ 錯誤的情況處理分類
++ 錯誤與例外的不同
++ 例外的情況處理分類
 + try...catch 敘述
 + 抛出例外與接收
 + Exception 類別的繼承
++ 多層次的例外處理
 #### 參考文獻
 
 ### 第九章 套件、框架、Composer [內容](ch9/README.md)
+#### 套件
++ PHP 套件庫
++ 自製套件
+#### Composer
++ Composer 工具
++ Composer 運作方式
+#### 框架
++ 框架思維
++ Laravel 框架特色
++ 安裝與設定 Laravel
++ Laravel 目錄結構
++ Artisan 工具
++ Laravel 運作流程
+#### 參考文獻
+
+### 第十章 Laravel 的ＭＶＣ I [內容](ch10/README.md)
+#### HTTP 相關基本知識
++ HTTP 資料傳遞
++ HTTP 標頭與回應
+#### MVC 概念
+
+#### Laravel 的 Router 模組
+#### 參考文獻
+
+### 第十一章 Laravel 的ＭＶＣ II [內容](ch11/README.md)
+#### Controller 的使用
+#### View 與 Blade 的使用
 #### 參考文獻
 
 #### 參考書籍
 #### 參考網站
 
-+ MarkDown 文件：https://markdown.tw/
-+ GitFlow 觀念：https://medium.com/kuma%E8%80%81%E5%B8%AB%E7%9A%84%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E6%95%99%E5%AE%A4/%E5%9F%BA%E7%A4%8E-git-flow-%E5%B7%A5%E4%BD%9C%E6%B3%95-fa50b1dddc4f
-+ 什麼是 CI/CD:https://medium.com/@william456821/%E4%BB%80%E9%BA%BC%E6%98%AF-ci-cd-72bd5ae571f1
-+ https://www.ithome.com.tw/news/95283
++ [MarkDown 文件](https://markdown.tw/)
++ [GitFlow 觀念](https://medium.com/kuma%E8%80%81%E5%B8%AB%E7%9A%84%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E6%95%99%E5%AE%A4/%E5%9F%BA%E7%A4%8E-git-flow-%E5%B7%A5%E4%BD%9C%E6%B3%95-fa50b1dddc4f)
++ [什麼是 CI/CD](https://medium.com/@william456821/%E4%BB%80%E9%BA%BC%E6%98%AF-ci-cd-72bd5ae571f1)
++ [Git達人教你搞懂GitHub基礎觀念](https://www.ithome.com.tw/news/95283)
++ [git 教學文件](https://zlargon.gitbooks.io/git-tutorial/content/)
