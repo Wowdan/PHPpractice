@@ -198,14 +198,22 @@
 + HTTP 資料傳遞
 + HTTP 標頭與回應
 #### MVC 概念
-
++ MVC (Model-View-Controller)概念
 #### Laravel 的 Router 模組
++ Laravel Routing簡介
++ Laravel Routing 語法
++ 路由參數傳遞
++ 使用路由群組
++ 路由命名
++ 路由表的查詢
 #### 參考文獻
 
 ### 第十一章 Laravel 的ＭＶＣ II [內容](ch11/README.md)
 #### Controller 的使用
 #### View 與 Blade 的使用
 #### 參考文獻
+
+
 
 #### 參考書籍
 #### 參考網站

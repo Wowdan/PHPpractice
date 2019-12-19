@@ -1,5 +1,6 @@
 <?php
 class shape {
+    //const 定義常數
     const PI = 3.142;
     //name 是方法名稱，arg是陣列名稱
     function __call($name,$arg){
