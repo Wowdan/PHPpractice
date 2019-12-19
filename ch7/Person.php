@@ -29,6 +29,8 @@ $person = new Person();
 //PHP_EOL 空格或是換行
 $person->name = 'PHP';
 echo $person->name.PHO_EOL;
+//sex 屬性是無法取得的
+echo $person->sex.PHP_EOL;
 echo isset($person->address);
 unset($person->name);
 
