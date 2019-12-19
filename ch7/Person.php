@@ -28,7 +28,7 @@ $person = new Person();
 //Person 類別沒有name 這個屬性名稱
 //PHP_EOL 空格或是換行
 $person->name = 'PHP';
-echo $person->name.PHO_EOL;
+echo $person->name.PHP_EOL;
 //sex 屬性是無法取得的
 echo $person->sex.PHP_EOL;
 echo isset($person->address);
