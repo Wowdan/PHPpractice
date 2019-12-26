@@ -1,0 +1,733 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>第十章 Laravel 的ＭＶＣ I</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-http-相關基本知識">HTTP 相關基本知識</a></li><li><a href="#header-mvc-概念">MVC 概念</a></li><li><a href="#header-laravel-的-router-模組">Laravel 的 Router 模組</a></li><li><a href="#header-參考文獻">參考文獻</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">第十章 Laravel 的ＭＶＣ I</h1></header><h4 id="header-http-相關基本知識">HTTP 相關基本知識 <a class="permalink" href="#header-http-相關基本知識" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>HTTP 資料傳遞</p>
+<ul>
+<li>
+<p>HTTP 屬無狀態協定，時常需要資料轉交至下個頁面，才能繼續進行資料處理！</p>
+</li>
+<li>
+<p>PHP 內常用的超全域變數如下 :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">變數名稱</th>
+<th style="text-align:left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$_SERVER</td>
+<td style="text-align:left">取得伺服器及 PHP 執行環境的訊息</td>
+</tr>
+<tr>
+<td style="text-align:left">$_GET</td>
+<td style="text-align:left">取得 GET 變數</td>
+</tr>
+<tr>
+<td style="text-align:left">$_POST</td>
+<td style="text-align:left">取得 POST 變數</td>
+</tr>
+<tr>
+<td style="text-align:left">$_FILES</td>
+<td style="text-align:left">取得文件上傳變數</td>
+</tr>
+<tr>
+<td style="text-align:left">$_COOKIE</td>
+<td style="text-align:left">取得 Cookie 變數</td>
+</tr>
+<tr>
+<td style="text-align:left">$_SESSION</td>
+<td style="text-align:left">取得 Session 變數</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>GET 變數的使用</p>
+<ul>
+<li>利用 HTML 的 Form 表單，指定使用方法為 GET</li>
+<li>例 : form.php<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">action</span>=<span class="hljs-value">"auth.php"</span> <span class="hljs-attribute">method</span>=<span class="hljs-value">"get"</span>&gt;</span>
+請輸入帳號密碼 : 
+帳號 : <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"account"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">br</span> /&gt;</span>
+密碼 : <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"password"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"password"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">br</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>登入<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span></code></pre>
+</li>
+<li>auth.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-variable">$account</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">"account"</span>];
+<span class="hljs-variable">$password</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">"password"</span>];
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"帳號 : "</span>.<span class="hljs-variable">$account</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"密碼 : "</span>.<span class="hljs-variable">$password</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+<ul>
+<li>但是，瑞凡，沒人會用 GET 來傳帳密資料的！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>POST 變數的利用</p>
+<ul>
+<li>將原來的表單的方法，改成 POST !</li>
+<li>例 : form.php<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">action</span>=<span class="hljs-value">"auth.php"</span> <span class="hljs-attribute">method</span>=<span class="hljs-value">"post"</span>&gt;</span>
+請輸入帳號密碼 : 
+帳號 : <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"account"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">br</span> /&gt;</span>
+密碼 : <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"password"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"password"</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">br</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>登入<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span></code></pre>
+</li>
+<li>auth.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-variable">$account</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">"account"</span>];
+<span class="hljs-variable">$password</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">"password"</span>];
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"帳號 : "</span>.<span class="hljs-variable">$account</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"密碼 : "</span>.<span class="hljs-variable">$password</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>SESSION 變數的利用</p>
+<ul>
+<li>
+<p>如果需要同網頁存取共同的資訊，可以使用 session !</p>
+</li>
+<li>
+<p>session 一定啟用，短時間內不會被清除，需要自行清除資料內容！或是等待一段時間後，會被系統清除！</p>
+</li>
+<li>
+<p>例 : session.php</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//啟動 session</span>
+session_start();
+<span class="hljs-comment">//執行　session 存放資料功能</span>
+<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">'memID'</span>] = <span class="hljs-string">"A001"</span>;
+<span class="hljs-comment">//取得 session 資訊</span>
+<span class="hljs-variable">$id</span> =  <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">'memID'</span>];
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"session : $id"</span>;
+<span class="hljs-comment">//清除 session </span>
+<span class="hljs-keyword">unset</span>(<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">'memID'</span>]);
+session_unset();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+<ul>
+<li>session 只要換網頁，就會被清除了！</li>
+</ul>
+</li>
+<li>
+<p>COOKIE 變數的應用 :</p>
+<ul>
+<li>想要將資料暫時存放在客戶端，可以使用 cookie !</li>
+<li>例 :<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//設定 cookie ，並設定有效時間</span>
+setcookie(<span class="hljs-string">"name"</span>,<span class="hljs-string">"Peter"</span>,time()+<span class="hljs-number">3600</span>);
+<span class="hljs-comment">//存取 cookie</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$_COOKIE</span>(<span class="hljs-string">"name"</span>);
+<span class="hljs-comment">//消除 cookie</span>
+setcookie(<span class="hljs-string">"name"</span>,<span class="hljs-string">"Peter"</span>,time()-<span class="hljs-number">3600</span>);
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>HTTP 標頭與回應</p>
+<ul>
+<li>
+<p>HTTP 標頭 : 用來傳送有關 HTTP 訊息的資料</p>
+<ul>
+<li>語法 :<pre><code class="language-html">header(String, replace, http_response_code)</code></pre>
+<ul>
+<li>string : 指定發送的表頭</li>
+<li>replace : 是否可以取代以前的表頭，其值為 true of false</li>
+<li>http_response_code : 用來強迫指定 HTTP 回應碼</li>
+</ul>
+</li>
+<li>常見的應用方式 :
+<ul>
+<li>例 : 利用 Location 轉址<pre><code class="language-html">header("Location: http://google.com");
+header("Location: session.php");</code></pre>
+</li>
+<li>例 : 使用 Refresh 定時更新網頁<pre><code class="language-html">header("Refresh: 5"); //每五秒更新一次網頁
+header("Refresh: 5;url=session.php");</code></pre>
+</li>
+<li>例 : 使用 Content-type 設定輸出網頁 MIME 格式編碼<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//指定下載的文件是 pdf 檔案格式！</span>
+header(<span class="hljs-string">"Content-type:application/pdf"</span>);
+<span class="hljs-comment">//指定下載的檔案名稱為 download.pdf</span>
+header(<span class="hljs-string">"Content-Disposition:attachment;filename='download.pdf'"</span>);
+readfile(<span class="hljs-string">"original.pdf"</span>);
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+<ul>
+<li>MIME 資料型態表
+<table>
+<thead>
+<tr>
+<th style="text-align:left">MIME 資料類型</th>
+<th style="text-align:left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">text/html</td>
+<td style="text-align:left">HTML網頁檔案</td>
+</tr>
+<tr>
+<td style="text-align:left">text/xml</td>
+<td style="text-align:left">XML文件檔案</td>
+</tr>
+<tr>
+<td style="text-align:left">image/jpeg</td>
+<td style="text-align:left">JPEG圖片檔案</td>
+</tr>
+<tr>
+<td style="text-align:left">image/gif</td>
+<td style="text-align:left">GIF圖片檔案</td>
+</tr>
+<tr>
+<td style="text-align:left">image/png</td>
+<td style="text-align:left">PNG圖片檔案</td>
+</tr>
+<tr>
+<td style="text-align:left">text/plain</td>
+<td style="text-align:left">一般文字檔案</td>
+</tr>
+<tr>
+<td style="text-align:left">application/pdf</td>
+<td style="text-align:left">PDF 文件檔</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>HTTP 常見的回應編號</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">回應碼</th>
+<th style="text-align:left">回應訊息</th>
+<th style="text-align:left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">200</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">伺服器成功處理請求</td>
+</tr>
+<tr>
+<td style="text-align:left">301</td>
+<td style="text-align:left">Redirect</td>
+<td style="text-align:left">轉換網址</td>
+</tr>
+<tr>
+<td style="text-align:left">302</td>
+<td style="text-align:left">Move Permanently</td>
+<td style="text-align:left">網址永久轉移到新的網址</td>
+</tr>
+<tr>
+<td style="text-align:left">304</td>
+<td style="text-align:left">Not Modified</td>
+<td style="text-align:left">文件內容未被修改，直接由瀏覽器快取讀取</td>
+</tr>
+<tr>
+<td style="text-align:left">400</td>
+<td style="text-align:left">Bad Request</td>
+<td style="text-align:left">客戶端送了一個錯誤的請求給伺服器</td>
+</tr>
+<tr>
+<td style="text-align:left">401</td>
+<td style="text-align:left">Unauthorized</td>
+<td style="text-align:left">客戶端未驗證身份</td>
+</tr>
+<tr>
+<td style="text-align:left">403</td>
+<td style="text-align:left">Forbidden</td>
+<td style="text-align:left">被伺服器端拒絕請求</td>
+</tr>
+<tr>
+<td style="text-align:left">404</td>
+<td style="text-align:left">Not Found</td>
+<td style="text-align:left">請求的網址內容不存在</td>
+</tr>
+<tr>
+<td style="text-align:left">405</td>
+<td style="text-align:left">Method Not Allowed</td>
+<td style="text-align:left">不支援請求中的方法</td>
+</tr>
+<tr>
+<td style="text-align:left">408</td>
+<td style="text-align:left">Request Timeout</td>
+<td style="text-align:left">請求逾時</td>
+</tr>
+<tr>
+<td style="text-align:left">500</td>
+<td style="text-align:left">Internal Server Error</td>
+<td style="text-align:left">伺服器發生錯誤</td>
+</tr>
+<tr>
+<td style="text-align:left">501</td>
+<td style="text-align:left">Not Implemented</td>
+<td style="text-align:left">用戶端發出的請求超出伺服器能力範圍</td>
+</tr>
+<tr>
+<td style="text-align:left">503</td>
+<td style="text-align:left">Service Unavailable</td>
+<td style="text-align:left">目前伺服器無法提供服務</td>
+</tr>
+<tr>
+<td style="text-align:left">505</td>
+<td style="text-align:left">HTTP Version Not Supported</td>
+<td style="text-align:left">伺服器不支援請求中的HTTP版本</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-mvc-概念">MVC 概念 <a class="permalink" href="#header-mvc-概念" aria-hidden="true">¶</a></h4>
+<ul>
+<li>MVC (Model-View-Controller)概念
+<ul>
+<li>MVC是一種軟體架構模式</li>
+<li>將系統劃分成3個部分 : Model (模型), View (視圖), Controller(控制器)，常被應用在網站的專案上
+<ul>
+<li>Model : 負責所有的商業邏輯以及資料處理，擁有對資料的直接存取權。</li>
+<li>View : 負責介面呈現</li>
+<li>Controller : 負責接收請求，轉發給Model處理，最後回傳結果。</li>
+</ul>
+</li>
+<li>MVC 結構圖
+<img src="img/ex2.png" alt="MVC"></li>
+</ul>
+</li>
+</ul>
+<h4 id="header-laravel-的-router-模組">Laravel 的 Router 模組 <a class="permalink" href="#header-laravel-的-router-模組" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>Laravel Routing簡介</p>
+<ul>
+<li>有一個中間程式，它會將接收到的訊息，轉發到該去的地方
+<img src="img/ex1.png" alt="Laravel Router"></li>
+<li>整個網站的入口就是位於 /public/index.php</li>
+<li>預設的 Route File : /routes/web.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+Route::get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> view(<span class="hljs-string">'welcome'</span>);
+});
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Laravel Routing 語法 :</p>
+<pre><code class="language-php">Route::{HTTP verb}(<span class="hljs-variable">$url</span>, <span class="hljs-variable">$callback</span>);</code></pre>
+<ul>
+<li>HTTP verb :
+<ul>
+<li>GET : 取得資源</li>
+<li>POST : 新增一筆資源</li>
+<li>PUT : 更新一筆資源</li>
+<li>Patch : 更新一筆資源的部分內容</li>
+<li>Delete : 刪除一筆資源</li>
+<li>Options : 取得Server支援的Request Types<pre><code class="language-php">Route::get(<span class="hljs-variable">$url</span>, <span class="hljs-variable">$callback</span>);
+Route::post(<span class="hljs-variable">$url</span>, <span class="hljs-variable">$callback</span>);
+Route::put(<span class="hljs-variable">$url</span>, <span class="hljs-variable">$callback</span>);
+Route::patch(<span class="hljs-variable">$url</span>, <span class="hljs-variable">$callback</span>);
+Route::delete(<span class="hljs-variable">$url</span>, <span class="hljs-variable">$callback</span>);
+Route::options(<span class="hljs-variable">$url</span>, <span class="hljs-variable">$callback</span>);</code></pre>
+</li>
+<li>$url : 代表接收到的網址，像根目錄就是/，而登入可能是/login</li>
+<li>$callback : 代表處理這個要求的方法</li>
+<li>其它 :<pre><code class="language-php"><span class="hljs-comment">// 原來的 web.php</span>
+Route::get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span></span>{
+  <span class="hljs-keyword">return</span> view(<span class="hljs-string">'welcome'</span>);
+});
+<span class="hljs-comment">// 可以改成</span>
+Route::view(<span class="hljs-string">'/'</span>, <span class="hljs-string">'welcome'</span>);
+<span class="hljs-comment">//若是比較複雜的處理，就交給 Controller 進行</span>
+Route::get(<span class="hljs-string">'user/profile'</span>, <span class="hljs-string">'UserController@showProfile'</span>);</code></pre>
+</li>
+</ul>
+</li>
+<li>接受多個 HTTP 方法 :<pre><code class="language-php">Route::match([<span class="hljs-string">'get'</span>,<span class="hljs-string">'post'</span>], <span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+  <span class="hljs-comment">// 只接受　路由 '/' 的 GET 和 POST 方法</span>
+});
+
+Route::any(<span class="hljs-string">'/'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+  <span class="hljs-comment">// 可接受　路由 '/' 的所有方法</span>
+});</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>路由參數傳遞</p>
+<ul>
+<li>
+<p>例 : 指定查看某一編號的網頁文章</p>
+<pre><code class="language-php">Route::get(<span class="hljs-string">'doc/{id}'</span>, <span class="hljs-string">'DocController@show'</span>);
+<span class="hljs-comment">//由 Client 端來的 id ，就會轉送到 DocController 的 show() 來進行處理，最後回傳資料給 Client 端</span></code></pre>
+</li>
+<li>
+<p>例 : 表示可選擇的參數！</p>
+<pre><code class="language-php">Route::get(<span class="hljs-string">'users/{name?}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$name</span> = <span class="hljs-string">'Peter'</span>)</span></span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'Hello ,'</span>.<span class="hljs-variable">$name</span>;
+});
+<span class="hljs-comment">// {name?} 表示可填入資料，或者不填入資料！沒資料時，會填入預設的資料！</span></code></pre>
+</li>
+<li>
+<p>例 : 多個參數資料傳遞</p>
+<pre><code class="language-php">Route::get(<span class="hljs-string">'users/{name?}/score/{project}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$name</span> = <span class="hljs-string">'Peter'</span>, <span class="hljs-variable">$project</span>)</span></span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'Hello ,'</span>.<span class="hljs-variable">$name</span>. <span class="hljs-string">' Your project : '</span>.<span class="hljs-variable">$project</span>;
+<span class="hljs-comment">//同時多個參數傳入</span>
+});</code></pre>
+</li>
+<li>
+<p>例 : 使用正規化表達式限制參數</p>
+<pre><code class="language-php"><span class="hljs-comment">// id只能輸入 0-9</span>
+Route::get(<span class="hljs-string">'users/{id}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$id</span>)</span> </span>{
+  <span class="hljs-comment">//</span>
+})-&gt;where(<span class="hljs-string">'id'</span>, <span class="hljs-string">'[0-9]+'</span>);
+
+<span class="hljs-comment">// username只能輸入大小寫的英文字母</span>
+Route::get(<span class="hljs-string">'users/{username}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$username</span>)</span> </span>{
+  <span class="hljs-comment">//</span>
+})-&gt;where(<span class="hljs-string">'username'</span>, <span class="hljs-string">'[A-Za-z]+'</span>);
+
+<span class="hljs-comment">// id只能輸入數字;classes只能輸入特定文字</span>
+Route::get(<span class="hljs-string">'posts/{id}/{classes}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$id</span>, <span class="hljs-variable">$classes</span>)</span> </span>{
+  <span class="hljs-comment">//</span>
+})-&gt;where([<span class="hljs-string">'id'</span> =&gt; <span class="hljs-string">'[0-9]+'</span>, <span class="hljs-string">'classes'</span> =&gt; <span class="hljs-string">'(chinese|english|math)'</span>]);</code></pre>
+</li>
+<li>
+<p>例 : 路由參數規格化</p>
+<pre><code class="language-php"><span class="hljs-comment">//將參數規格統一之後，方便程式的使用與維護</span>
+Route::pattern(<span class="hljs-string">'member_id'</span>,<span class="hljs-string">'abc[0-9]{10}'</span>);
+Route::get(<span class="hljs-string">'members/{member_id}'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$member_id</span>)</span></span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'會員編號:'</span>.<span class="hljs-variable">$member_id</span>;
+});</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>使用路由群組</p>
+<ul>
+<li>路由參數可以群組化！
+<ul>
+<li>
+<p>路由前綴 : 透過前綴詞 prefix ，群組化路由路徑！</p>
+<ul>
+<li>例 :<pre><code class="language-php">Route::prefix(<span class="hljs-string">'admin'</span>)-&gt;group(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span></span>{
+  Route::get(<span class="hljs-string">'users'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span></span>{
+    <span class="hljs-comment">//所以網址要是/admin/users才會進來這裡</span>
+  });
+});</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>路由中介層 : 把一群Route群組起來，經過驗證才可以進入存取</p>
+<ul>
+<li>例 :<pre><code class="language-php">Route::middleware([<span class="hljs-string">'member'</span>])-&gt;group(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+  Route::get(<span class="hljs-string">'member_center'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// 經過member middleware驗證後才能進入</span>
+  });
+});</code></pre>
+</li>
+<li>Middleware是一個過濾機制，讓Client在存取某些資源時必須先經過驗證，否則會被導向其他地方。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>路由命名</p>
+<ul>
+<li>
+<p>基本用法</p>
+<ul>
+<li>例 :<pre><code class="language-php">Route::get(<span class="hljs-string">'/'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+  <span class="hljs-comment">//這裡做了一堆事</span>
+})-&gt;name(<span class="hljs-string">'index'</span>);</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>利用路由重新命名的方式，可以區分不同的路由作用</p>
+<ul>
+<li>例 :<pre><code class="language-php"><span class="hljs-comment">// 利用 url('/login')提取資料時，容易搞混</span>
+Route::get(<span class="hljs-string">'post'</span>, <span class="hljs-string">'PostController@index);
+Route::post('</span>post<span class="hljs-string">', '</span>PostController@create);
+
+<span class="hljs-comment">//重新命名之後</span>
+Route::get(<span class="hljs-string">'post'</span>, <span class="hljs-string">'PostController@index'</span>)-&gt;name(<span class="hljs-string">'post.index'</span>);
+Route::post(<span class="hljs-string">'post'</span>, <span class="hljs-string">'PostController@login'</span>)-&gt;name(<span class="hljs-string">'post.login'</span>);
+<span class="hljs-comment">//只需要使用 route('post.index') / route('post.login) 就可以各自己網址</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>配合前綴詞的用法</p>
+<ul>
+<li>例 :<pre><code class="language-php">Router::group([<span class="hljs-string">'as'</span>=&gt;<span class="hljs-string">'users.'</span>, <span class="hljs-string">'prefix'</span>=&gt;<span class="hljs-string">'users'</span>],<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+  Route::group([<span class="hljs-string">'as'</span>=&gt;<span class="hljs-string">'comments.'</span>,<span class="hljs-string">'prefix'</span>=&gt;<span class="hljs-string">'comments'</span>],<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-comment">//路由名稱將會是 users.comments.show</span>
+    Route::get(<span class="hljs-string">'{id}'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-comment">//要做的事</span>
+    })-&gt;name(<span class="hljs-string">'show'</span>);
+  });
+});</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>路由表的查詢</p>
+<ul>
+<li>利用 artisan 提供的 route:list 指令，來查詢己經定義好的路由內容</li>
+<li>例 :<pre><code class="language-bash"><span class="hljs-comment"># php artisan route:list</span>
+<span class="hljs-comment"># php artisan r:l</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-參考文獻">參考文獻 <a class="permalink" href="#header-參考文獻" aria-hidden="true">¶</a></h4>
+<p><a href="http://www.codedata.com.tw/uncategorized/php-laravel-dev-tutorial-4-class-routes">PHP Laravel 開發入門(四) – 路由(Routes)</a>
+<a href="https://dometi.com.tw/blog/laravel-beginner-05/">Laravel Routing 路由控制</a>
+<a href="https://blog.johnsonlu.org/laravel-routing/">Laravel Routing</a></p>
+</div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 18 Dec 2019</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
