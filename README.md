@@ -210,10 +210,28 @@
 
 ### 第十一章 Laravel 的ＭＶＣ II [內容](ch11/README.md)
 #### Controller 的使用
++ Controller 的用途
++ 建立 Controller
++ 由 Route 轉發要求給 Controller
++ 路由可以指定 Controller 處理七種不同要求
++ Controller 命名空間
 #### View 與 Blade 的使用
++ Laravel 的網頁根目錄
++ Laravel 的 View 目錄
++ 基本使用 View 的方式
++ Blade 樣板引擎
++ Blade 語法
++ Blade 樣板實作
 #### 參考文獻
 
+### 第十二章 Laravel 與資料庫的結合 [內容](ch12/README.md)
+#### 基本資料庫連線與操作
++ 連接資料庫的設定方式
++ 利用 MVC 連接資料庫
+#### 使用 Migration 操作資料庫物件
 
+#### 使用 Eloguent 管理資料庫內容
+#### 參考文獻
 
 #### 參考書籍
 #### 參考網站
