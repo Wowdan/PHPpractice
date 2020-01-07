@@ -228,9 +228,22 @@
 #### 基本資料庫連線與操作
 + 連接資料庫的設定方式
 + 利用 MVC 連接資料庫
++ 其他的 SQL 語法使用方式
 #### 使用 Migration 操作資料庫物件
-
++ Migration 用途
++ Migration 初始化
++ 建立 Migration
++ 操作 Migration 指令
++ Schema 類別
++ Blueprint 操作資料表方法
 #### 使用 Eloguent 管理資料庫內容
++ Eloguent 概述
++ Eloguent 建立過程
++ Eloquent 中 Model 的常見屬性值列表
++ Eloquent 中常見的查詢類方法
++ Eloquent 資料取出的方法
++ Collection 物件的方法
++ 
 #### 參考文獻
 
 #### 參考書籍
