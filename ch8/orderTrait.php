@@ -21,7 +21,7 @@ class Base {
 }
 class HelloWorld extends Base {
     use Hello;
-    functiom sayWorld() {
+    function sayWorld() {
         return "World";
     }
 }
