@@ -6,7 +6,7 @@ class EmailFormatException extends Exception {
 }
 function checkEmail ($email) {
     if (!strpos($email,"@"))
-        throw new EmailFormateException("E-mail需要包含'@'");
+        throw new EmailFormatException("E-mail需要包含'@'");
 }
 try {
     checkEmail('gmail.com');
