@@ -9,6 +9,9 @@ trait Hello {
     function sayHelloWorld() {
         echo $this->sayHello() . " " . $this->sayWorld();
     }
+    function sayBaseWorld() {
+        echo $this->sayHello() . " " . parent::sayWorld();
+    }
 }
 
 class Base {
