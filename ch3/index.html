@@ -1,0 +1,667 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>第三章 MySQL 操作與 SQL 語法</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-安裝-mysql">安裝 MySQL</a></li><li><a href="#header-資料收集與整理">資料收集與整理</a></li><li><a href="#header-mysql-基本操作">MySQL 基本操作</a></li><li><a href="#header-回家作業">回家作業</a></li><li><a href="#header-參考文獻">參考文獻</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">第三章 MySQL 操作與 SQL 語法</h1></header><h4 id="header-安裝-mysql">安裝 MySQL <a class="permalink" href="#header-安裝-mysql" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>Linux 平台安裝 MySQL Server</p>
+<ul>
+<li>利用 YUM 進行安裝<pre><code>#yum install mysql mysql-server
+</code></pre>
+</li>
+<li>修改設定檔 /etc/my.cnf.d/mysql-server.cnf<pre><code>#nano /etc/my.cnf.d/mysql-server.cnf
+[mysqld]
+default-authentication-plugin=mysql_native_password</code></pre>
+</li>
+<li>啟動 MySQL 服務，並修改預設密碼<pre><code>#systemctl start mysqld
+#mysql_secure_installation
+#firewall-cmd --add-service=mysql
+#firewall-cmd --runtime-to-permanent
+#systemctl restart mysqld</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Linux 平台安裝 phpMyAdmin 管理程式</p>
+<ul>
+<li>到 phpMyAdmin 官網取得檔案
+　<pre><code>#cd /usr/share/nginx/html
+#wget <a href="https://files.phpmyadmin.net/phpMyAdmin/4.9.1/phpMyAdmin-4.9.1-all-languages.tar.gz">https://files.phpmyadmin.net/phpMyAdmin/4.9.1/phpMyAdmin-4.9.1-all-languages.tar.gz</a></code></pre></li>
+<li>解開壓縮檔<pre><code>#tar zxvf phpMyAdmin-4.9.1-all-languages.tar.gz
+#mv phpMyAdmin-4.9.1-all-languages phpMyAdmin</code></pre>
+</li>
+<li>回復 selinux 設定<pre><code>#restorecon -Rvv /usr/share/nginx/html</code></pre>
+</li>
+<li>修改 phpMyAdmin 設定檔<pre><code>#cd phpMyAdmin
+#cp config.sample.inc.php config.inc.php
+#nano config.inc.php
+$cfg['blowfish_secret'] = md5($srcret_string.date("Ymd",time()));
+</code></pre>
+</li>
+<li>打開瀏覽器，以 root 身份登入！</li>
+</ul>
+</li>
+<li>
+<p>Windows 平台安裝 MySQL Workbench</p>
+<ul>
+<li>下載網址 <a href="https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.18-winx64.msi">MySQL Community Downloads</a></li>
+<li>下載後，直接安裝！</li>
+<li>開啟程式後，設定連接資料庫的 IP 位置以及帳密</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-資料收集與整理">資料收集與整理 <a class="permalink" href="#header-資料收集與整理" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>資料收集與整理</p>
+<ol>
+<li>將需要的資料收集</li>
+<li>將資料內容分類定出名稱</li>
+<li>利用表格將資料整理好</li>
+<li>收集好表格，即可形成資料庫</li>
+</ol>
+</li>
+<li>
+<p>資料表正規化</p>
+<ul>
+<li>
+<p>正規化(Normalization)：建構「資料模式」所運用的一個技術</p>
+<ul>
+<li>讓資料庫中重複的欄位資料減到最少，並且能快速的找到資料，以提高關聯性資料庫的效能</li>
+<li>降低資料的「重覆性」(Data Redundancy)與避免「更新異常」(Anomalies)的情況發生</li>
+<li>正規化過程為一循序過程！</li>
+</ul>
+</li>
+<li>
+<p>第一正規化(1NF):除去重複群</p>
+<ul>
+<li>在資料表中的所有記錄之屬性內含值都是基元值(Atomic Value)</li>
+<li>沒有任何兩筆以上的資料是完全重覆</li>
+<li>資料表中有主鍵, 而其他所有的欄位都相依於「主鍵」</li>
+</ul>
+</li>
+<li>
+<p>第二正規化(2NF):除去部分相依</p>
+<ul>
+<li>符合1NF</li>
+<li>每一非鍵屬性，必須「完全相依」於主鍵
+<ul>
+<li>step1:檢查是否存在「部分功能相依」</li>
+<li>step2:將「部分功能相依」的欄位分割出去，另外組成新的資料表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>第三正規化(3NF):除去遞移相依</p>
+<ul>
+<li>符合2NF</li>
+<li>各欄位與「主鍵」之間沒有「遞移相依」的關係
+<ul>
+<li>遞移相依:與主鍵無關的相依性</li>
+<li>step1:檢查是否存在「遞移相依」</li>
+<li>step2:將「遞移相依」的欄位「分割」出去，再另外組成「新的資料表」</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Boyce-Codd 正規化(BCNF):除去其他因功能相依所造成的異常</p>
+<ul>
+<li>一般的應用程式所需的最高階正規化形式</li>
+<li>符合 3NF 的格式，為 3NF 的改良式</li>
+<li>如果資料表的「主鍵」是由「多個欄位」組成的, 則必須再執行 Boyce-Codd 正規化</li>
+<li>如果資料表的「主鍵」只由「單一欄位」組合而成, 則符合 3NF 的資料表, 亦符合 BCNF(Boyce-Codd Normal Form)正規化</li>
+<li>例:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">客戶編號</th>
+<th style="text-align:center">產品編號</th>
+<th style="text-align:center">消費金額</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A001</td>
+<td style="text-align:center">P003</td>
+<td style="text-align:center">330</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>消費金額相依於客戶編號、產品編號</li>
+<li>客戶編號不相依於消費金額</li>
+<li>產品編號不相依於消費金額</li>
+</ul>
+</li>
+<li>
+<p>第四正規化(4NF):除去多值相依</p>
+</li>
+<li>
+<p>第五正規化(5NF):除去剩下所有的異常</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-mysql-基本操作">MySQL 基本操作 <a class="permalink" href="#header-mysql-基本操作" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>SQL 語法認知</p>
+<ul>
+<li>DCL(Data Control Language):資料控制語言
+<ul>
+<li>用來控制資料表、檢視表之存取權限，提供資料庫的安全性。</li>
+<li>常見的指令有：
+<ul>
+<li>GRANT 賦予使用者使用權限</li>
+<li>REVOKE 取消使用者的使用權限</li>
+<li>COMMIT 完成交易作業</li>
+<li>ROLLBACK 交易作業異常，將已變動的資料回復到交易開始的狀態</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DML(Data Manipulation Language):資料操作語言
+<ul>
+<li>用來處理資料表裡的資料。</li>
+<li>常見的指令有：
+<ul>
+<li>INSERT 新增資料到資料表中</li>
+<li>UPDATE 更改資料表中的資料</li>
+<li>DELETE 刪除資料表中的資料</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DDL(Data Definition Language):資料定義語言
+<ul>
+<li>用來定義資料庫、資料表、檢視表、索引、預存程序、觸發程序、函數等資料庫物件。</li>
+<li>可用來建立、更新、刪除 table,schema,domain,index,view</li>
+<li>常見的指令有：
+<ul>
+<li>CREATE 建立資料庫的物件</li>
+<li>ALTER 變更資料庫的物件</li>
+<li>DROP 刪除資料庫的物件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DQL(Data Query Language):資料查詢語言
+<ul>
+<li>負責進行資料查詢，不會對資料本身進行修改的語句</li>
+<li>用來查詢資料表裡的資料</li>
+<li>指令只有一個：
+<ul>
+<li>SELECT 選取資料庫中的資料</li>
+<li>各類輔助指令：SELECT,FROM,WHERE,GROUP BY,ORDER BY</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>資料庫內可接受的資料類型</p>
+<ul>
+<li>數值資料 (Numeric Data)
+<ul>
+<li>integer, float, money</li>
+<li>可搭配內建的數值函數來做資料處理</li>
+</ul>
+</li>
+<li>字串(元)資料 (Character &amp; Strings Data)
+<ul>
+<li>儲存字元或符號之資料型別</li>
+</ul>
+</li>
+<li>日期/時間資料 (Date Data)
+<ul>
+<li>用來記錄日期/時間的資料型別，有 date, time, timestamp 等</li>
+</ul>
+</li>
+<li>布林值 (Boolean Data)
+<ul>
+<li>true/false, Yes/No, 1/0</li>
+</ul>
+</li>
+<li>空值 (NULL Data)
+<ul>
+<li>沒有資料存在於欄位！</li>
+<li>在建立資料表時，可以設定欄位是否允許空值！</li>
+<li>NULL 值和一個空字串 ‘’ 是有不一樣意涵的！</li>
+<li>不能索引允許有 NULL 值的欄位</li>
+<li>要索引的欄位為 NOT NULL</li>
+<li>不能插入 NULL 到具有索引的欄位中</li>
+<li>將 NULL 插入資料表中的 TIMESTAMP 欄位，則代表目前的日期和時間</li>
+<li>將 NULL 插入一個 AUTO_INCREMENT 欄位，則代表目前順序中的下一個號碼</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>操作資料庫與資料表</p>
+<ul>
+<li>
+<p>資料庫建立與收集資料流程相反</p>
+<ol>
+<li>先建立資料庫</li>
+<li>在資料庫內建資料表</li>
+<li>在資料表內建欄位</li>
+<li>在欄位內填入資料</li>
+</ol>
+</li>
+<li>
+<p>操作範例：</p>
+<ul>
+<li>文字介面操作方式：
+　<pre><code>#mysql -u root -p
+&gt;SHOW DATABASES;
+&gt;CREATE DATABASE cars;
+&gt;USE cars;
+&gt;CREATE TABLE customers (
+&gt;  id INT(11) AUTO_INCREMENT,
+&gt;  Name VARCHAR(50) NOT NULL,
+&gt;  Address VARCHAR(255) NULL,
+&gt;  Phone VARCHAR(10) NULL,
+&gt;  PRIMARY KEY(id)
+&gt; ) ENGINE = InnoDB
+CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci ;</code></pre></li>
+</ul>
+</li>
+<li>
+<p>可利用 phpMyAdmin 做為建立資料庫、資料表的介面</p>
+</li>
+</ul>
+</li>
+<li>
+<p>操作資料內容</p>
+<ul>
+<li>新增資料
+<ul>
+<li>利用 INSERT 指令，將資料放進資料表內</li>
+<li>操作範例：<pre><code>#mysql -u root -p
+>USE cars;
+>INSERT INTO customers(Name, Address, Phone)
+>VALUES('Peter','No. 10, test load','0912345678');
+</code></pre>
+</li>
+</ul>
+</li>
+<li>修改資料
+<ul>
+<li>利用 UPDATE 指令，修改指定的資料</li>
+<li>操作範例：<pre><code>#mysql -u root -p
+>USE cars;
+>UPDATE customers SET Name = 'James' WHERE Name = 'Peter';
+</code></pre>
+</li>
+</ul>
+</li>
+<li>查詢資料
+<ul>
+<li>利用 SELECT 指令，進行資料查詢</li>
+<li>操作範例：<pre><code>#mysql -u root -p
+>USE cars;
+>SELECT * FROM customers WHERE Name = 'James';
+</code></pre>
+</li>
+</ul>
+</li>
+<li>刪除資料
+<ul>
+<li>利用 DELETE 指令，進行資料的刪除</li>
+<li>操作範例：<pre><code>#mysql -u root -p
+>USE cars;
+>DELETE FROM customers WHERE Name = 'James';
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>操作資料庫系統</p>
+<ul>
+<li>建立資料庫使用者帳號
+<ul>
+<li>利用 CREATE USER 指令，建立使用者</li>
+<li>操作範例：<pre><code>#mysql -u root -p
+>USE mysql;
+>CREATE USER 'peter'@'localhost' IDENTIFIED BY 'Aa12345678!';
+</code></pre>
+</li>
+</ul>
+</li>
+<li>授與資料庫使用權限
+<ul>
+<li>利用 GRANT 指令，授與使用者使用資料庫的權限</li>
+<li>操作範例：<pre><code>#mysql -u root -p
+>USE mysql;
+>GRANT ALL PRIVILEGES ON cars.* TO 'peter'@'localhost';
+>FLUSH PRIVILEGES;
+</code></pre>
+</li>
+<li>權限值類型：
+<ul>
+<li>ALL PRIVILEGES：所有的權限</li>
+<li>CREATE：可以建立資料表或資料庫的權限</li>
+<li>DROP：可以刪除資料表或資料庫的權限</li>
+<li>DELETE：可以在資料表中刪除資料的權限</li>
+<li>INSERT：可以新增資料到資料表的權限</li>
+<li>SELECT：可以查詢資料表的權限</li>
+<li>UPDATE：可以更新資料表中的資料的權限</li>
+<li>GRANT OPTION：可以授權使用權限給其他使用者的權限</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>撤銷資料庫使用權限
+<ul>
+<li>利用 REVOKE 指令，取回使用者使用資料庫的權限</li>
+<li>操作範例：<pre><code>#mysql -u root -p
+>USE mysql;
+>REVOKE ALL ON cars.* FROM 'peter'@'localhost';
+>FLUSH PRIVILEGES;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>刪除資料庫使用者帳號
+<ul>
+<li>利用 DROP USER 指令，刪除資料庫使用者帳號</li>
+<li>操作範例：<pre><code>#mysql -u root -p
+>USE mysql;
+>DROP USER 'peter'@'localhost';
+>FLUSH PRIVILEGES;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>備份與還原資料庫</p>
+<ul>
+<li>
+<p>備份資料庫</p>
+<ul>
+<li>操作範例：<pre><code>#mysqldump -u root -p --result-file=/tmp/cars.sql cars
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>還原資料庫</p>
+<ul>
+<li>操作範例：<pre><code>#mysql -u root -p cars < /tmp/cars.sql
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>練習使用 phpMyAdmin 完成上述練習</p>
+</li>
+<li>
+<p>練習使用 MySQL Workbench 完成上述練習</p>
+</li>
+</ul>
+<h4 id="header-回家作業">回家作業 <a class="permalink" href="#header-回家作業" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>資料收集與分析作業：</p>
+<ul>
+<li>收集自己專案的相關資料</li>
+<li>利用正規化規則，完成資料表定義
+<ul>
+<li>要把表格相關連的限制，也要定義出來！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>資料庫與資料表建立作業</p>
+<ul>
+<li>建立好自己的專題資料庫
+<ul>
+<li>關連圖也要在圖形介面上畫出來</li>
+</ul>
+</li>
+<li>輸入資料到自己建好的資料表內</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-參考文獻">參考文獻 <a class="permalink" href="#header-參考文獻" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p><a href="https://www.fooish.com/sql/">SQL 教學</a></p>
+</li>
+<li>
+<p><a href="http://www.codedata.com.tw/database/mysql-tutorial-getting-started">MySQL 超新手入門</a></p>
+</li>
+</ul>
+</div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 27 Nov 2019</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>

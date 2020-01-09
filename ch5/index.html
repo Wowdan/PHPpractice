@@ -1,0 +1,1009 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>第五章 HTML 與 CSS 基本語法</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-html5-基本語法">HTML5 基本語法</a></li><li><a href="#header-css3-基本語法">CSS3 基本語法</a></li><li><a href="#header-bootstrap-4-框架基本語法">Bootstrap 4 框架基本語法</a></li><li><a href="#header-vs-code-extensions-安裝提示">VS Code Extensions 安裝提示</a></li><li><a href="#header-參考文獻">參考文獻</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">第五章 HTML 與 CSS 基本語法</h1></header><h4 id="header-html5-基本語法">HTML5 基本語法 <a class="permalink" href="#header-html5-基本語法" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>概要</p>
+<ul>
+<li>HTML (Hyper Text Markup Language, 超文本標記語言)由 W3C定義與維護的標準網頁語言。</li>
+</ul>
+</li>
+<li>
+<p>HTML語法:</p>
+<ul>
+<li>標籤:
+<ul>
+<li>帶有特殊含義的網頁的標記元素</li>
+<li>格式：&lt;開始標籤&gt; 標籤體 &lt;/結束標籤&gt;</li>
+</ul>
+</li>
+<li>分類:
+<ul>
+<li>帶標籤體的標籤 如： <strong>&lt;p&gt;</strong> XX <strong>&lt;/p&gt;</strong></li>
+<li>不帶標籤體的標籤 如： <strong>&lt;br/&gt;</strong></li>
+<li>標籤應該成對出現</li>
+</ul>
+</li>
+<li>屬性
+<ul>
+<li>寫在開始標籤上的 「key = value」 為該標籤屬性值，例：<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">font</span> <span class="hljs-attribute">color</span>=<span class="hljs-value">"red"</span>&gt;</span>標籤體<span class="hljs-tag">&lt;/<span class="hljs-title">font</span>&gt;</span></code></pre>
+<ul>
+<li>color 即為該標籤的屬性值！</li>
+</ul>
+</li>
+<li>一個標籤可以有多個屬性，多個屬性之間使用空格隔開。</li>
+</ul>
+</li>
+<li>注釋<pre><code class="language-html"><span class="hljs-comment">&lt;!--我是注釋--&gt;</span></code></pre>
+</li>
+<li><font color="red">注意</font>：根據 HTML5的標準，HTML5文件可以略過 &lt;html&gt;、&lt;head&gt;、&lt;body&gt; 等標籤！</li>
+</ul>
+</li>
+<li>
+<p>HTML主要結構:</p>
+<pre><code class="language-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+<ul>
+<li>起頭命令句，告訴瀏覽器這個檔案是一個 html5 檔。<pre><code class="language-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span></code></pre>
+</li>
+<li>html基本結構:
+<ul>
+<li>html : 是不區分大小寫</li>
+<li>由 <strong>&lt;html&gt;</strong> 開始，由 <strong>&lt;/html&gt;</strong> 結束，在這之間是分 <strong>&lt;head&gt;</strong> 和 <strong>&lt;body&gt;</strong> 兩部分!
+<ul>
+<li><strong>&lt;head&gt;</strong> : 給 html 頁面增加一些輔助或者屬性值，裡面的內容會最先載入。</li>
+<li><strong>&lt;body&gt;</strong> : 標籤裡面存放的才是真正要顯示的數據</li>
+</ul>
+</li>
+<li>在開頭 <html> 可以加入語言判定的標籤，例如:<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">"en-US"</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>Head 部分：用於表示網頁的基本資訊
+<ul>
+<li>常用標籤與屬性：
+<ol>
+<li>title ：瀏覽器標籤頁顯示的標題</li>
+<li>meta ：其常用屬性如下
+<ol>
+<li>charset : 設置文檔的字符集編碼格式。</li>
+<li>http-equiv : 將資訊寫給瀏覽器看，要求瀏覽器執行，可選屬性值
+<ol>
+<li>Content-Type：文件類型</li>
+<li>refresh：網頁定時刷新</li>
+<li>set-cookie：設置瀏覽器cookie，需要配合content屬性使用。http-equiv屬性只是表明需要設置哪一部分，具體的設置內容，放到content屬性中</li>
+<li>name：使用方法如同「http-equiv」。將資訊寫給搜尋引擎看！常用且需要掌握的屬性值：
+<ol>
+<li>author：作者</li>
+<li>keywords：網頁關鍵字</li>
+<li>description：網頁描述</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>例：<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"UTF-8"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"網頁簡短描述"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"keywords"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"網頁關鍵字"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">http-equiv</span>=<span class="hljs-value">"refresh"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"30"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"author"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"John Doe"</span>&gt;</span></code></pre>
+</li>
+</ol>
+</li>
+<li>link：連結資訊，其常用屬性有：
+<ol>
+<li>rel ：通知瀏覽器相關資訊</li>
+<li>type ：可以是文字類型，或是其它類型</li>
+<li>href ：表示連結路徑地址</li>
+<li>例：<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/css"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"main.css"</span>/&gt;</span></code></pre>
+</li>
+</ol>
+</li>
+<li>style: 定義該網頁的樣式格式</li>
+</ol>
+<ul>
+<li>例：<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">style</span>&gt;</span><span class="css">
+  <span class="hljs-tag">body</span> <span class="hljs-rules">{<span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> powderblue</span></span>;}</span>
+  <span class="hljs-tag">h1</span> <span class="hljs-rules">{<span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;}</span>
+  <span class="hljs-tag">p</span> <span class="hljs-rules">{<span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;}</span>
+  </span><span class="hljs-tag">&lt;/<span class="hljs-title">style</span>&gt;</span></code></pre>
+</li>
+</ul>
+<ol start="5">
+<li>script：用來定義給客戶端執的 JavaScripts 檔案</li>
+</ol>
+<ul>
+<li>例：<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span> </span>{
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"demo"</span>).innerHTML = <span class="hljs-string">"Hello JavaScript!"</span>;
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></code></pre>
+</li>
+</ul>
+<ol start="6">
+<li>base: 指定該網頁上基本網頁的 url 位置</li>
+</ol>
+<ul>
+<li>例：<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">base</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://www.w3schools.com/images/"</span> <span class="hljs-attribute">target</span>=<span class="hljs-value">"_blank"</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Body 部份：網頁真正會展示給使用者看的內容
+<ul>
+<li>標題 : 有六種大小，從 &lt;h1&gt; ～ &lt;h6&gt;，預設字體大小為24pt ～ 8pt
+<ul>
+<li>例 :<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>I'm headline 1<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>I'm headline 2<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>I'm headline 3<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span>I'm headline 4<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h5</span>&gt;</span>I'm headline 5<span class="hljs-tag">&lt;/<span class="hljs-title">h5</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h6</span>&gt;</span>I'm headline 6<span class="hljs-tag">&lt;/<span class="hljs-title">h6</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>段落 : &lt;p&gt;&lt;/p&gt;
+<ul>
+<li>例 :<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is another paragraph.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>超連結 : &lt;a&gt;&lt;/a&gt;
+<ul>
+<li>例 :<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://www.google.com"</span>&gt;</span>google<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
+</li>
+<li>href : 指定目的地網址名稱</li>
+</ul>
+</li>
+<li>圖片連結設定：&lt;img&gt;&lt;/img&gt;
+<ul>
+<li>例 :<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"img/test1.jpg"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">"Hello World"</span> <span class="hljs-attribute">width</span>=<span class="hljs-value">"104"</span> <span class="hljs-attribute">height</span>=<span class="hljs-value">"142"</span>&gt;</span>美女圖<span class="hljs-tag">&lt;/<span class="hljs-title">img</span>&gt;</span></code></pre>
+</li>
+<li>src : 指定圖檔路徑</li>
+<li>alt : 圖檔說明文字</li>
+<li>width : 圖檔顯示的寬度</li>
+<li>height : 圖檔顯示的高度</li>
+</ul>
+</li>
+<li>按鍵 : &lt;button&gt;&lt;/button&gt;
+<ul>
+<li>例 :<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>Click me<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>列表清單 :
+<ul>
+<li>有序清單 : &lt;ol&gt;&lt;/ol&gt;</li>
+<li>無序清單 : &lt;ul&gt;&lt;/ul&gt;</li>
+<li>列表項目 : &lt;li&gt;&lt;/li&gt;</li>
+<li>例：<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>Coffee<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>Tea<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>Milk<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">ol</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>Coffee<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>Tea<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>Milk<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ol</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>HTML5 新增項目</p>
+<ul>
+<li>HTML5　新增元素列表 :</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Tag</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&lt;article&gt;</td>
+<td style="text-align:left">Defines an article in a document</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;aside&gt;</td>
+<td style="text-align:left">Defines content aside from the page content</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;bdi&gt;</td>
+<td style="text-align:left">Isolates a part of text that might be formatted in a different direction from other text outside it</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;details&gt;</td>
+<td style="text-align:left">Defines additional details that the user can view or hide</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;dialog&gt;</td>
+<td style="text-align:left">Defines a dialog box or window</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;figcaption&gt;</td>
+<td style="text-align:left">Defines a caption for a &lt;figure&gt; element</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;figure&gt;</td>
+<td style="text-align:left">Defines self-contained content</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;footer&gt;</td>
+<td style="text-align:left">Defines a footer for a document or section</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;header&gt;</td>
+<td style="text-align:left">Defines a header for a document or section</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;main&gt;</td>
+<td style="text-align:left">Defines the main content of a document</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;mark&gt;</td>
+<td style="text-align:left">Defines marked/highlighted text</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;meter&gt;</td>
+<td style="text-align:left">Defines a scalar measurement within a known range (a gauge)</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;nav&gt;</td>
+<td style="text-align:left">Defines navigation links</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;progress&gt;</td>
+<td style="text-align:left">Represents the progress of a task</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;rp&gt;</td>
+<td style="text-align:left">Defines what to show in browsers that do</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;rt&gt;</td>
+<td style="text-align:left">Defines an explanation/pronunciation of characters (for East Asian typography)</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;ruby&gt;</td>
+<td style="text-align:left">Defines a ruby annotation (for East Asian typography)</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;section&gt;</td>
+<td style="text-align:left">Defines a section in a document</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;summary&gt;</td>
+<td style="text-align:left">Defines a visible heading for a &lt;details&gt; element</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;time&gt;</td>
+<td style="text-align:left">Defines a date/time</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;wbr&gt;</td>
+<td style="text-align:left">Defines a possible line-break</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>HTML5 表格新增元素 :</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Tag</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&lt;datalist&gt;</td>
+<td style="text-align:left">Specifies a list of pre-defined options for input controls</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;output&gt;</td>
+<td style="text-align:left">Defines the result of a calculation</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>HTML5 新增可辨視輸入類型的種類 :</p>
+<ul>
+<li>輸入類型分類：
+<ul>
+<li>color</li>
+<li>date</li>
+<li>datetime</li>
+<li>datetime-local</li>
+<li>email</li>
+<li>month</li>
+<li>number</li>
+<li>range</li>
+<li>search</li>
+<li>tel</li>
+<li>time</li>
+<li>url</li>
+<li>week</li>
+</ul>
+</li>
+<li>輸入類型屬性 :
+<ul>
+<li>autocomplete</li>
+<li>autofocus</li>
+<li>form</li>
+<li>formaction</li>
+<li>formenctype</li>
+<li>formmethod</li>
+<li>formnovalidate</li>
+<li>formtarget</li>
+<li>height and width</li>
+<li>list</li>
+<li>min and max</li>
+<li>multiple</li>
+<li>pattern (regexp)</li>
+<li>placeholder</li>
+<li>required</li>
+<li>step</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>HTML5 新增繪圖標籤</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Tag</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&lt;canvas&gt;</td>
+<td style="text-align:left">Draw graphics, on the fly, via scripting (usually JavaScript)</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;svg&gt;</td>
+<td style="text-align:left">Draw scalable vector graphics</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>HTML5 新增多媒體標籤</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Tag</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&lt;audio&gt;</td>
+<td style="text-align:left">Defines sound content</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;embed&gt;</td>
+<td style="text-align:left">Defines a container for an external (non-HTML) application</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;source&gt;</td>
+<td style="text-align:left">Defines multiple media resources for media elements (&lt;video&gt; and &lt;audio&gt;)</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;track&gt;</td>
+<td style="text-align:left">Defines text tracks for media elements (&lt;video&gt; and &lt;audio&gt;)</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;video&gt;</td>
+<td style="text-align:left">Defines video or movie</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-css3-基本語法">CSS3 基本語法 <a class="permalink" href="#header-css3-基本語法" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>CSS 概述</p>
+<ul>
+<li>層疊樣式表（Cascading Style Sheets, CSS）是用來描述HTML 或XML（包含SVG 或XHTML 等各種XML 變形）文件外觀的樣式表語言。</li>
+<li>CSS 可以讓多個 Web 網頁套用同一個層級樣式，節省許多排版工時！</li>
+<li>許多額外的樣式可存放於 CSS 檔案中！</li>
+</ul>
+</li>
+<li>
+<p>CSS 語法格式定義</p>
+<ul>
+<li>CSS 語法格式中，分成選擇器與宣告兩部份 :
+<img src="img/1.gif" alt="CSS 語法組成格式圖">
+<ul>
+<li>Selector : 通常是 HTML 標籤名稱，可加上屬性名稱，做更仔細的設定！</li>
+<li>Declaration : 定義屬性值，做外觀的變化設定！
+<ul>
+<li>每個宣告設定語法結尾，使用分號做結尾！</li>
+</ul>
+</li>
+<li>例 : 定義段落標籤&lt;p&gt;文字顏色以及位置置中！<pre><code class="language-html">p {
+  color: red;
+  text-align: center;
+}</code></pre>
+</li>
+</ul>
+</li>
+<li>CSS 的註解
+<ul>
+<li>多數用來說明語法，瀏覽器在解析語法時會略過</li>
+<li>例 :<pre><code class="language-html">p {
+    color: red;
+    /* This is a single-line comment */
+    text-align: center;
+  }
+
+  /* This is
+  a multi-line
+  comment */</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>HTML 如何加入 CSS</p>
+<ul>
+<li>共有三種方式，可在 HTML 中插入 CSS
+<ul>
+<li>加入外部 CSS 檔案
+<ul>
+<li>在 &lt;head&gt; 標籤區塊內，加入&lt;link&gt;標籤屬性，宣告使用的檔案位置！</li>
+<li>可多個網頁共用一個 CSS 檔案！</li>
+<li>例：<pre><code class="language-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/css"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"mystyle.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>This is a heading<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+<ul>
+<li>mystyle.css 檔案內容 :<pre><code class="language-html">body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HTML 內部設定 CSS 語法
+<ul>
+<li>針對單一網頁內容進行設定</li>
+<li>在 &lt;head&gt; 標籤區塊內，將 CSS 設定語法寫入 &lt;style&gt; 區塊內！</li>
+<li>例 :<pre><code class="language-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">style</span>&gt;</span><span class="css">
+<span class="hljs-tag">body</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> linen</span></span>;
+}</span>
+
+<span class="hljs-tag">h1</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> maroon</span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">margin-left</span>:<span class="hljs-value"> <span class="hljs-number">40px</span></span></span>;
+}</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>This is a heading<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>內嵌至 HTML 語法標籤內
+<ul>
+<li>針對單一標籤進行外觀設定</li>
+<li>例 :<pre><code class="language-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"color:blue;text-align:center;"</span>&gt;</span>This is a heading<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"color:red;"</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CSS 的串列順序
+<ul>
+<li>CSS 執行順序，從最高到最低 :
+<ol>
+<li>內嵌至 HTML 語法標籤內的 CSS 樣式</li>
+<li>HTML 內部設定的 CSS 語法</li>
+<li>外部加入的 CSS 檔案</li>
+</ol>
+</li>
+<li>PS: 第 2 點與第 3 點的設定順序，在後的設定會覆寫之前的設定，例：<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">style</span>&gt;</span><span class="css">
+<span class="hljs-tag">h1</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> orange</span></span>;
+}</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/css"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"mystyle.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></code></pre>
+<hr>
+<pre><code class="language-html">mystyle.css 檔案內容：
+h1 {
+  color: navy;
+}</code></pre>
+<ul>
+<li>後來的 &lt;h1&gt; 標籤，文字顏色將是 “orange” !!</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>CSS 的 Selector 類型 :</p>
+<ul>
+<li>基於標籤名稱的 Selector ，例如 &lt;p&gt; :<pre><code class="language-html">p {
+  text-align: center;
+  color: red;
+}</code></pre>
+</li>
+<li>基於 HTML 標籤內元素名稱 id 屬性值的 Selector , 例如 &lt;h1 id=“para1”&gt; :<pre><code class="language-html">#para1 {
+  text-align: center;
+  color: red;
+}</code></pre>
+<ul>
+<li>HTML 標籤的 id 值，都是唯一值！</li>
+</ul>
+</li>
+<li>基於 HTML 標籤內元素名稱 class 屬性值的 Selector , 例如 &lt;p class=“center”&gt; :<pre><code class="language-html">.center {
+  text-align: center;
+  color: red;
+}</code></pre>
+<ul>
+<li>不同標籤值，可以使用相同的類別屬性！</li>
+</ul>
+</li>
+<li>同時指定標籤名稱與元素 id 值的 Selector , 例如 &lt;p id=“center”&gt; :<pre><code class="language-html">p.center {
+  text-align: center;
+  color: red;
+}</code></pre>
+</li>
+<li>同時指定標籤名稱與多個元素 id 值的 Selector，例如 &lt;p id=“center large”&gt; :<pre><code class="language-html">p.center {
+  text-align: center;
+  color: red;
+}
+
+p.large {
+  font-size: 300%;
+}</code></pre>
+</li>
+<li>通用 Selector :
+<ul>
+<li>表示所有標籤均使用的 Selector !<pre><code class="language-html">* {
+  text-align: center;
+  color: blue;
+}</code></pre>
+</li>
+</ul>
+</li>
+<li>群組標籤 Selector :
+<ul>
+<li>將某些標籤一起定義格式的作法　！<pre><code class="language-html">h1 {
+  text-align: center;
+  color: red;
+}
+
+h2 {
+  text-align: center;
+  color: red;
+}
+
+p {
+  text-align: center;
+  color: red;
+}</code></pre>
+可以改成如下做法：<pre><code class="language-html">h1, h2, p {
+  text-align: center;
+  color: red;
+}</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-bootstrap-4-框架基本語法">Bootstrap 4 框架基本語法 <a class="permalink" href="#header-bootstrap-4-框架基本語法" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>Bootstrap 概要</p>
+<ul>
+<li>一種免費的前端網頁框架</li>
+<li>框架內包含了HTML 與 CSS 的設計樣版</li>
+<li>利用 Bootstrap 可以快速開發行動版網頁</li>
+<li>目前己發表到第４版本</li>
+</ul>
+</li>
+<li>
+<p>開始使用 Bootstrap 的方式(下列兩種擇一即可開始使用)</p>
+<ul>
+<li>引入 Bootstrap 官方的 CDN (Content Delivery Network) 連結
+<ul>
+<li>連結的網址如下 :<pre><code class="language-html"><span class="hljs-comment">&lt;!-- Latest compiled and minified CSS --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- jQuery library --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"https://code.jquery.com/jquery-3.3.1.slim.min.js"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- Popper JS --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- Latest compiled JavaScript --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>下載 Bootstrap 軟體，放置到網頁目錄內
+<ul>
+<li>下載<a href="https://github.com/twbs/bootstrap/releases/download/v4.3.1/bootstrap-4.3.1-dist.zip">官網</a></li>
+<li>下載後，放置網頁目錄錄徑！</li>
+</ul>
+</li>
+<li>例 : hello.html<pre><code class="language-html"><span class="hljs-doctype">&lt;!doctype html&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">"en"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- Required meta tags --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"utf-8"</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- Responsive meta tag --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"viewport"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"width=device-width, initial-scale=1, shrink-to-fit=no"</span>&gt;</span>
+
+      <span class="hljs-comment">&lt;!-- Bootstrap CSS --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+
+      <span class="hljs-comment">&lt;!-- Optional JavaScript --&gt;</span>
+      <span class="hljs-comment">&lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"https://code.jquery.com/jquery-3.3.1.slim.min.js"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Bootstrap 網格的概念</p>
+<ul>
+<li>Bootstrap 將一整個網頁寬度，使用最多的 12 個網格！
+<ul>
+<li>如果不想要使用到 12 個網格，可以將網格合併！</li>
+<li>例 :
+<img src="img/2.png" alt="12網格"></li>
+<li>網格將會依據螢幕大小，按比例縮放！</li>
+</ul>
+</li>
+<li>Bootstrap 網格系統的類型共有五種 :
+<ul>
+<li>.col- (最小的平台，螢幕寬度低於 576px)</li>
+<li>.col-sm- (小型平台，螢幕寬度大於等於 576px)</li>
+<li>.col-md- (中型平台，螢幕寬度大於等於 768px)</li>
+<li>.col-lg- (大型平台，螢幕寬度大於等於 992px)</li>
+<li>.col-xl- (超大型平台，螢幕寬度大於等於 1200px)</li>
+<li>PS : 螢幕寬度低於設定的 px 值，將會互相自動堆疊</li>
+</ul>
+</li>
+<li>例 :<pre><code class="language-html"><span class="hljs-comment">&lt;!-- 第一個「*」號代表任一類型 --&gt;</span>
+<span class="hljs-comment">&lt;!-- 第二個「*」號代表均分網格 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col-*-*"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col-*-*"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col-*-*"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col-*-*"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col-*-*"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 讓 Bootstrap 自動處理佈局 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+</li>
+<li>可以設定不等分的網格 :</li>
+<li>例：<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col-sm-4"</span>&gt;</span>.col-sm-4<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"col-sm-8"</span>&gt;</span>.col-sm-8<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-vs-code-extensions-安裝提示">VS Code Extensions 安裝提示 <a class="permalink" href="#header-vs-code-extensions-安裝提示" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>由 Extensions 安裝 VS Code 外掛軟體</p>
+<ul>
+<li>[工具列] -&gt; [View] -&gt; [Extensions]</li>
+<li>[左方工具列] -&gt; [Extensions] 圖示（看起來有四個方塊的圖案）</li>
+</ul>
+</li>
+<li>
+<p>HTML ＆ CSS 推薦外掛套件</p>
+<ul>
+<li>HTML Snippets</li>
+<li>HTML CSS Support</li>
+<li>IntelliSense for CSS class names in HTML</li>
+<li>JS-CSS-HTML Formatter</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-參考文獻">參考文獻 <a class="permalink" href="#header-參考文獻" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p><a href="https://www.w3schools.com/">W3 School</a></p>
+</li>
+<li>
+<p><a href="https://bootstrap.hexschool.com/docs/4.2/getting-started/introduction/">Bootstrap 4繁體中文手冊</a></p>
+</li>
+</ul>
+</div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 26 Nov 2019</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>

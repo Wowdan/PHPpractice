@@ -1,0 +1,968 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>第六章 PHP 基本語法</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-php-基本觀念">PHP 基本觀念</a></li><li><a href="#header-變數">變數</a></li><li><a href="#header-資料型態">資料型態</a></li><li><a href="#header-運算子">運算子</a></li><li><a href="#header-陣列">陣列</a></li><li><a href="#header-控制結構">控制結構</a></li><li><a href="#header-參考文獻">參考文獻</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">第六章 PHP 基本語法</h1></header><h4 id="header-php-基本觀念">PHP 基本觀念 <a class="permalink" href="#header-php-基本觀念" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>站台的運作方式</p>
+<ul>
+<li>靜態網站
+<img src="img/1.gif" alt="靜態網站">
+<ul>
+<li>取自「鳥哥的私房菜」</li>
+</ul>
+</li>
+<li>動態網站
+<img src="img/2.jpeg" alt="動態網站">
+<ul>
+<li>取自「鳥哥的私房菜」</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>PHP 的運作方式</p>
+<ul>
+<li>PHP Engine
+<img src="img/4.jpeg" alt="PHP運作概要圖"></li>
+</ul>
+</li>
+<li>
+<p>PHP 程式寫作方式</p>
+<ul>
+<li>
+<p>HTML 內嵌 PHP 程式標籤 :</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  你的 php 程式碼;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+<ul>
+<li>
+<p>範例 : hello.php</p>
+<pre><code class="language-html"><span class="hljs-doctype">&lt;!doctype html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">"en"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+      <span class="php"><span class="hljs-preprocessor">&lt;?php</span>
+        <span class="hljs-keyword">print</span> <span class="hljs-string">"Hello World"</span>;
+      <span class="hljs-preprocessor">?&gt;</span></span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+</li>
+<li>
+<p>你的練習 : 請練習好下列步驟，以後章節將不會重複再說明！</p>
+<ul>
+<li>使用 VS Code 軟體</li>
+<li>使用 [View] -&gt; [Extensions] -&gt; 輸入[HTML] -&gt; 確認是否安裝 [HTML Snippets]</li>
+<li>開新檔案，存檔成 hello.php !
+<ul>
+<li>做法 [File] -&gt; [Save As…] -&gt; 選擇資料夾 -&gt; 輸入檔名</li>
+</ul>
+</li>
+<li>在 hello.php 頁籤中，實作 hello.php 內容
+<ul>
+<li>選擇 hello.php 頁籤</li>
+<li>直接輸入 html ，在輔助視窗中，選擇 html:5</li>
+<li>在&lt;body&gt;標籤底下輸入範例內容！</li>
+<li>將檔案存檔</li>
+</ul>
+</li>
+<li>將存好的檔案，使用 git 存好，並推上 github !</li>
+<li>進入你的正式環境內，將 github 的專案，克隆回你的主機！
+<ul>
+<li>以 root 身份登入你的 Linux 主機</li>
+<li>切換至 /usr/share/nginx/html 目錄<pre><code>#cd /usr/share/nginx/html
+#git clone https://github.com/你的帳號名稱/你的專案名稱.git</code></pre>
+</li>
+</ul>
+</li>
+<li>打開你的網頁，查看檔案是否有執行！
+<ul>
+<li>請注意你的網址路徑是否正確</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>PHP 包含 HTML 標籤</p>
+<ul>
+<li>範例 : world.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">print</span> <span class="hljs-string">&lt;&lt;&lt;_HTML_
+    &lt;form method="post" action="<span class="hljs-subst">$_SERVER</span>[PHP_SELF]"&gt;
+    Your Name:&lt;input type="text" name="user" /&gt;
+    &lt;br/&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;Say World&lt;/button&gt;
+    &lt;/form&gt;
+_HTML_;</span>
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>範例 : world1.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+    <span class="hljs-keyword">print</span> <span class="hljs-string">"&lt;h5&gt;test&lt;/h5&gt;"</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>PHP 基本輸出</p>
+<ul>
+<li>使用 echo</li>
+<li>使用 print</li>
+<li>使用 printf() 函數</li>
+<li>例 : ex6_1.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"Hello &lt;br /&gt;"</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">'World &lt;br /&gt;'</span>;
+  <span class="hljs-keyword">print</span> <span class="hljs-string">"Hello2 &lt;br /&gt;"</span>;
+  <span class="hljs-keyword">print</span> <span class="hljs-string">'World2 &lt;br /&gt;'</span>;
+  printf(<span class="hljs-string">"Hello World"</span>);
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>PHP 的註解</p>
+<ul>
+<li>單行註解 : // or #</li>
+<li>區塊註解 : /*  */</li>
+<li>功能 :
+<ul>
+<li>說明程式功能</li>
+<li>不執行程式</li>
+<li>其它</li>
+</ul>
+</li>
+<li>範例 : ex6_2.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"你愛他 &lt;br /&gt;"</span>;
+  <span class="hljs-comment">// echo '真的嗎？ &lt;br /&gt;';</span>
+  <span class="hljs-keyword">print</span> <span class="hljs-string">"他不愛你 &lt;br /&gt;"</span>;
+  <span class="hljs-comment">/* 以下是猜的
+  print '他有外遇 &lt;br /&gt;';
+  printf("你有外遇");
+  */</span>
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-變數">變數 <a class="permalink" href="#header-變數" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>變數</p>
+<ul>
+<li>定義 : 利用一個名稱，暫時記錄某些資料。</li>
+<li>命名規則 :　$&lt;變數名稱&gt;
+<ul>
+<li>以 $ 為開頭</li>
+<li>變數名稱開頭字元為字母或底線，不能是數字！</li>
+<li>大小寫有別</li>
+</ul>
+</li>
+<li>內容值的宣告:
+<ul>
+<li>‘’ or “” : 表示內容值是文字</li>
+<li>數字不需要使用 ‘’ or “”</li>
+<li>變數若沒宣告內容值，則以預設值填入！
+<ul>
+<li>整數、浮點數 : 0</li>
+<li>字串 : 空字串</li>
+<li>布林值 : false</li>
+<li>陣列 : 空陣列</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>例 : ex6_3.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+    <span class="hljs-comment">// 變數 a 沒宣告就使用,會產生 E_NOTICE 的警告</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$a: '</span>.<span class="hljs-variable">$a</span>.<span class="hljs-string">'&lt;be /&gt;'</span>;
+    <span class="hljs-variable">$name</span> = <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$name: '</span>.<span class="hljs-variable">$name</span>.<span class="hljs-string">'&lt;be /&gt;'</span>;
+    <span class="hljs-variable">$name</span> = <span class="hljs-string">'David'</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$name: '</span>.<span class="hljs-variable">$name</span>.<span class="hljs-string">'&lt;be /&gt;'</span>;
+    <span class="hljs-variable">$a</span> = <span class="hljs-variable">$a</span> + <span class="hljs-number">100</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'$a: '</span>.<span class="hljs-variable">$a</span>.<span class="hljs-string">'&lt;be /&gt;'</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>變數的存活範圍</p>
+<ul>
+<li>區域變數 : 變數的內容值只能在函數(function)內使用</li>
+<li>全域變數 : 變數的內容值可在整個程式內使用</li>
+<li>例 : ex6_4.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-variable">$x</span> = <span class="hljs-number">1</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hello</span><span class="hljs-params">(<span class="hljs-variable">$x</span>)</span></span>{
+    <span class="hljs-variable">$sum</span> = <span class="hljs-variable">$x</span> * <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"函數執行結束 &lt;br /&gt;"</span>;
+  }
+<span class="hljs-preprocessor">?&gt;</span>
+&lt;p&gt; -------我是分隔線------&lt;/p&gt;
+<span class="hljs-preprocessor">&lt;?php</span>
+  hello(<span class="hljs-variable">$x</span>);
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"x=$x&lt;br /&gt;"</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"sum=$sum&lt;br /&gt;"</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>常數</p>
+<ul>
+<li>常使用，但永不改變的數值</li>
+<li>利用 define 函數定義常數名稱，方便記憶</li>
+<li>例 : ex6_5.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  define(<span class="hljs-string">'PI'</span>, <span class="hljs-number">3.1415926</span>);
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"圓周率："</span>.PI;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-資料型態">資料型態 <a class="permalink" href="#header-資料型態" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>標準資料型態</p>
+<ul>
+<li>
+<p>整數(Integer) : 32 bits or 64 bits</p>
+<ul>
+<li>PHP_INT_MAX : 該平台最大整數值</li>
+<li>PHP_INT_SIZE : 該平台整數位元值大小</li>
+<li>運算過程中，若超出整數型態值，則自動轉成浮點數！</li>
+</ul>
+</li>
+<li>
+<p>浮點數(float) : 32 bits or 64 bits</p>
+<ul>
+<li>又稱實數(real)，專用於存放有小數點的數字資料型態</li>
+<li>因為 PHP 屬弱型別資料型態，所以 float or double 都是相同資料型態！</li>
+<li>e : 科學表示法，表示以10為底的指數
+<ul>
+<li>例 : 9.773e3 = 9773</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>字串 : 沒有大小限制</p>
+<ul>
+<li>單引號 : 單引號中的變數不會轉成內容值</li>
+<li>雙引號 : 雙引號中的變數會轉成內容值</li>
+<li>跳脫字元 : 使用反斜線「 \ 」
+<ul>
+<li>\t : 相等於 [Tab] 鍵</li>
+<li>\n : 換行，並移至行頭</li>
+<li>\r : 換行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>布林值(boolean) :</p>
+<ul>
+<li>表達事件的「真」或「假」！</li>
+<li>值 : true or false / True or False / TRUE or FALSE / 其它0以外的值:true or 0:false</li>
+<li>例 : ex6_6.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-variable">$t</span> = <span class="hljs-keyword">true</span>;
+  <span class="hljs-variable">$f</span> = <span class="hljs-keyword">false</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$t 值 : $t 數字 : (int)$t "</span>.<span class="hljs-string">"&lt;br /&gt;"</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$f 值 : $f 數字 : (int)$f "</span>.<span class="hljs-string">"&lt;br /&gt;"</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>陣列(array) :</p>
+<ul>
+<li>把相同的資料型態的若干個變數集合起來，就成了陣列！</li>
+<li>陣列可以是一維、二維，甚至是多維！</li>
+<li>第一筆資料，由索引值為 0 開始配置！</li>
+<li>例 : ex6_7.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-variable">$x</span>[<span class="hljs-number">0</span>] = <span class="hljs-string">"Hello"</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-variable">$x</span>[<span class="hljs-number">0</span>];
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>物件(object) :</p>
+<ul>
+<li>利用 class 關鍵字定義一個類別(模型)，再利用 new 關鍵字來建立這個類別的物作(實例)！</li>
+</ul>
+</li>
+<li>
+<p>資源(resource) :</p>
+<ul>
+<li>透過專門的函數來建立和使用，負責與外部資源的聯繫！</li>
+<li>例 : XML文件、資料庫連線、讀寫外部檔案…等等！</li>
+</ul>
+</li>
+<li>
+<p>空值(NULL) :</p>
+<ul>
+<li>表示沒有任何內容的變數！</li>
+<li>例 : ex6_7.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+   <span class="hljs-variable">$a</span> = <span class="hljs-keyword">NULL</span>;
+   <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$a = $a"</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>資料型態轉換</p>
+<ul>
+<li>
+<p>強制轉換</p>
+<ul>
+<li>轉換成整數 : (int) (integer)</li>
+<li>轉換成浮點數 : (float) (double) (real)</li>
+<li>轉換成字串 : (string)</li>
+<li>轉換成布林值 : (bool) (boolean)</li>
+<li>轉換成二進位字串 : (binary)</li>
+<li>轉換成陣列 : (array)</li>
+<li>轉換成物件 : (object)</li>
+<li>轉換成 NULL : (unset)</li>
+<li>例 : ex6_8.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+   <span class="hljs-variable">$pi</span> = <span class="hljs-number">3.141592</span>;
+   <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$pi 轉成整數 : "</span>.(int)<span class="hljs-variable">$pi</span>;
+   <span class="hljs-variable">$input</span> = <span class="hljs-string">"3.141592pi"</span>;
+   <span class="hljs-keyword">echo</span> <span class="hljs-string">"pi 轉成浮點數 : "</span>.(float)<span class="hljs-variable">$input</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>以函數轉換</p>
+<ul>
+<li>
+<p>settype(): 需要輸入兩個參數，一是變數，二是要轉換的資料型態！</p>
+<ul>
+<li>資料型態參數 : “integer”、“int”、“float”、“string”、“boolean”、“bool”、“array”、“object”、“null”</li>
+</ul>
+</li>
+<li>
+<p>轉換成功回傳 true，轉換失敗回傳 false !!</p>
+</li>
+<li>
+<p>例 : ex6_8.php</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-variable">$pi</span> = <span class="hljs-number">3.141592</span>;
+  settype(<span class="hljs-variable">$pi</span>, <span class="hljs-string">"integer"</span>);
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$pi 轉成整數: "</span>.<span class="hljs-variable">$pi</span>;
+  <span class="hljs-variable">$piString</span> = <span class="hljs-string">"3.141592circle"</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"是否有轉成功"</span>.settype(<span class="hljs-variable">$piString</span>, <span class="hljs-string">"float"</span>);
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$piString 是: "</span>.<span class="hljs-variable">$piString</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>
+<p>其他轉換函數 :</p>
+<ul>
+<li>intval() : 轉換成整數</li>
+<li>floatval()、doubleval(): 轉換成浮點數</li>
+<li>strval() : 轉換成字串</li>
+</ul>
+</li>
+<li>
+<p>gettype() : 取得資料型態</p>
+</li>
+<li>
+<p>intdiv() : 取餘數</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-運算子">運算子 <a class="permalink" href="#header-運算子" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>運算式與運算子</p>
+<ul>
+<li>例 : $a = $b + $c
+<ul>
+<li>運算元 : $a $b $c</li>
+<li>運算子 : +</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>運算子的優先順序</p>
+<ol>
+<li>物件建立 : 複製(clone)、新增(new)</li>
+<li>陣列 : []</li>
+<li>轉型與遞增、遞減 : ++、–、intval()
+<ul>
+<li>例 :
+<ul>
+<li>++$a : 先加再回傳</li>
+<li>$a++ : 先回傳再加</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>邏輯運算子 : (非)「 ！」</li>
+<li>算術運算子 : 「 * 」、「 / 」、「 % 」(取餘數)</li>
+<li>算術運算子 : 「+」、「-」、「.」(字串運算子)</li>
+<li>比較運算子 : 「&gt;」、「&lt;」、「&gt;=」、「&lt;=」、「==」、「!=」、「===」(型態也要相同)</li>
+<li>邏輯運算子 : (且)「&amp;&amp;」、(或)「||」</li>
+<li>條件運算子 : 「?:」(三元運算子)</li>
+<li>指定運算子 : 「=」、「+=」、「-=」、「*=」、「/=」、「%=」、「.=」
+<ul>
+<li>例 : $a += $b --&gt; $a = $a + $b</li>
+<li>例 : $a = 10</li>
+</ul>
+</li>
+<li>邏輯運算子 : 「and」、「or」、「xor」
+<ul>
+<li>回傳值通常是 true 或 false !!</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>太空船運算子</p>
+<ul>
+<li>符號 : 「&lt;=&gt;」</li>
+<li>例 : ex6_9.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+   <span class="hljs-keyword">echo</span> <span class="hljs-number">1</span>&lt;=&gt;<span class="hljs-number">1</span>;
+   <span class="hljs-keyword">echo</span> <span class="hljs-number">1</span>&lt;=&gt;<span class="hljs-number">2</span>;
+   <span class="hljs-keyword">echo</span> <span class="hljs-number">2</span>&lt;=&gt;<span class="hljs-number">1</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-陣列">陣列 <a class="permalink" href="#header-陣列" aria-hidden="true">¶</a></h4>
+<ul>
+<li>宣告方式
+<ul>
+<li>格式 :
+<ul>
+<li>一維 : $變數名稱[“key” or index]=value;</li>
+<li>二維 : $變數名稱[“key” or index][“key” or index]=value;
+<ul>
+<li>可以視為多個一維陣列組合起來！</li>
+</ul>
+</li>
+<li>多維 : []一直追加即可！</li>
+</ul>
+</li>
+<li>例 : ex6_10.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-comment">//一維陣列</span>
+  <span class="hljs-variable">$eggbox</span>[<span class="hljs-string">"土雞"</span>]=<span class="hljs-number">30</span>;
+  <span class="hljs-variable">$eggbox</span>[<span class="hljs-number">1</span>]=<span class="hljs-number">100</span>;
+  <span class="hljs-variable">$eggbox</span>[]=<span class="hljs-number">20</span>;
+  <span class="hljs-variable">$eggbox</span>[<span class="hljs-string">"duck"</span>]=<span class="hljs-number">50</span>;
+  <span class="hljs-variable">$drinkbox</span>=(<span class="hljs-string">"啤酒"</span>=&gt;<span class="hljs-number">70</span>,<span class="hljs-string">"cola"</span>=&gt;<span class="hljs-number">30</span>);
+  <span class="hljs-variable">$foodbox</span>=[<span class="hljs-string">"飯團"</span>=&gt;<span class="hljs-number">50</span>];
+  <span class="hljs-keyword">echo</span> <span class="hljs-variable">$eggbox</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-variable">$foodbox</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-variable">$drinkbox</span>;
+
+  <span class="hljs-comment">//二維陣列</span>
+  <span class="hljs-variable">$lunch</span>[<span class="hljs-number">0</span>][<span class="hljs-string">"素食"</span>]=<span class="hljs-number">100</span>;
+  <span class="hljs-variable">$lunch</span>[<span class="hljs-number">0</span>][<span class="hljs-string">"葷食"</span>]=<span class="hljs-number">150</span>;
+  <span class="hljs-variable">$lunch</span>[<span class="hljs-string">"麵類"</span>][<span class="hljs-string">"拉麵"</span>]=<span class="hljs-number">200</span>;
+  <span class="hljs-variable">$lunch</span>[<span class="hljs-string">"飯類"</span>][<span class="hljs-string">"雞肉飯"</span>]=<span class="hljs-string">"今天不賣"</span>;
+  <span class="hljs-variable">$lunch</span>[<span class="hljs-number">1</span>]=<span class="hljs-keyword">array</span>(<span class="hljs-string">"廣東粥"</span>=&gt;<span class="hljs-number">80</span>,<span class="hljs-string">"炸雞排"</span>=&gt;<span class="hljs-number">70</span>);
+  <span class="hljs-keyword">echo</span> <span class="hljs-variable">$lunch</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-控制結構">控制結構 <a class="permalink" href="#header-控制結構" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>決策控制</p>
+<ul>
+<li>
+<p>if … else</p>
+<pre><code class="language-php"><span class="hljs-keyword">if</span> (條件式){
+  條件式為真時，執行本程式區塊
+} <span class="hljs-keyword">else</span> {
+  條件事為假時，執行本程式區塊
+}</code></pre>
+<ul>
+<li>例 : ex6_11.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+   <span class="hljs-variable">$i</span> = <span class="hljs-number">10</span>;
+   <span class="hljs-keyword">if</span> ( <span class="hljs-variable">$i</span> &gt; <span class="hljs-number">10</span> ){
+     <span class="hljs-keyword">echo</span> <span class="hljs-string">"Hello World"</span>;
+   } <span class="hljs-keyword">else</span> {
+     <span class="hljs-keyword">echo</span> <span class="hljs-string">"Good Bye"</span>;
+   }
+   <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span> == <span class="hljs-number">10</span>) <span class="hljs-keyword">echo</span> <span class="hljs-string">"Too Many"</span>;
+   <span class="hljs-keyword">else</span> <span class="hljs-variable">$i</span>+=<span class="hljs-number">100</span>;
+   <span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span>; 
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>三元運算子(1) : 「 ?: 」</p>
+<pre><code class="language-php">(條件式) ? 條件為真執行這行 : 條件為假執行這行 ;</code></pre>
+<ul>
+<li>例 : ex6_11.php<pre><code class="language-php"><span class="hljs-comment">//$i 延用上一個範例</span>
+<span class="hljs-keyword">echo</span> (<span class="hljs-variable">$i</span> &gt; <span class="hljs-number">101</span>)?<span class="hljs-string">"大"</span>:<span class="hljs-string">"小"</span>;</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>三元運算子(2) : 「 ?? 」</p>
+<ul>
+<li>例 : ex6_11.php<pre><code class="language-php"><span class="hljs-variable">$input</span> = <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$value</span>)? <span class="hljs-variable">$value</span> : <span class="hljs-string">"空的"</span>;
+<span class="hljs-comment">//Null Coalesce Operator</span>
+<span class="hljs-variable">$input</span> = <span class="hljs-variable">$value</span> ?? <span class="hljs-string">"空的"</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$input</span>;</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>if … elseif … else</p>
+<pre><code class="language-php"><span class="hljs-keyword">if</span> (條件式<span class="hljs-number">1</span>) {
+  條件式 <span class="hljs-number">1</span> 成真時，執行此程式區塊;
+} <span class="hljs-keyword">elseif</span> (條件式<span class="hljs-number">2</span>) {
+  條件式 <span class="hljs-number">2</span> 成真時，執行此程式區塊;
+} <span class="hljs-keyword">else</span> {
+  以上條件式均為假時，執行此程式區塊;
+}</code></pre>
+<ul>
+<li>例 : ex6_11.php<pre><code class="language-php"><span class="hljs-comment">//$i 延用上上一個範例</span>
+<span class="hljs-keyword">if</span> ( <span class="hljs-variable">$i</span> &gt;= <span class="hljs-number">200</span> ){
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$i 大於 200"</span>;
+} <span class="hljs-keyword">elseif</span> ( <span class="hljs-variable">$i</span> &gt;= <span class="hljs-number">100</span> ){
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$i 大於100，小於200"</span>;
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$i 小於 100"</span>;
+}</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>switch 語法 : 一種判斷可得多種不同結果</p>
+<pre><code class="language-php"><span class="hljs-keyword">switch</span>(條件變數或表達式){
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"A"</span>:
+    當結果為 A 時，執行本區塊程式;
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> <span class="hljs-string">"B"</span>:
+    當結果為 B 時，執行本區塊程式;
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">default</span>:
+    沒有符合的結果，執行本區程式;
+}</code></pre>
+<ul>
+<li>例 : ex6_11.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-variable">$fruit</span> = <span class="hljs-string">"Apple"</span>;
+  <span class="hljs-keyword">switch</span>(<span class="hljs-variable">$fruit</span>){
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"apple"</span>:
+      <span class="hljs-keyword">echo</span> <span class="hljs-string">"這是 apple"</span>;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"banana"</span>:
+      <span class="hljs-keyword">echo</span> <span class="hljs-string">"這是 banana"</span>;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">echo</span> <span class="hljs-string">"打錯字了嗎"</span>;
+  }
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>作業: 寫一支可以判斷成績等級的程式</p>
+</li>
+</ul>
+</li>
+<li>
+<p>迴圈控制</p>
+<ul>
+<li>
+<p>for 迴圈 :</p>
+<ul>
+<li>用於可數的重複工作</li>
+<li>語法 :<pre><code class="language-php"><span class="hljs-keyword">for</span> (起始值;條件式;步進值){
+    需要重複做的事;
+  }</code></pre>
+</li>
+<li>例 : ex6_12.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-comment">// 從 1 加到 50 的整數和</span>
+  <span class="hljs-comment">// 以下方式只是為了說明 for 迴圈的使用方式，不是好的程式碼寫法！！</span>
+  <span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-variable">$i</span> = <span class="hljs-number">1</span>; <span class="hljs-variable">$i</span> &lt;= <span class="hljs-number">50</span>; i++){
+      <span class="hljs-variable">$sum</span> += <span class="hljs-variable">$i</span>;
+  }  
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"總合是: $sum"</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>while 迴圈 :</p>
+<ul>
+<li>用於有條件限制的重複工作</li>
+<li>先判斷條件，成立後再執行工作！</li>
+<li>語法 :<pre><code class="language-php"><span class="hljs-keyword">while</span> ( 條件式 ){
+    需要重複做的事;
+  }</code></pre>
+</li>
+<li>例 : ex6_12.php<pre><code class="language-php"><span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">while</span> ( <span class="hljs-variable">$i</span> &lt;= <span class="hljs-number">50</span> ){
+    <span class="hljs-variable">$sum</span> += <span class="hljs-variable">$i</span>;
+    <span class="hljs-variable">$i</span>++;
+  }</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>do … while 迴圈 :</p>
+<ul>
+<li>用於有條件限制的重複工作</li>
+<li>先工作，再進條件判斷，決定需不需要繼續執行！</li>
+<li>語法 :<pre><code class="language-php"><span class="hljs-keyword">do</span> {
+    需要重複做的事;
+  } <span class="hljs-keyword">while</span> (條件式);</code></pre>
+</li>
+<li>例 :<pre><code class="language-php"><span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+<span class="hljs-variable">$i</span> = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">do</span> {
+  <span class="hljs-variable">$sum</span> += <span class="hljs-variable">$i</span>;
+  <span class="hljs-variable">$i</span>++;
+} <span class="hljs-keyword">while</span> (<span class="hljs-variable">$i</span> &lt;= <span class="hljs-number">50</span>);</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>無窮迴圈 :</p>
+<ul>
+<li>永不停止的重複執行</li>
+<li>建議放入一個可中斷程式的判斷程式</li>
+<li>語法 :<pre><code class="language-php"><span class="hljs-keyword">for</span> (;;){ }
+  <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>){ }
+  <span class="hljs-keyword">do</span> { } <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>);</code></pre>
+</li>
+<li>例 : ex6_12.php<pre><code class="language-php"><span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+  <span class="hljs-variable">$i</span> = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>){
+    <span class="hljs-variable">$i</span>++;
+    <span class="hljs-variable">$sum</span> += <span class="hljs-variable">$i</span>;
+    <span class="hljs-keyword">if</span> ( <span class="hljs-variable">$sum</span> &gt;= <span class="hljs-number">100</span>) <span class="hljs-keyword">break</span>;
+  }
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"\$sum : $sum"</span>;</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>巢狀迴圈</p>
+<ul>
+<li>迴圈內有迴圈，即為巢狀迴圈！</li>
+<li>沒事請少用巢狀迴圈</li>
+<li>語法 :<pre><code class="language-php"><span class="hljs-comment">//以下僅表示雙層巢狀迴圈，可以再多幾層迴圈</span>
+  <span class="hljs-keyword">for</span>(起始值;條件式;步進值){
+    <span class="hljs-keyword">for</span>(起始值;條件式;步進值){
+      需要重複做的事;
+    }
+  }
+
+  <span class="hljs-keyword">while</span>(條件式){
+    <span class="hljs-keyword">while</span>(條件式){
+      需要重複做的事;
+    }
+  }
+
+  <span class="hljs-keyword">do</span> {
+    <span class="hljs-keyword">do</span> {
+      需要重複做的事;
+    } <span class="hljs-keyword">while</span> (條件式);
+  }<span class="hljs-keyword">while</span> (條件式);</code></pre>
+</li>
+<li>例 : ex6_13.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//九九乘法表</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-variable">$i</span> = <span class="hljs-number">2</span>; <span class="hljs-variable">$i</span> &lt; <span class="hljs-number">10</span>; <span class="hljs-variable">$i</span>++){
+  <span class="hljs-keyword">for</span> (<span class="hljs-variable">$j</span> = <span class="hljs-number">1</span>; <span class="hljs-variable">$j</span> &lt; <span class="hljs-number">10</span>; <span class="hljs-variable">$j</span>++){
+    printf(<span class="hljs-string">"%d*%d=%d \t"</span>,<span class="hljs-variable">$i</span>,<span class="hljs-variable">$j</span>,(<span class="hljs-variable">$i</span> * <span class="hljs-variable">$j</span>));
+  }
+  printf(<span class="hljs-string">"\n"</span>);
+} 
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>break 與 continue</p>
+<ul>
+<li>
+<p>break 用法 : 跳出迴圈、switch 時使用！</p>
+<ul>
+<li>語法 :<pre><code class="language-php"><span class="hljs-keyword">break</span>;   <span class="hljs-comment">//跳出目前的迴圈</span>
+  <span class="hljs-keyword">break</span> <span class="hljs-number">1</span>; <span class="hljs-comment">//跳出目前的一層迴圈</span>
+  <span class="hljs-keyword">break</span> <span class="hljs-number">2</span>; <span class="hljs-comment">//跳出目前的二層迴圈</span></code></pre>
+</li>
+<li>例 : ex6_14.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+  <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>){
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"這是第一層迴圈！&lt;br /&gt;"</span>;
+    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>){
+      <span class="hljs-keyword">echo</span> <span class="hljs-string">"這是第二層迴圈！&lt;br /&gt;"</span>;
+      <span class="hljs-keyword">break</span> <span class="hljs-number">2</span>;
+    }
+  }
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"己跳出二層迴圈！"</span>;
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>continue 用法 : 于迴圈中，略過這一次，執行下一次的工作！</p>
+<ul>
+<li>例 : ex6_15.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+    <span class="hljs-keyword">while</span>(<span class="hljs-variable">$i</span> &lt;= <span class="hljs-number">10</span>){
+      <span class="hljs-keyword">if</span> ( <span class="hljs-variable">$i</span> == <span class="hljs-number">5</span>) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"略過 \$i = $i &lt;br /&gt;"</span>;
+        <span class="hljs-keyword">continue</span>;
+      }
+      <span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span>.<span class="hljs-string">"&lt;br /&gt;"</span>;
+    }
+  <span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-參考文獻">參考文獻 <a class="permalink" href="#header-參考文獻" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p><a href="http://dic.vbird.tw/linux_server/unit10.php">鳥哥的私房菜</a></p>
+</li>
+<li>
+<p><a href="https://www.php.net/">PHP 官網</a></p>
+</li>
+</ul>
+</div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 13 Dec 2019</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
