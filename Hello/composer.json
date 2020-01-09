@@ -1,8 +1,0 @@
-{
-    "autoload": {
-        "psr-4": {
-            "Cars\\": "src/Cars",
-            "Customers\\": "src/Customers"
-        }
-    }
-}
