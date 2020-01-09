@@ -1,0 +1,1035 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>第八章 PHP 進階語法II</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-類別的應用與處理">類別的應用與處理</a></li><li><a href="#header-錯誤與例外處理">錯誤與例外處理</a></li><li><a href="#header-參考文獻">參考文獻</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">第八章 PHP 進階語法II</h1></header><h4 id="header-類別的應用與處理">類別的應用與處理 <a class="permalink" href="#header-類別的應用與處理" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>自動載入</p>
+<ul>
+<li>PHP 原有的載入方式
+<ul>
+<li>include : 載入其他的 php 程式檔！當執行錯誤時，不會停止程式運作！</li>
+<li>include_once : 相同的檔案，只會載入一次！</li>
+<li>require : 載入其他的 php 程式檔！當執行錯誤時，會停止程式運作！</li>
+<li>reuqire_once : 相同的檔案，只會載入一次！</li>
+</ul>
+</li>
+<li>缺點 : 若需要載入大量檔案程式，程式碼將會十分難看與難以除錯與管理！</li>
+<li>PHP Autoload 方式
+<ul>
+<li>
+<p>當須要用到該使用的物件時，才去真正的引入該類別</p>
+</li>
+<li>
+<p>__autoload 用法 :</p>
+<ul>
+<li>例 : 有一個目錄 Classes ，裡面有個 Member.php 的檔案，Classe 目錄外面有兩個檔案 autoload.php 以及 index.php<pre><code class="language-php">+Classes
++--Member.php
+-autoload.php
+-index.php</code></pre>
+</li>
+<li>Member.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//這是 Classes/Member.php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Member</span></span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMemberList</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"print member list...&lt;br&gt;"</span>;
+  }
+}
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>autoload.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__autoload</span><span class="hljs-params">(<span class="hljs-variable">$className</span>)</span></span>{
+  <span class="hljs-variable">$filename</span> = <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/classes/"</span> . <span class="hljs-variable">$className</span> . <span class="hljs-string">".php"</span>;
+  <span class="hljs-keyword">if</span> (is_readable(<span class="hljs-variable">$filename</span>)){
+    <span class="hljs-keyword">require</span> <span class="hljs-variable">$filename</span>;
+  }
+}
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>index.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//這是 index.php</span>
+<span class="hljs-keyword">include_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/autoload.php"</span>;
+
+<span class="hljs-variable">$member</span> = <span class="hljs-keyword">new</span> Member();
+<span class="hljs-variable">$member</span>-&gt;getMemberList();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>缺點 : __autoload() 不能重覆的被定義！</li>
+</ul>
+</li>
+<li>
+<p>使用 SPL(Standard PHP Library)</p>
+<ul>
+<li>spl_autoload :
+<ul>
+<li>預設實作 __autoload() magic function</li>
+<li>當 spl_autoload_register() 沒有定義或是沒有帶任何參數的時候，預設會採用 __autoload() 這個 function</li>
+</ul>
+</li>
+<li>spl_autoload_register
+<ul>
+<li>能夠註冊自行定義的 autoload function</li>
+<li>當 spl_autoload_register() 有註冊之後，__autoload() 將會失效，必需自己手動將 __autoload() 註冊，才能使用。</li>
+</ul>
+</li>
+<li>例 : 在原來的範例目錄內，增加 first 以及 second 這兩個目錄以及 First.php 與 Second.php 兩個檔案！另外再新增兩個 firstAutoload.php 以及 secondAutoload.php 檔案！<pre><code class="language-php">+Classes
++--Member.php
++first
++--First.php
++second
++--Second.php
+-firstAutoload.php
+-secondAutoload.php
+-autoload.php
+-index.php</code></pre>
+</li>
+<li>First.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//這是 first/First.php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">First</span></span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomething</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"I am first class...&lt;br&gt;"</span>;
+  }
+}
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>Second.php<pre><code class="language-php"><span class="hljs-comment">//這是 second/Second.php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Second</span></span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomething</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"I am second class...&lt;br&gt;"</span>;
+  }
+}
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>firstAutoload.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//這是 firstAutoload.php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">firstAutoload</span><span class="hljs-params">(<span class="hljs-variable">$className</span>)</span></span>{
+  <span class="hljs-variable">$filename</span> = <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/first/"</span> . <span class="hljs-variable">$className</span> . <span class="hljs-string">".php"</span>;
+  <span class="hljs-keyword">if</span> (is_readable(<span class="hljs-variable">$filename</span>)){
+    <span class="hljs-keyword">require</span> <span class="hljs-variable">$filename</span>;
+  }
+}
+<span class="hljs-comment">//向 spl_autoload 註冊這個方法的名稱</span>
+spl_autoload_register(<span class="hljs-string">'firstAutoload'</span>);</code></pre>
+</li>
+<li>secondAutoload.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//這是 secondAutoload.php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">secondAutoload</span><span class="hljs-params">(<span class="hljs-variable">$className</span>)</span></span>{
+  <span class="hljs-variable">$filename</span> = <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/second/"</span> . <span class="hljs-variable">$className</span> . <span class="hljs-string">".php"</span>;
+  <span class="hljs-keyword">if</span> (is_readable(<span class="hljs-variable">$filename</span>)){
+    <span class="hljs-keyword">require</span> <span class="hljs-variable">$filename</span>;
+  }
+}
+<span class="hljs-comment">//向 spl_autoload 註冊這個方法的名稱</span>
+spl_autoload_register(<span class="hljs-string">'secondAutoload'</span>);</code></pre>
+</li>
+<li>修改 index.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//修改後的 index.php</span>
+<span class="hljs-keyword">include_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/firstAutoload.php"</span>;
+<span class="hljs-keyword">include_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/secondAutoload.php"</span>;
+
+<span class="hljs-variable">$first</span> = <span class="hljs-keyword">new</span> First();
+<span class="hljs-variable">$first</span>-&gt;doSomething();
+
+<span class="hljs-variable">$second</span> = <span class="hljs-keyword">new</span> Second();
+<span class="hljs-variable">$second</span>-&gt;doSomething();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>缺點 : 每新增一個目錄，就需要寫一個 autoload 檔案！不好管理！</li>
+<li>改進方式 : 寫一個 allAutoload.php，再使用 array、foreach 導入！<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//這是 allAutoload.php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allAutoload</span><span class="hljs-params">(<span class="hljs-variable">$className</span>)</span></span>{
+  <span class="hljs-variable">$folders</span> = <span class="hljs-keyword">array</span>(
+    <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/first/"</span>,
+    <span class="hljs-keyword">__DIR__</span> .<span class="hljs-string">"/second/"</span>,
+  );
+
+  <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$folders</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$folder</span>){
+    <span class="hljs-variable">$fileName</span> = <span class="hljs-variable">$folder</span> . <span class="hljs-variable">$className</span> . <span class="hljs-string">".php"</span>;
+    <span class="hljs-keyword">if</span> (is_readable(<span class="hljs-variable">$fileName</span>)){
+      <span class="hljs-keyword">require</span> <span class="hljs-variable">$fileName</span>;
+    }
+  }
+}
+<span class="hljs-comment">//註冊</span>
+spl_autoload_register(<span class="hljs-string">'allAutoload'</span>);</code></pre>
+</li>
+<li>再次修改 index.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-comment">//又修改了　index.php</span>
+<span class="hljs-keyword">include_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">"/allAutoload.php"</span>;
+<span class="hljs-variable">$first</span> = <span class="hljs-keyword">new</span> First();
+<span class="hljs-variable">$first</span>-&gt;doSomething();
+
+<span class="hljs-variable">$second</span> = <span class="hljs-keyword">new</span> Second();
+<span class="hljs-variable">$second</span>-&gt;doSomething();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>缺點 : 每次新增一個 class 目錄，就要異動一次 autoload 檔案！</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>命名空間(Namespace)</p>
+<ul>
+<li>
+<p>PSR 規範 : PHP-FIG 提出的規範，目的是讓 PHP 開發者在撰寫時有一個建議規範可遵循，使得開發者間可進行有效溝通與開發！</p>
+</li>
+<li>
+<p>PSR-4 規範了一套 namespace 統一作法，包含了原有的 PSR-0 所規範的 autoload 作法！</p>
+</li>
+<li>
+<p>利用Composer 來進行 autoload 可提昇編輯效率！</p>
+</li>
+<li>
+<p>PHP 檔案內的關鍵字 :</p>
+<ul>
+<li>namespace : 定義類別的完整類別名稱</li>
+<li>use : 導入需要使用的類別名稱</li>
+</ul>
+</li>
+<li>
+<p>PSR-4 正確的命名空間，其完整的類別名稱語法如下 :</p>
+<pre><code class="language-php">\&lt;NamespaceName&gt;(\&lt;SubNamespaceNames&gt;)*\&lt;ClassName&gt;</code></pre>
+<ul>
+<li>完整的類別名稱(fully qualified class name)必須有最高層級(top-level)的命名空間(namespace)，通常稱這個命名空間為「供應商命名空間(vendor namespace)」。</li>
+<li>完整的類別名稱可以有一個或多個子命名空間。</li>
+<li>一個完整的類別名稱必須以類別名稱結束。</li>
+<li>在完整的類別名稱中，底線沒有其他意義。</li>
+<li>完整的類別名稱可以由英文字母大小寫組合而成。</li>
+<li>所有的類別名稱必須是有區分大小寫的。</li>
+</ul>
+</li>
+<li>
+<p>重點 :</p>
+<ul>
+<li>命名空間 + 類別名稱 = 路徑 + 檔名.php</li>
+<li>命名空間、類別，都需要開頭大寫</li>
+<li>底線不要拿來當作分類，例如 : Like_Book.php、Like_Movie.php，應該改成路徑 Like/Book.php、Like/Movie.php</li>
+</ul>
+</li>
+<li>
+<p>實作範例:</p>
+<ul>
+<li>
+<p>安裝 Composer :(開發環境才需要裝！Windows 用戶請看參考文獻安裝)</p>
+<pre><code class="language-bash"><span class="hljs-comment"># yum install wget</span>
+<span class="hljs-comment"># cd /usr/share/nginx/html</span>
+<span class="hljs-comment"># wget https://getcomposer.org/installer -O composer-installer.php</span>
+<span class="hljs-comment"># php composer-installer.php --filename=composer --install-dir=/usr/local/bin</span>
+<span class="hljs-comment"># composer --version</span></code></pre>
+</li>
+<li>
+<p>建立測試用目錄 :</p>
+<pre><code class="language-php">+Hello
+++<span class="hljs-keyword">public</span>
+++-index.php
+++src
++++Cars
++++-Car.php
+++vendor (該目錄由 composer 自建，一開始不用手動建立)
++++composer
+++-autoload.php
++-composer.json</code></pre>
+</li>
+<li>
+<p>編寫 composer.json</p>
+<pre><code class="language-json">{
+  "<span class="hljs-attribute">autoload</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">psr-4</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">Cars\\</span>": <span class="hljs-value"><span class="hljs-string">"src/Cars"</span>
+    </span>}
+  </span>}
+</span>}</code></pre>
+</li>
+<li>
+<p>初次建立名稱空間</p>
+<pre><code class="language-bash"><span class="hljs-comment"># composer dump-autoload</span></code></pre>
+</li>
+<li>
+<p>開始建立 PHP 類別程式</p>
+<ul>
+<li>
+<p>Cars/Car.php</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Cars</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>{
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$name</span>;
+
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">(<span class="hljs-variable">$name</span>)</span></span>{
+    <span class="hljs-variable">$this</span>-&gt;name = <span class="hljs-variable">$name</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"completed..."</span>;
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$this</span>-&gt;name;
+  }
+}
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>
+<p>public/index.php</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'../vendor/autoload.php'</span>;
+
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Cars</span>\<span class="hljs-title">Car</span>;
+<span class="hljs-variable">$mycar</span> = <span class="hljs-keyword">new</span> Car();
+<span class="hljs-variable">$mycar</span>-&gt;setName(<span class="hljs-string">"Ford..."</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$mycar</span>-&gt;getName();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>
+<p>使用瀏覽器 <a href="http://xn--6qq176gn24g2a/Hello/public/index.php">http://你的ＩＰ/Hello/public/index.php</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>增加新的類別 : Customers</p>
+<ul>
+<li>
+<p>在 src 目錄下建立新的目錄 Customers</p>
+<pre><code class="language-bash"><span class="hljs-comment"># mkdir /usr/share/nginx/html/Hello/src/Customers</span></code></pre>
+</li>
+<li>
+<p>修改 composer.json</p>
+<ul>
+<li>
+<p>加入 Customers 路徑的對應</p>
+<pre><code class="language-json">{
+  "<span class="hljs-attribute">autoload</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">psr-4</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">Cars\\</span>": <span class="hljs-value"><span class="hljs-string">"src/Cars"</span></span>,
+      "<span class="hljs-attribute">Customers\\</span>": <span class="hljs-value"><span class="hljs-string">"src/Customers"</span>
+    </span>}
+  </span>}
+</span>}</code></pre>
+</li>
+<li>
+<p>再執行一次 composer</p>
+<pre><code class="language-bash"><span class="hljs-comment"># composer dump-autoload</span></code></pre>
+</li>
+<li>
+<p>開始新增新的類別 Customer</p>
+<ul>
+<li>
+<p>在 src/Customers 目錄下，新增 Customer.php</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Customers</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Customer</span></span>{
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$cname</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span><span class="hljs-params">(<span class="hljs-variable">$cname</span>)</span></span>{
+    <span class="hljs-variable">$this</span>-&gt;cname = <span class="hljs-variable">$cname</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"completed..."</span>;
+  }
+  
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$this</span>-&gt;cname;
+  }
+}
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>
+<p>修改 index.php 檔案內容</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'../vendor/autoload.php'</span>;
+    
+<span class="hljs-keyword">use</span> <span class="hljs-title">Cars</span>\<span class="hljs-title">Car</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Customers</span>\<span class="hljs-title">Customer</span>;
+        
+<span class="hljs-variable">$mycar</span> = <span class="hljs-keyword">new</span> Car();
+<span class="hljs-variable">$mycar</span>-&gt;setName(<span class="hljs-string">"Ford..."</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"My Car: "</span>.<span class="hljs-variable">$mycar</span>-&gt;getName();
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;br /&gt;"</span>;
+<span class="hljs-variable">$myprofile</span> = <span class="hljs-keyword">new</span> Customer();
+<span class="hljs-variable">$myprofile</span>-&gt;setName(<span class="hljs-string">"Peter"</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"My Name: "</span>.<span class="hljs-variable">$myprofile</span>-&gt;getName();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>
+<p>在 Customers 下增加子目錄 Block</p>
+<pre><code class="language-bash"><span class="hljs-comment"># cd /usr/share/nginx/html/Hello/src</span>
+<span class="hljs-comment"># mkdir Customers/Block</span></code></pre>
+</li>
+<li>
+<p>在 Block 目錄下，增加一個 Blocklist.php</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Customers</span>\<span class="hljs-title">Block</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Customers</span>\<span class="hljs-title">Customer</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Blocklist</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Customer</span> </span>{
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$state</span>;
+        
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setState</span><span class="hljs-params">(<span class="hljs-variable">$state</span>)</span></span>{
+    <span class="hljs-variable">$this</span>-&gt;state = <span class="hljs-variable">$state</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Complete..."</span>;
+  }
+        
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getState</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$this</span>-&gt;state;
+  }
+}
+ <span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>
+<p>修改 index.php 檔案內容</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'../vendor/autoload.php'</span>;
+    
+<span class="hljs-keyword">use</span> <span class="hljs-title">Cars</span>\<span class="hljs-title">Car</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Customers</span>\<span class="hljs-title">Customer</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Customers</span>\<span class="hljs-title">Block</span>\<span class="hljs-title">Blocklist</span>;        
+        
+<span class="hljs-variable">$mycar</span> = <span class="hljs-keyword">new</span> Car();
+<span class="hljs-variable">$mycar</span>-&gt;setName(<span class="hljs-string">"Ford..."</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"My Car: "</span>.<span class="hljs-variable">$mycar</span>-&gt;getName();
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;br /&gt;"</span>;
+<span class="hljs-variable">$myprofile</span> = <span class="hljs-keyword">new</span> Customer();
+<span class="hljs-variable">$myprofile</span>-&gt;setName(<span class="hljs-string">"Peter"</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"My Name: "</span>.<span class="hljs-variable">$myprofile</span>-&gt;getName();
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"&lt;br /&gt;"</span>;
+<span class="hljs-variable">$mystate</span> = <span class="hljs-keyword">new</span> Blocklist();
+<span class="hljs-variable">$mystate</span>-&gt;setState(<span class="hljs-string">"Forzien..."</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$mystate</span>-&gt;getState();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>
+<p>使用瀏覽器 <a href="http://xn--6qq176gn24g2a/Hello/public/index.php">http://你的ＩＰ/Hello/public/index.php</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>特徵(Trait)</p>
+<ul>
+<li>
+<p>Trait 與抽象類別相似，無法使用 new 來產生物件(被實例化)!</p>
+</li>
+<li>
+<p>因為 PHP 只能單一繼承，所以無法跨多個類別使用這些類別內的方法！</p>
+</li>
+<li>
+<p>為了減少程式碼的重複撰寫，所以 PHP 使用 Trait 來克服這個問題！</p>
+</li>
+<li>
+<p>使用 Trait 可以讓 PHP 實現單一類別(Singleton)的使用！</p>
+</li>
+<li>
+<p>單一 Trait 使用範例 :</p>
+<ul>
+<li>oneTrait.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base</span> </span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Hello '</span>;
+  }
+}
+<span class="hljs-keyword">trait</span> SayWorld {
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">parent</span>::sayHello();
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'World!'</span>;
+  }
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyHelloWorld</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Base</span> </span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">SayWorld</span>;
+}
+
+<span class="hljs-variable">$o</span> = <span class="hljs-keyword">new</span> MyHelloWorld();
+<span class="hljs-variable">$o</span>-&gt;sayHello();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>多個 Trait 使用範例 :</p>
+<ul>
+<li>
+<p>multiTrait.php</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">trait</span> Hello {
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Hello '</span>;
+  }
+}
+<span class="hljs-keyword">trait</span> World {
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayWorld</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'World'</span>;
+  }
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyHelloWorld</span> </span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">Hello</span>, <span class="hljs-title">World</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayExclamationMark</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'!'</span>;
+  }
+}
+<span class="hljs-variable">$o</span> = <span class="hljs-keyword">new</span> MyHelloWorld();
+<span class="hljs-variable">$o</span>-&gt;sayHello();
+<span class="hljs-variable">$o</span>-&gt;sayWorld();
+<span class="hljs-variable">$o</span>-&gt;sayExclamationMark();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>
+<p>integrateTrait.php</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">trait</span> Hello {
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Hello '</span>;
+  }
+}
+<span class="hljs-keyword">trait</span> World {
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayWorld</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'World'</span>;
+  }
+}
+<span class="hljs-keyword">trait</span> HelloWorld{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">Hello</span>, <span class="hljs-title">World</span>;
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyWorld</span></span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">HelloWorld</span>;
+}
+<span class="hljs-variable">$world</span> = <span class="hljs-keyword">new</span> MyWorld();
+<span class="hljs-keyword">echo</span> <span class="hljs-variable">$world</span>-&gt;sayHello() . <span class="hljs-string">" "</span> . <span class="hljs-variable">$world</span>-&gt;sayWorld(); <span class="hljs-comment">//Hello World</span>
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>優先序問題</p>
+<ul>
+<li>Trait 內可以使用 overwrite 功能來覆蓋父類別有的功能！</li>
+<li>優先序的範例 : orderTrait.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">trait</span> Hello{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello"</span>;
+  }
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayWorld</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Trait World"</span>;
+  }
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHelloWorld</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$this</span>-&gt;sayHello() . <span class="hljs-string">" "</span> . <span class="hljs-variable">$this</span>-&gt;sayWorld();
+  }
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayBaseWorld</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$this</span>-&gt;sayHello() . <span class="hljs-string">" "</span> . <span class="hljs-keyword">parent</span>::sayWorld();
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base</span></span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayWorld</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Base World"</span>;
+  }
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Base</span></span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">Hello</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayWorld</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"World"</span>;
+  }
+}
+<span class="hljs-variable">$h</span> =  <span class="hljs-keyword">new</span> HelloWorld();
+<span class="hljs-variable">$h</span>-&gt;sayHelloWorld(); <span class="hljs-comment">// Hello World</span>
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Trait 的衝突與別名 : 使用 insteadof 與 as</p>
+<ul>
+<li>利用 insteadof 來解決不同 Trait 但相同方法名稱的問題</li>
+<li>例 : 有一衝突的範例 confuse.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">trait</span> Game{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">play</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Playing a game"</span>;
+  }
+}
+<span class="hljs-keyword">trait</span> Music{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">play</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Playing music"</span>;
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Player</span></span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">Game</span>, <span class="hljs-title">Music</span>;
+}
+<span class="hljs-variable">$player</span> = <span class="hljs-keyword">new</span> Player();
+<span class="hljs-variable">$player</span>-&gt;play();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+<ul>
+<li>以上範例有兩個 Trait ，有相同的方法名稱 play()!在使用當下，就會發生衝突！</li>
+</ul>
+</li>
+<li>修改後的  confuse.php 如下 :<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">trait</span> Game{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">play</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Playing a game"</span>;
+  }
+}
+<span class="hljs-keyword">trait</span> Music{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">play</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Playing music"</span>;
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Player</span></span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">Game</span>, <span class="hljs-title">Music</span>{
+    //將 <span class="hljs-title">Game</span> 的 <span class="hljs-title">play</span> 別名成 <span class="hljs-title">gamePlay</span>
+    <span class="hljs-title">Game</span>::<span class="hljs-title">play</span> <span class="hljs-title">as</span> <span class="hljs-title">gamePlay</span>;
+    <span class="hljs-comment">//使用 Music 的 play 功能，取消 Game 的 play 功能！</span>
+    Music::play <span class="hljs-keyword">insteadof</span> Game;
+  }
+}
+<span class="hljs-variable">$player</span> = <span class="hljs-keyword">new</span> Player();
+<span class="hljs-variable">$player</span>-&gt;play();
+<span class="hljs-variable">$player</span>-&gt;gamePlay();
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Trait 其它功能</p>
+<ul>
+<li>利用 Trait 獨特的使用功能，可以取得 private 權限的類別屬性值</li>
+<li>例 : getPritrait.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">trait</span> Message {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">alert</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$this</span>-&gt;message;
+  }
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Messenger</span> </span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">Message</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-variable">$message</span> = <span class="hljs-string">"This is a message"</span>;
+}
+
+<span class="hljs-variable">$messenger</span> = <span class="hljs-keyword">new</span> Messenger;
+<span class="hljs-variable">$messenger</span>-&gt;alert(); <span class="hljs-comment">//This is a message</span>
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>利用 Trait 內可抽象化方法，強迫使用該 Trait 的類別，實作該抽象方法！</li>
+<li>例 : abtractTrait.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">trait</span> Message {
+  <span class="hljs-keyword">private</span> <span class="hljs-variable">$message</span>;
+      
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">alert</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-variable">$this</span>-&gt;define();
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$this</span>-&gt;message;
+  }
+  <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">define</span><span class="hljs-params">()</span></span>;
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Messenger</span> </span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">Message</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">define</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-variable">$this</span>-&gt;message = <span class="hljs-string">"Custom Message"</span>;
+  }
+}
+
+<span class="hljs-variable">$messenger</span> = <span class="hljs-keyword">new</span> Messenger;
+<span class="hljs-variable">$messenger</span>-&gt;alert(); <span class="hljs-comment">//Custom Message</span>
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Trait 的 use 與類別導入的 use 是不同的功能</p>
+<ul>
+<li>Trait 的 use : 置放於 class 內部！</li>
+<li>類別導入的 use : 置放於 class 外部！</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-錯誤與例外處理">錯誤與例外處理 <a class="permalink" href="#header-錯誤與例外處理" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>掌握錯誤與例外</p>
+<ul>
+<li>避免非預期的結果干擾使用者！</li>
+<li>強化安全性，避免惡意的使用者查覺系統問題！</li>
+<li>在預期錯誤發生時，仍可導入正常處理流程！</li>
+</ul>
+</li>
+<li>
+<p>錯誤的情況處理分類</p>
+<ul>
+<li>die 況狀 : 利用 die() 函數處理錯誤情形，將程式導出並且中止執行！</li>
+<li>客製化錯誤 : 發生錯誤情形時，導入自製的處理程序！</li>
+<li>錯誤報告 : 將錯誤情形報告出來，寫入檔案或是資料庫！此種報告可協助找出錯誤問題，加以處理！</li>
+<li>例 : 自行客製化錯誤的方式<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">my_error_handler</span><span class="hljs-params">(<span class="hljs-variable">$error_no</span>, <span class="hljs-variable">$error_msg</span>)</span> </span>{
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"Opps, something went wrong:"</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"Error number: [$error_no]"</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"Error Description: [$error_msg]"</span>;
+}
+set_error_handler(<span class="hljs-string">"my_error_handler"</span>);
+<span class="hljs-keyword">echo</span> (<span class="hljs-number">5</span> / <span class="hljs-number">0</span>);
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>錯誤與例外的不同</p>
+<ul>
+<li>例外是可以抛出與接收處理，但錯誤則是無法恢復！</li>
+<li>例外可以使用物件導向的方式來掌握與處理！</li>
+</ul>
+</li>
+<li>
+<p>例外的情況處理分類</p>
+<ul>
+<li>注意(Notice): 不嚴重的問題，程式也不會停止</li>
+<li>警告(Warning): 程式碼有錯誤，但程式亦不會停止執行</li>
+<li>致命錯誤 (Fata Error): 遇上嚴重錯誤，程式停止執行</li>
+</ul>
+</li>
+<li>
+<p>try…catch 敘述</p>
+<ul>
+<li>語法 :<pre><code class="language-php"><span class="hljs-keyword">try</span> {
+  可能會發生錯誤的程式碼;
+} <span class="hljs-keyword">catch</span>(<span class="hljs-keyword">Exception</span> <span class="hljs-variable">$e</span>){
+  處理例外的程式碼;
+}</code></pre>
+</li>
+<li>Exception 是 PHP 處理例外的類別
+<ul>
+<li>屬性值有兩個，一個是訊息，另一個則是代號值</li>
+<li>訊息會描述程式產生錯誤的地方</li>
+<li>代號值為錯誤代碼</li>
+<li>使用的語法 : 可以自行抛出 Exception<pre><code class="language-php"><span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">'Error Message'</span>, <span class="hljs-number">100</span>);</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>抛出例外與接收</p>
+<ul>
+<li>當程式抛出例外時，程式會自動暫停，接下來的程式碼也不會運作！</li>
+<li>例 : throwExp.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-variable">$num</span>)</span></span>{
+  <span class="hljs-keyword">if</span> ( <span class="hljs-variable">$num</span> == <span class="hljs-number">0</span> ){
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">'num can not be 0'</span>, <span class="hljs-number">100</span>);
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-variable">$num</span>;
+}
+
+<span class="hljs-keyword">try</span>{
+  <span class="hljs-keyword">echo</span> check(<span class="hljs-number">0</span>);
+} <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> <span class="hljs-variable">$e</span>){
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"Error Message: "</span>.<span class="hljs-variable">$e</span>-&gt;getMessage().<span class="hljs-string">"&lt;br /&gt;"</span>;
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"Error Code: "</span>.<span class="hljs-variable">$e</span>-&gt;getCode().<span class="hljs-string">"&lt;br /&gt;"</span>;
+}
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Exception 類別的繼承</p>
+<ul>
+<li>利用繼承 Exception 類別，自訂例外處理的屬性與方法！</li>
+<li>例 : selfExp.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmailFormatException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Exception</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printMessage</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"例外訊息:"</span> . <span class="hljs-variable">$this</span>-&gt;getMessage() . <span class="hljs-string">"&lt;br /&gt;"</span>;
+  }
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkEmail</span><span class="hljs-params">(<span class="hljs-variable">$email</span>)</span></span>{
+  <span class="hljs-keyword">if</span> (!strpos(<span class="hljs-variable">$email</span>,<span class="hljs-string">"@"</span>))
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> EmailFormatException(<span class="hljs-string">"E-mail需要包含'@'"</span>);
+}
+<span class="hljs-keyword">try</span> {
+  checkEmail(<span class="hljs-string">'gmail.com'</span>);
+} <span class="hljs-keyword">catch</span> (EmailFormatException <span class="hljs-variable">$e</span>){
+  <span class="hljs-variable">$e</span>-&gt;printMessage();
+}
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>多層次的例外處理</p>
+<ul>
+<li>執行程式時，可能會發生多種情況的例外，可以寫多個 catch 來補抓例外！</li>
+<li>例 :<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DivideByZeroException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Exception</span> </span>{};<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DivideByNegativeException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Exception</span> </span>{};
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span><span class="hljs-params">(<span class="hljs-variable">$denominator</span>)</span> </span>{
+  <span class="hljs-keyword">try</span>    {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$denominator</span> == <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> DivideByZeroException();
+    }    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable">$denominator</span> &lt; <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> DivideByNegativeException();
+    }    <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">echo</span> <span class="hljs-number">25</span> / <span class="hljs-variable">$denominator</span>;
+    }
+  }    <span class="hljs-keyword">catch</span> (DivideByZeroException <span class="hljs-variable">$ex</span>)    {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"DIVIDE BY ZERO EXCEPTION!"</span>;
+  }    <span class="hljs-keyword">catch</span> (DivideByNegativeException <span class="hljs-variable">$ex</span>)    {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"DIVIDE BY NEGATIVE NUMBER EXCEPTION!"</span>;
+  }    <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> <span class="hljs-variable">$x</span>) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"UNKNOWN EXCEPTION!"</span>;
+  }
+}
+process(<span class="hljs-number">0</span>);
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-參考文獻">參考文獻 <a class="permalink" href="#header-參考文獻" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p><a href="http://justericgg.logdown.com/posts/196891-php-series-autoload">Eric G. Huang 不像樣工程師</a></p>
+</li>
+<li>
+<p><a href="https://www.camdemy.com/media/23734">php 的物件</a></p>
+</li>
+<li>
+<p><a href="https://www.php-fig.org/psr/">PSR 規範</a></p>
+</li>
+<li>
+<p><a href="http://blog.tonycube.com/2016/09/php-psr-4-autoloader.html">PHP PSR-4 Autoloader 機制</a></p>
+</li>
+<li>
+<p><a href="https://jsnwork.kiiuo.com/archives/2618/php-composer-%E9%9D%9E%E5%B8%B8%E7%B0%A1%E5%96%AE%E7%9A%84%E4%BD%BF%E7%94%A8-psr-4-%E4%BE%86%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%8B%95%E8%AE%80%E5%8F%96%E9%A1%9E%E5%88%A5/">php – Composer – 非常簡單的使用 psr-4 來建立自動讀取類別</a></p>
+</li>
+<li>
+<p><a href="https://learnku.com/php/t/37694">PHP Trait 使用指南</a></p>
+</li>
+<li>
+<p><a href="https://www.guru99.com/error-handling-and-exceptions.html">PHP error tutorial</a></p>
+</li>
+<li>
+<p><a href="https://ithelp.ithome.com.tw/articles/10190770">Composer安裝教學</a></p>
+</li>
+</ul>
+</div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 12 Dec 2019</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>

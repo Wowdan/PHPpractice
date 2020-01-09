@@ -1,0 +1,597 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>第九章 套件、框架、Composer</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-套件">套件</a></li><li><a href="#header-composer">Composer</a></li><li><a href="#header-框架">框架</a></li><li><a href="#header-參考文獻">參考文獻</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">第九章 套件、框架、Composer</h1></header><h4 id="header-套件">套件 <a class="permalink" href="#header-套件" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>PHP 套件庫</p>
+<ul>
+<li>提供開發者相關套件，可加快開發速度！</li>
+<li>Packagist 網站
+<ul>
+<li>網站站址 : <a href="https://packagist.org/">https://packagist.org/</a></li>
+<li>利用 Composer 工具，可以取得該站台上的套件！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>自製套件</p>
+<ul>
+<li>可自行開發套件，再上傳至 packagist ，提供給所有人使用
+<ul>
+<li>過程請查看參考文獻</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-composer">Composer <a class="permalink" href="#header-composer" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>Composer 工具</p>
+<ul>
+<li>功能與作用 :
+<ul>
+<li>Composer 是 PHP 套件中，相依性的命令列管理工具</li>
+<li>協助解析套件所需要的對應套件！</li>
+<li>Laravel 框架在管理各個 PHP 套件相依性的主要工具</li>
+</ul>
+</li>
+<li>安裝方式 :
+<ul>
+<li>Windows 使用者，請查看參考文獻</li>
+<li>Windows 平台上沒有 PHP 套件，請記得下載安裝！</li>
+<li>PHP 下載站台，請查看參考文獻！</li>
+<li>Linux 使用者，可以查看第８章內容！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Composer 運作方式 :</p>
+<ul>
+<li>相關運作的檔案
+<ul>
+<li>composer.json : json 格式的檔案，是 Composer 的設定檔，主要提供開發人員察看維護。內容包含項目如下 :
+<ul>
+<li>專案說明</li>
+<li>依頼套件及版本號</li>
+<li>其它設置</li>
+<li>自訂 script 及 event hook</li>
+<li>此檔案會進版本控制</li>
+</ul>
+</li>
+<li>composer.lock : json 格式的檔案，提供軟體程式使用的，會自動維護，不需要人為修改
+<ul>
+<li>記錄安裝時詳細的版本號，確保多人協作或線上環境都使用同一份套件及程式碼</li>
+<li>此檔案會進版本控制</li>
+</ul>
+</li>
+<li>vendor 目錄
+<ul>
+<li>用於存放下載依頼套件及 autoload 相關檔案</li>
+<li>此資料夾可不用進版本控制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相關指令的使用
+<ul>
+<li>查詢指令用法<pre><code class="language-bash"><span class="hljs-comment"># composer help [可接指令名稱]</span></code></pre>
+</li>
+<li>更新 Composer<pre><code class="language-bash"><span class="hljs-comment"># composer self-update</span></code></pre>
+</li>
+<li>查詢 Packagist 站台內的套件<pre><code class="language-bash"><span class="hljs-comment"># composer search laravel </span></code></pre>
+</li>
+<li>互動式建立 composer.json<pre><code class="language-bash"><span class="hljs-comment"># composer init [options]</span>
+<span class="hljs-comment"># cd 專案目錄</span>
+<span class="hljs-comment"># composer init</span></code></pre>
+<ul>
+<li>name</li>
+<li>description</li>
+<li>type</li>
+<li>require</li>
+<li>require-dev</li>
+<li>authors</li>
+<li>minimum-stability</li>
+<li>license</li>
+</ul>
+</li>
+<li>安裝依賴套件<pre><code class="language-bash"><span class="hljs-comment"># composer require [options] [--] [&lt;packages&gt;]... [版本號]</span>
+<span class="hljs-comment"># composer require monolog/monolog</span></code></pre>
+<ul>
+<li>版本號的用法:
+<ul>
+<li>直接指定版號，例如2.7.3</li>
+<li>指定主版號之後，使用&quot;*&quot;指定次版號，例如2.7.*表示版號大於等於2.7.0，小於2.8.0的版本</li>
+<li>使用&gt;、&gt;=、!=、&lt;=、&lt;等在版號前，表示使用這些比較運算子來指定版號規則，可以使用多個規則並用&quot;,&quot;分開</li>
+<li>使用&quot;~&quot;在版號前，表示下一個版號變動之前的版本。例如~2.7，表示版本大於等於2.7，小於3.0</li>
+<li>在版號之後，還可以加上不同的stability flag，例如2.7.*@beta。可以使用的flag有：dev、alpha、beta、RC、stable</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>安裝套件<pre><code class="language-bash"><span class="hljs-comment"># composer install [options] [--] [&lt;packages&gt;]...</span>
+<span class="hljs-comment"># composer install </span></code></pre>
+<ul>
+<li>依據 composer.lock 安裝對應版本套件，通常用於第一次建立本地環境或線上環境。</li>
+<li>若本地無 composer.lock 檔，會同時建立一份。</li>
+<li>在正式環境中，不需要安裝 require-dev 的套件時，可加上 --no-dev 來加速安裝時間及減少空間使用</li>
+</ul>
+</li>
+<li>更新套件<pre><code class="language-bash"><span class="hljs-comment"># composer update [options] [--] [&lt;packages&gt;]...</span>
+<span class="hljs-comment"># composer update</span></code></pre>
+<ul>
+<li>依據 composer.json 版本號條件，更新條件下最新版套件，會同時更新 composer.lock 檔案</li>
+</ul>
+</li>
+<li>重新產生 autoload 檔案<pre><code class="language-bash"><span class="hljs-comment"># composer dump-autoload [options]</span>
+<span class="hljs-comment"># composer dump-autoload</span></code></pre>
+<ul>
+<li>重新產生 autoload 檔案，由於 Composer 會快取依頼的檔案，當修改路徑或載入，最好執行一遍重新建立快取檔。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-框架">框架 <a class="permalink" href="#header-框架" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>框架思維</p>
+<ul>
+<li>用來規範開發流程以及撰寫程式原則
+<ul>
+<li>提高開發速度</li>
+<li>提昇程式執行效率</li>
+<li>降低協同作業的難度</li>
+<li>增加程式的安全性</li>
+</ul>
+</li>
+<li>有名的框架 : Zend、CakePHP、CodeIgniter、Laravel</li>
+</ul>
+</li>
+<li>
+<p>Laravel 框架特色</p>
+<ul>
+<li>現代化 : 以 Symfony 框架為核心，結合外部套件所形成！利用 Composer 來管理套件的相依性！</li>
+<li>路由 : Laravel 提供一個整合的路由介面，方便開發者使用！</li>
+<li>模型化的資料庫建立及操作 : 利用物件關聯映射(Object Relation Mapping)概念，實作 ActiveRecord ，建立對資料庫系統的支援！</li>
+<li>樣板引擎 : 使用 Blade 實現 MVC 功能</li>
+<li>設定與部署 : 使用 .env 檔案與 config 目錄來提供開發者對於整個網站應用程式的設定，對於將來上線站台時，也可以使用自動化工具，自動部署站台</li>
+<li>其他功能</li>
+</ul>
+</li>
+<li>
+<p>安裝與設定 Laravel</p>
+<ul>
+<li>建立專案
+<ul>
+<li>使用 Composer 來建立專案
+<ul>
+<li>在 PHP 練習的目錄(PHPexerise)下，建立一個 PHPproject 專案目錄<pre><code class="language-bash">$ composer create-project --prefer-dist laravel/laravel PHPproject</code></pre>
+</li>
+</ul>
+</li>
+<li>編寫 .gitignore<pre><code class="language-bash"><span class="hljs-comment"># nano .gitignore</span>
+PHPproject/vendor</code></pre>
+</li>
+<li>推送至 github 站台上<pre><code class="language-bash">$ git add .
+$ git commit -m <span class="hljs-string">"Add Laravel"</span>
+$ git push -u origin master</code></pre>
+</li>
+</ul>
+</li>
+<li>到正式環境站台設定
+<ul>
+<li>到網頁目錄內，取得練習的專案<pre><code class="language-bash"><span class="hljs-comment"># cd /usr/share/nginx/html</span>
+<span class="hljs-comment"># git pull origin master</span></code></pre>
+</li>
+<li>安裝需要的套件<pre><code class="language-php"><span class="hljs-comment"># yum install php-xml rsyslog</span>
+<span class="hljs-comment"># systemctl start rsyslog</span>
+<span class="hljs-comment"># systemctl restart php-fpm</span></code></pre>
+</li>
+<li>使用 Composer，將套件裝齊(Composer 安裝法，請參考前面章節)<pre><code class="language-bash"><span class="hljs-comment"># cd PHPexerise/PHPproject</span>
+<span class="hljs-comment"># composer install</span></code></pre>
+</li>
+<li>注意一下目錄權限設定<pre><code class="language-bash"><span class="hljs-comment"># chown -R nginx ../PHPproject</span>
+<span class="hljs-comment"># semanage fcontext -a -t httpd_sys_rw_content_t "/usr/share/nginx/html/PHPexerise/PHPproject/storage(/.*)?"</span>
+<span class="hljs-comment"># semanage fcontext -a -t httpd_sys_rw_content_t "/usr/share/nginx/html/PHPexerise/PHPproject/resources(/.*)?"</span>
+<span class="hljs-comment"># restorecon -Rvv ../PHPproject</span></code></pre>
+</li>
+<li>設定 .env 檔案<pre><code class="language-php"><span class="hljs-comment"># cd ../PHPproject</span>
+<span class="hljs-comment"># cp .env.example .env</span></code></pre>
+</li>
+<li>設定加密的 key<pre><code class="language-php"><span class="hljs-comment"># # php artisan key:generate</span></code></pre>
+</li>
+</ul>
+</li>
+<li>在用戶端或是你開發的平台上，打開瀏覽器，查看結果
+<ul>
+<li>網址 : <a href="http://xn--IP-4k6cm7ooxj9iti2ortl/PHPexerise/PHPproject/public/">http://正式環境站台IP/PHPexerise/PHPproject/public/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Laravel 目錄結構</p>
+<ul>
+<li>app : 專案核心目錄，程式邏輯全放置在這目錄下！
+<ul>
+<li>app 依 PSR-4 規定，名稱空間為 App，依功能區分以下目錄
+<table>
+<thead>
+<tr>
+<th style="text-align:left">檔案</th>
+<th style="text-align:left">功能說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Console</td>
+<td style="text-align:left">放置自有定義 Artisan 指令與相關的命令列檔案</td>
+</tr>
+<tr>
+<td style="text-align:left">Events</td>
+<td style="text-align:left">預設不存在！在執行 Artisan 指令 event:generate 或 event:make 時生成！專門放直事件相關的類別檔！</td>
+</tr>
+<tr>
+<td style="text-align:left">Exceptions</td>
+<td style="text-align:left">處理例外狀況的處理類別</td>
+</tr>
+<tr>
+<td style="text-align:left">Http</td>
+<td style="text-align:left">主要有 Controllers、Middleware、Requests 及 ViewComposers目錄，放置 Http 請求流程中所執行的內容</td>
+</tr>
+<tr>
+<td style="text-align:left">Jobs</td>
+<td style="text-align:left">預設不存在！在執行 Artisan 指令 make:job 時才會產生！放置工作排程用，可處理較長時間的任務！</td>
+</tr>
+<tr>
+<td style="text-align:left">Listeners</td>
+<td style="text-align:left">預設不存在！在執行 Artisan 指令 event:generate 或 make:listener 時才會產生！放置時件的偵聽類別！</td>
+</tr>
+<tr>
+<td style="text-align:left">Mail</td>
+<td style="text-align:left">預設不存在！在執行 Artisan 指令 make:mail 時才會產生！放置與郵件類別相關的檔案！</td>
+</tr>
+<tr>
+<td style="text-align:left">Notifications</td>
+<td style="text-align:left">預設不存在！在執行 Artisan 指令 make:notification 時才會產生！包含應用程式中所有的通知類別！</td>
+</tr>
+<tr>
+<td style="text-align:left">Policies</td>
+<td style="text-align:left">預設不存在！在執行 Artisan 指令 make:policy 時才會產生！放置與身份驗證相關的檔案類別！</td>
+</tr>
+<tr>
+<td style="text-align:left">Providers</td>
+<td style="text-align:left">由 config 裡的 app.php ，將服務提供者檔案放置於此</td>
+</tr>
+<tr>
+<td style="text-align:left">Rlues</td>
+<td style="text-align:left">預設不存在！在執行 Artisan 指令 make:rule 時才會產生！目錄內包含自定義表單規則，及其相關類別</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>bootstrap : 框架的啟動目錄，內含 cache ，加快存取！</li>
+<li>config : 放置框架設定檔案</li>
+<li>database : 放置資料庫的資料表結構及基礎資料的目錄</li>
+<li>public : 專案的根目錄，放置靜態檔案！index.php 是整個應用程式的進入點</li>
+<li>resources : 含 views、lang、js、scss目錄！</li>
+<li>routes : 專案內的所有路由專案</li>
+<li>storage : 含 app、framework、logs 目錄！</li>
+<li>tests : 含 PHPUnit 的測試範例</li>
+<li>vendor : 由 Composer 建立，放置套件用！</li>
+<li>其他重要檔案 :
+<ul>
+<li>.env : Laravel 環境設定檔，可由範例檔 .env.example 複製</li>
+<li>artisan : artisan 主要程式進入點！只能在專案目錄內執行</li>
+<li>composer.jaon : 描述所使用的 php 套件資訊及版本</li>
+<li>composer.lock : 描述所下載的 php 套件資訊及版本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Artisan 工具</p>
+<ul>
+<li>Artisan 是 Laravel 內建的命令列工具</li>
+<li>使用該指令工具，可加速開發專案的速度</li>
+<li>語法 :<pre><code class="language-bash">php astisan 指令 選項 參數</code></pre>
+<ul>
+<li>選項 :
+<ul>
+<li>–help,-h : 查詢指令與說明</li>
+<li>–version,-v : 查詢框架的版本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常用指令 :
+<ul>
+<li>list : 列出所有可用的指令</li>
+<li>key:generate : 建立專案用 hash 加密金鑰！如果 .env 檔案中未設定，則需要使用該指令重新產生！</li>
+<li>tinker : 提供一個簡易的交互命令列，方便測試！</li>
+<li>route:[子命令] : 路由相關指令</li>
+<li>maker:[子命令] : 用於快速建立專案相關的檔案</li>
+<li>migrate:[子命令] : 用於快速建立資料表及資料內容</li>
+<li>db:seed : 在完成 migrate 指令後，該指令可將 seeds 目錄中的基礎資料裝入資料庫中</li>
+<li>vendor:publish : 將第三方元件的內容複製到所設定的目錄，方便設定及修改！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Laravel 運作流程</p>
+<ol>
+<li>依伺服器運作環境設定，導入 public/index.php</li>
+<li>載入 PHP 類別映射檔</li>
+<li>啟動框架及服務提供者</li>
+<li>讀取中介層檔案(如果沒有設定中介層，會直接跳過)</li>
+<li>導入PHP路由(Route)</li>
+<li>導入 MVC (Module View Controller)結構</li>
+<li>回傳結果給客戶端</li>
+</ol>
+<ul>
+<li>例 : route/web.php
+　　<img src="img/ex1.png" alt="Route的用法">
+<ul>
+<li>view(‘welcome’) =&gt;表示是 resources/view/welcome.blade.php 檔案！</li>
+</ul>
+</li>
+<li>welcome.blade.php :
+<img src="img/ex2.png" alt="Welcome檔案可以修改">
+<ul>
+<li>修改一下紅色框的部份，再重新整理網頁！</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-參考文獻">參考文獻 <a class="permalink" href="#header-參考文獻" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p><a href="https://ithelp.ithome.com.tw/articles/10136653">開發工具 ： 用Composer管理相依性</a></p>
+</li>
+<li>
+<p><a href="https://ithelp.ithome.com.tw/articles/10190770">Composer安裝教學</a></p>
+</li>
+<li>
+<p><a href="https://windows.php.net/download/#php-7.2-ts-VC15-x64">PHP 下載站台</a></p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/Jeffid/article/details/83452528">Windows 安裝 PHP 7.2</a></p>
+</li>
+<li>
+<p><a href="https://xnote.dev/composer-introduction.html">Composer 依頼管理工具介紹</a></p>
+</li>
+<li>
+<p><a href="https://medium.com/back-ends/laravel-5-%E6%92%B0%E5%AF%AB%E4%BD%A0%E7%9A%84package-458c93c279bc">撰寫你的package</a></p>
+</li>
+</ul>
+</div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 13 Dec 2019</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
