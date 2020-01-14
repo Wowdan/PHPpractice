@@ -224,7 +224,7 @@
 + Blade 樣板實作
 #### 參考文獻
 
-### 第十二章 Laravel 與資料庫的結合 [內容](ch12/README.md)
+### 第十二章 Laravel 與資料庫的結合 I [內容](ch12/README.md)
 #### 基本資料庫連線與操作
 + 連接資料庫的設定方式
 + 利用 MVC 連接資料庫
@@ -236,15 +236,20 @@
 + 操作 Migration 指令
 + Schema 類別
 + Blueprint 操作資料表方法
-#### 使用 Eloguent 管理資料庫內容
+#### 使用 Eloguent 查詢資料庫內容
 + Eloguent 概述
 + Eloguent 建立過程
 + Eloquent 中 Model 的常見屬性值列表
 + Eloquent 中常見的查詢類方法
 + Eloquent 資料取出的方法
 + Collection 物件的方法
-+ 
 #### 參考文獻
+
+### 第十三章 Laravel 與資料庫的結合 II [內容](ch13/README.md)
+#### Eloquent 管理資料庫內容
+#### Eloquent 關聯與限制
+#### 參考文獻
+
 
 #### 參考書籍
 #### 參考網站

@@ -1,0 +1,821 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>第十二章 Laravel 與資料庫的結合 I</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-基本資料庫連線與操作">基本資料庫連線與操作</a></li><li><a href="#header-使用-migration-操作資料庫物件">使用 Migration 操作資料庫物件</a></li><li><a href="#header-使用-eloguent-查詢資料庫內容">使用 Eloguent 查詢資料庫內容</a></li><li><a href="#header-參考文獻">參考文獻</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">第十二章 Laravel 與資料庫的結合 I</h1></header><h4 id="header-基本資料庫連線與操作">基本資料庫連線與操作 <a class="permalink" href="#header-基本資料庫連線與操作" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>連接資料庫的設定方式</p>
+<ul>
+<li>主要設定檔案 : config/database.php
+<ul>
+<li>設定值主要是給予預設值，讓 <strong>env()</strong> 函數方便設定</li>
+<li>如果不使用預設值，請修改 <strong>.env</strong> 檔案！</li>
+<li><strong>.env</strong> 檔案可由 <strong>.env.example</strong> 檔案複製！</li>
+</ul>
+</li>
+<li>修改 <strong>.env</strong> 檔案內容 :<pre><code class="language-bash"><span class="hljs-comment"># 其它不使用的部份，請用 # 符號註解</span>
+DB_CONNECTION=mysql
+DB_HOST=<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>
+DB_PORT=<span class="hljs-number">3306</span>
+DB_DATABASE=cars
+DB_USERNAME=peter
+DB_PASSWORD=Aa12345678!</code></pre>
+</li>
+<li>Linux 系統環境需要 mysqlnd 的套件<pre><code class="language-bash"><span class="hljs-comment"># yum install php-mysqlnd</span>
+<span class="hljs-comment"># systemctl restart php-fpm</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>利用 MVC 連接資料庫</p>
+<ul>
+<li>新增 CarsController<pre><code class="language-bash"><span class="hljs-comment"># php artisan make:controller CarsController</span></code></pre>
+</li>
+<li>修改 app/Http/Controllers/CarsController.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">DB</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Controller</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Route</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">View</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CarsController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span></span>{
+    <span class="hljs-comment">//</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-variable">$customers</span> = DB::select(<span class="hljs-string">'select * from customers'</span>);
+        <span class="hljs-comment">// 可綁定參數</span>
+        <span class="hljs-comment">// $customers = DB::select('select * from customers where Name = :names', ['names' =&gt; "Peter"]);</span>
+        <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'customers'</span>,[<span class="hljs-string">'customers'</span> =&gt; <span class="hljs-variable">$customers</span>]);
+    }
+}</code></pre>
+</li>
+<li>新增 resources/views/customers.blade.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$customers</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$user</span>){
+    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$user</span>-&gt;Name;
+}
+<span class="hljs-preprocessor">?&gt;</span></code></pre>
+</li>
+<li>修改 routes/web.php 檔案<pre><code class="language-php"><span class="hljs-comment">//增加下列一行</span>
+Route::resource(<span class="hljs-string">'cars'</span>,<span class="hljs-string">'CarsController'</span>);</code></pre>
+</li>
+<li>開啟瀏覽器，輸入網址 <a href="http://xn--IP-0p3cm89l/cars">http://你的IP/cars</a></li>
+</ul>
+</li>
+<li>
+<p>其他的 SQL 語法使用方式</p>
+<ul>
+<li>Insert 語法<pre><code class="language-php">DB::insert(<span class="hljs-string">'insert into customers (name,addr) values (?, ?)'</span>, [<span class="hljs-string">'James'</span>, <span class="hljs-string">'test rolad 1'</span>]);</code></pre>
+</li>
+<li>Update 語法<pre><code class="language-php"><span class="hljs-variable">$affected</span> = DB::update(<span class="hljs-string">'update customers set Name = "James" where Name = ?'</span>, [<span class="hljs-string">'Peter'</span>]);</code></pre>
+</li>
+<li>Delete 語法<pre><code class="language-php"><span class="hljs-variable">$deleted</span> = DB::delete(<span class="hljs-string">'delete from customers where Name = ?'</span>,[<span class="hljs-string">'James'</span>]);</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-使用-migration-操作資料庫物件">使用 Migration 操作資料庫物件 <a class="permalink" href="#header-使用-migration-操作資料庫物件" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>Migration 用途</p>
+<ul>
+<li>利用 Migration 功能操作資料庫物件，避免手動操作的錯誤！</li>
+<li>可記錄對資料庫操作的變更與目前的狀態！</li>
+<li>一旦決定要使用 Migration 功能來開發專案，就必須要求其他人也要使用相同方式進行開發工作！</li>
+</ul>
+</li>
+<li>
+<p>Migration 初始化</p>
+<ul>
+<li>利用 <strong>.env</strong> 檔案設定，在資料庫內建立一個 migrations 的資料表!</li>
+<li>建立過程中，亦對資料庫進行連線測試!</li>
+<li>例 :<pre><code class="language-bash"><span class="hljs-comment"># php artisan migrate:install</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>建立 Migration</p>
+<ul>
+<li>產生 migration 檔案
+<ul>
+<li>例 :<pre><code class="language-bash"><span class="hljs-comment"># php artisan make:migration create_customers_table</span></code></pre>
+<ul>
+<li>每個被 make:migration 指令所建立的檔案，檔名會被加上時間戳記</li>
+<li>每個檔名會被轉換成相對應的類別名稱，例 : CreateCustomersTable</li>
+<li>指令後方，可以加上 --create={資料表名稱}，自動產生建立資料表的 Schema</li>
+<li>指令後方，可以加上 --table={資料表名稱}，自動產生修改資料表的 Schema</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>編寫 migration 檔案
+<ul>
+<li>例 :  database/migratins/(一堆時間)_create_customers_table<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">Migration</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Blueprint</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Schema</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateCustomersTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Migration</span>
+</span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span>
+  </span>{
+    Schema::create(<span class="hljs-string">'customers'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint <span class="hljs-variable">$table</span>)</span>
+    </span>{
+      <span class="hljs-comment">//$table-&gt;bigIncrements('id'); 這欄位會形成 Primary Key</span>
+      <span class="hljs-variable">$table</span>-&gt;bigIncrements(<span class="hljs-string">'id'</span>);
+      <span class="hljs-variable">$table</span>-&gt;char(<span class="hljs-string">'Cusid'</span>,<span class="hljs-number">100</span>)-&gt;unique()-&gt;index();
+      <span class="hljs-variable">$table</span>-&gt;char(<span class="hljs-string">'Name'</span>,<span class="hljs-number">50</span>)-&gt;index();
+      <span class="hljs-variable">$table</span>-&gt;char(<span class="hljs-string">'Address'</span>,<span class="hljs-number">255</span>);
+      <span class="hljs-variable">$table</span>-&gt;char(<span class="hljs-string">'Phone'</span>,<span class="hljs-number">10</span>)-&gt;index();
+      <span class="hljs-comment">//協助建立追踪的時間</span>
+      <span class="hljs-variable">$table</span>-&gt;timestamps();
+    });
+  }
+  
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">down</span><span class="hljs-params">()</span>
+  </span>{
+    Schema::dropIfExists(<span class="hljs-string">'customer'</span>);
+  }
+}</code></pre>
+<ul>
+<li>up() : 當執行 <strong>php artisan migrate</strong> 指令時，即會呼叫該方法，建立資料表!</li>
+<li>down() : 當執行 <strong>php artisan migrate:rollback</strong> 指令時，即會呼叫該方法，還原資料庫結構！</li>
+<li>本張表格 customers 內容 :
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Field</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Null</th>
+<th style="text-align:center">Key</th>
+<th style="text-align:center">Default</th>
+<th style="text-align:center">Extra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Cusid</td>
+<td style="text-align:center">varchar(10)</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">PRI</td>
+<td style="text-align:center">NULL</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Name</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">INDEX</td>
+<td style="text-align:center">NULL</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Address</td>
+<td style="text-align:center">varchar(255)</td>
+<td style="text-align:center">YES</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">NULL</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Phone</td>
+<td style="text-align:center">varchar(10)</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">INDEX</td>
+<td style="text-align:center">NULL</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>操作 Migration 指令</p>
+<ul>
+<li>執行 migrate 指令，建立資料表<pre><code class="language-bash"><span class="hljs-comment"># php artisan migrate</span></code></pre>
+</li>
+<li>查看 migrate 狀況<pre><code class="language-bash"><span class="hljs-comment"># php artisan migrate:status</span></code></pre>
+</li>
+<li>回復到上一個版本的資料庫結構<pre><code class="language-bash"><span class="hljs-comment"># php artisan migrate:rollback</span></code></pre>
+</li>
+<li>回復到最初的資料庫結構<pre><code class="language-bash"><span class="hljs-comment"># php artisan migrate:reset</span></code></pre>
+</li>
+<li>重設資料庫結構到現在這個資料庫結構<pre><code class="language-php"><span class="hljs-comment"># php artisan migrate:refresh</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Schema 類別</p>
+<ul>
+<li>針對資料庫進行操作
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法名稱</th>
+<th style="text-align:left">說明</th>
+<th style="text-align:left">操作實例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">create</td>
+<td style="text-align:left">建立資料表</td>
+<td style="text-align:left">Schema::create(‘資料表名稱’,function(Blueprint $table){});</td>
+</tr>
+<tr>
+<td style="text-align:left">table</td>
+<td style="text-align:left">對資料表進行作動</td>
+<td style="text-align:left">Schema::table(‘資料表名稱’,function(Blueprint $table){});</td>
+</tr>
+<tr>
+<td style="text-align:left">rename</td>
+<td style="text-align:left">更新資料表名稱</td>
+<td style="text-align:left">Schema::rename(‘舊資料表名稱’,‘新資料表名稱’);</td>
+</tr>
+<tr>
+<td style="text-align:left">drop</td>
+<td style="text-align:left">刪除資料表</td>
+<td style="text-align:left">Schema::drop(‘資料表名稱’);</td>
+</tr>
+<tr>
+<td style="text-align:left">dropIfExists</td>
+<td style="text-align:left">如果資料表存在，則刪除該資料表</td>
+<td style="text-align:left">Schema::dropIfExists(‘資料表名稱’);</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>Blueprint 操作資料表方法</p>
+<ul>
+<li>
+<p>針對資料表欄位資料型態設定</p>
+<ul>
+<li>increments(‘欄位名稱’) : 建立一個正整數型態、並且自動遞增的欄位！預設成為主鍵！</li>
+<li>boolean(‘欄位名稱’) : 建立一布林值資料型態欄位！</li>
+<li>char(‘欄位名稱’,資料長度) : 建立一文字資料型態欄位，並且設定長度！</li>
+<li>date(‘欄位名稱’) : 建立一日期資料型態欄位！</li>
+<li>dateTime(‘欄位名稱’) : 建立一日期時間資料型態欄位！</li>
+<li>double(‘欄位名稱’,總位數,小數位數) : 建立一 Double 浮點數資料型態欄位！</li>
+<li>float(‘欄位名稱’) : 建立一 Float 浮點數資料型態欄位！</li>
+<li>integer(‘欄位名稱’) : 建立一 Integer 整數資料型態欄位！</li>
+<li>string(‘欄位名稱’,資料長度) : 建立一 Varchar 文字資料型態欄位！</li>
+<li>text(‘欄位名稱’) : 建立一 Text 文字資料型態欄位！</li>
+<li>timestamp(‘欄位名稱’) : 建立一 Timestamp 時間戳記資料型態欄位！</li>
+<li>timestamps() :  建立名為 created_at 及 updated_at 兩個時間戳記資料型態欄位！</li>
+<li>softDeletes() : 建立名為 deleted_at 時間戳記資料型態欄位！</li>
+</ul>
+</li>
+<li>
+<p>在資料表欄位資料型態設定函數後，可以修改欄相關設定</p>
+<ul>
+<li>-&gt;after(‘欄位名稱’) : 表示該欄位的順序，應位於指定欄位後面！</li>
+<li>-&gt;autoIncrement() : 為此欄位加上自動增值功能！</li>
+<li>-&gt;comment(‘說明內容’) : 為此欄位加上註解說明！</li>
+<li>-&gt;default(預設值) : 設定此欄位預設值！</li>
+<li>-&gt;first() : 將此欄位設為資料表第一個欄位！</li>
+<li>-&gt;nullable() : 此欄位可以為空值</li>
+<li>-&gt;unsigned() : 此欄位只有正整數資料型態</li>
+<li>-&gt;primary() : 此欄位設為主鍵！</li>
+<li>-&gt;unique() : 此欄位的值不可有重複！</li>
+<li>-&gt;index() : 此欄位值設成索引鍵！</li>
+</ul>
+</li>
+<li>
+<p>維護資料表欄位的其他方法</p>
+<ul>
+<li>dropColumn(‘欄位名稱’) : 刪除指定欄位</li>
+<li>dropTimestamps() : 刪除時間戳記欄位</li>
+<li>dropsoftdeletes() : 刪除軟刪除戳記欄位</li>
+<li>dropPrimary(‘欄位名稱’) : 刪除指定欄位的主鍵設定</li>
+<li>dropUnique(‘欄位名稱’) : 刪除指定欄位不可重複資料的設定</li>
+<li>dropIndex(‘欄位名稱’) : 刪除指定欄位索引鍵的設定</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-使用-eloguent-查詢資料庫內容">使用 Eloguent 查詢資料庫內容 <a class="permalink" href="#header-使用-eloguent-查詢資料庫內容" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>Eloguent 概述</p>
+<ul>
+<li>ORM (Object-Relational Mapping)是指將關聯式資料庫映射至物件的資料抽象化技術
+<ul>
+<li>把資料庫中的資料變成一個物件(class)，讓寫程式時可以透過操作這個物件，來存取資料庫中的資料</li>
+</ul>
+</li>
+<li>Eloguent 在 Laravel 中，實做了 ORM 這個技術！</li>
+<li>每個資料庫中的資料表，都會對應到一個Eloquent Model，當建立好對應的Model後，即可透過這個Model存取資料表中的資料。</li>
+</ul>
+</li>
+<li>
+<p>Eloguent 建立過程</p>
+<ul>
+<li>
+<p>建立 Model</p>
+<ul>
+<li>例 : 建立 Customer 模組，對應 Customers 資料表<pre><code class="language-bash"><span class="hljs-comment"># php artisan make:model Customer</span></code></pre>
+</li>
+<li>Laravel 中的 Eloguent 命名規則
+<ul>
+<li>資料表使用<strong>英文複數</strong>；Model使用<strong>英文單數</strong></li>
+<li>資料表用<strong>小寫</strong>，單字間用<strong>蛇底式命名(Snake Case)</strong>；Model用首字<strong>大寫</strong>，<strong>大駝峰式命名(Upper Camel Case)</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>編寫 app/Customers.php 檔案</p>
+<ul>
+<li>例 : 設定對應的資料表<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Eloquent</span>\<span class="hljs-title">Model</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Customer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span></span>{
+  <span class="hljs-comment">//定義相關連結的資料表</span>
+  <span class="hljs-comment">//如果有依照命名規則，此行程式不必撰寫</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$table</span> = <span class="hljs-string">'customers'</span>;
+  
+  <span class="hljs-comment">//定義主鍵的欄位</span>
+  <span class="hljs-comment">//如果有依照命名規則，此行程式不必撰寫</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$primarykey</span> = <span class="hljs-string">'id'</span>;
+  
+  <span class="hljs-comment">//如果沒有設定 created_at 與 updated_at欄位，則可以設成 false</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-variable">$timestamps</span> = <span class="hljs-keyword">true</span>;
+
+}</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>修改 app/Http/Controllers/CustomerController.php</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Route</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">View</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Customer</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomerController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span></span>{
+
+       <span class="hljs-variable">$customers</span> = Customer::all();
+       <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'board'</span>,[<span class="hljs-string">'customers'</span> =&gt; <span class="hljs-variable">$customers</span>]);
+    }
+}</code></pre>
+<ul>
+<li>可以追加一些常見的 SQL 語句
+<ul>
+<li>例 :<pre><code class="language-php"><span class="hljs-variable">$customers</span> = Customer::where(<span class="hljs-string">'Name'</span>, <span class="hljs-string">'='</span>, <span class="hljs-string">'Peter'</span>) <span class="hljs-comment">// 取 Name 為 Peter </span>
+       -&gt;orderBy(<span class="hljs-string">'Name'</span>, <span class="hljs-string">'desc'</span>) <span class="hljs-comment">// 根據price由高到低排列</span>
+       -&gt;take(<span class="hljs-number">10</span>) <span class="hljs-comment">// 只取前10筆資料</span>
+       -&gt;get();</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>修改 resources/views/board.blade.php</p>
+<pre><code class="language-php">@extends('layouts.master')
+@section('title','客戶列表')
+@section('content')
+&lt;div class="row justify-content-center"&gt;
+  &lt;div class="col-md-10"&gt;
+    &lt;div class="card"&gt;
+      &lt;div class="card-header"&gt;客戶列表&lt;/div&gt;
+      &lt;div class="card-body p-1"&gt;
+        &lt;table class="table table-hover m-0"&gt;
+          &lt;thead class="thead-darty"&gt;
+            &lt;tr&gt;
+              &lt;th&gt;客戶編號&lt;/th&gt;
+              &lt;th&gt;客戶姓名&lt;/th&gt;
+              &lt;th&gt;客戶電話&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+          &lt;?php
+            foreach ($customers as $customer){
+          ?&gt;
+            &lt;tr&gt;
+                  &lt;td&gt;&lt;?php echo $customer-&gt;Cusid; ?&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;?php echo $customer-&gt;Name; ?&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;?php echo $customer-&gt;Phone; ?&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;?php }  ?&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;  
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+@stop</code></pre>
+</li>
+<li>
+<p>開啟瀏覽器，輸入網址 <a href="http://xn--IP-0p3cm89l/customer">http://你的IP/customer</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Eloquent 中 Model 的常見屬性值列表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">屬性名稱</th>
+<th style="text-align:left">說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$table</td>
+<td style="text-align:left">定義對應的資料表，例 : protected $table = ‘customers’;</td>
+</tr>
+<tr>
+<td style="text-align:left">$primaryKey</td>
+<td style="text-align:left">指定資料表中的主鍵欄位，例 : protected $primaryKey = ‘id’;</td>
+</tr>
+<tr>
+<td style="text-align:left">$incrementing</td>
+<td style="text-align:left">Elogquent預設欄位名稱 id ，為自動遞增的型態！可以設定成 false 來取消此型態！</td>
+</tr>
+<tr>
+<td style="text-align:left">$keyType</td>
+<td style="text-align:left">設定資料表主鍵的資料型態</td>
+</tr>
+<tr>
+<td style="text-align:left">$timestamps</td>
+<td style="text-align:left">預設值會開啟，建立 created_at 及 updated_at 兩個欄位！不使用時，在 migration 檔案中刪去 timestamps()之外，還必需將此屬性設定成 false !!</td>
+</tr>
+<tr>
+<td style="text-align:left">$dateFormat</td>
+<td style="text-align:left">定義 Eloquent 中的時間儲存格式！例 : protected $dateFormat = ‘Y-m-d’;</td>
+</tr>
+<tr>
+<td style="text-align:left">$fillable</td>
+<td style="text-align:left">定義可批量寫入的欄位</td>
+</tr>
+<tr>
+<td style="text-align:left">$guarded</td>
+<td style="text-align:left">定義不可批量寫入的欄位</td>
+</tr>
+<tr>
+<td style="text-align:left">$hidden</td>
+<td style="text-align:left">定義輸出資料成為陣列時，隱藏該資料</td>
+</tr>
+<tr>
+<td style="text-align:left">$visible</td>
+<td style="text-align:left">定義輸出資料成為陣列時，顯示資料</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Eloquent 中常見的查詢類方法</p>
+<ul>
+<li>where() : 查詢符合條件的所有項目！
+<ul>
+<li>例 :<pre><code class="language-php">Customer::where(<span class="hljs-string">'Name'</span>,<span class="hljs-string">'Peter'</span>)-&gt;get();
+Customer::where(<span class="hljs-string">'Birthday'</span>,<span class="hljs-string">'&gt;='</span>,<span class="hljs-string">'1970'</span>)-&gt;get();</code></pre>
+</li>
+</ul>
+</li>
+<li>ordeyBy() : 對目標欄位排序
+<ul>
+<li>例 :<pre><code class="language-php">Customer::orderBy(<span class="hljs-string">'Name'</span>,<span class="hljs-string">'desc'</span>)-&gt;get();</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Eloquent 資料取出的方法</p>
+<ul>
+<li>all() : 取出所有的資料
+<ul>
+<li>例 :<pre><code class="language-php">Customer::all();</code></pre>
+</li>
+</ul>
+</li>
+<li>get() : 取出設定條件查詢的結果
+<ul>
+<li>例 :<pre><code class="language-php">Customer::where(<span class="hljs-string">'Name'</span>,<span class="hljs-string">'like'</span>,<span class="hljs-string">'%er%'</span>)-&gt;get();
+Customer::get();</code></pre>
+</li>
+</ul>
+</li>
+<li>find() : 使用 Primary Key 取出資料
+<ul>
+<li>例 :<pre><code class="language-php">Customer::find(<span class="hljs-string">'10'</span>);
+Customer::find([<span class="hljs-string">'1'</span>,<span class="hljs-string">'3'</span>,<span class="hljs-string">'5'</span>]);</code></pre>
+</li>
+</ul>
+</li>
+<li>first() : 取得第一筆資料
+<ul>
+<li>例 :<pre><code class="language-php">Customer::orderBy(<span class="hljs-string">'Name'</span>,<span class="hljs-string">'desc'</span>)-&gt;first();</code></pre>
+</li>
+</ul>
+</li>
+<li>findOrFail() : 找不到資料時，會回傳錯誤例外訊息！
+<ul>
+<li>例 :<pre><code class="language-php"><span class="hljs-comment">//只要其中一筆沒找到，就會出現錯誤例外！</span>
+Customer::findOrFail([<span class="hljs-string">'1'</span>,<span class="hljs-string">'3'</span>,<span class="hljs-string">'5'</span>]);</code></pre>
+</li>
+</ul>
+</li>
+<li>firstOrFail() : 找不到資料時，會回傳錯誤例外訊息！
+<ul>
+<li>例 :<pre><code class="language-php">Customer::orderBy(<span class="hljs-string">'Name'</span>,<span class="hljs-string">'desc'</span>)-&gt;firstOrFail();</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Collection 物件的方法</p>
+<ul>
+<li>avg() : 回傳某個欄位的平均值
+<ul>
+<li>例 :<pre><code class="language-php">Cars::all()-&gt;avg(<span class="hljs-string">'prize'</span>);</code></pre>
+</li>
+</ul>
+</li>
+<li>count() : 計算資料總筆數
+<ul>
+<li>例 :<pre><code class="language-php">Cars::where(<span class="hljs-string">'Name'</span>,<span class="hljs-string">'like'</span>,<span class="hljs-string">'%B%'</span>)-&gt;get()-&gt;account();</code></pre>
+</li>
+</ul>
+</li>
+<li>max() : 回傳某個欄位的最大值
+<ul>
+<li>例 :<pre><code class="language-php">Cars::all()-&gt;max(<span class="hljs-string">'prize'</span>);</code></pre>
+</li>
+</ul>
+</li>
+<li>min() : 回傳某個欄位的最小值
+<ul>
+<li>例 :<pre><code class="language-php">Cars::get()-&gt;min(<span class="hljs-string">'prize'</span>);</code></pre>
+</li>
+</ul>
+</li>
+<li>random() : 隨機取一筆資料出來
+<ul>
+<li>例 :<pre><code class="language-php">Customer::get()-&gt;random();</code></pre>
+</li>
+</ul>
+</li>
+<li>sum() : 計算某個欄位的總和
+<ul>
+<li>例 :<pre><code class="language-php">Cars::get()-&gt;sum(<span class="hljs-string">'prize'</span>);</code></pre>
+</li>
+</ul>
+</li>
+<li>take() : 只抓取特定數目的資料
+<ul>
+<li>例 :<pre><code class="language-php"><span class="hljs-comment">//取前三筆資炓</span>
+Customer::get()-&gt;take(<span class="hljs-number">3</span>);
+<span class="hljs-comment">//取最後三筆資料</span>
+Customer::get()-&gt;take(-<span class="hljs-number">3</span>);</code></pre>
+</li>
+</ul>
+</li>
+<li>toJson() : 將資料轉成 Json 格式
+<ul>
+<li>例 :<pre><code class="language-php">Customer::all()-&gt;toJson();</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-參考文獻">參考文獻 <a class="permalink" href="#header-參考文獻" aria-hidden="true">¶</a></h4>
+<p><a href="https://dometi.com.tw/blog/laravel-beginner-09/">Database in Laravel</a>
+<a href="https://www.tecmint.com/reset-root-password-in-mysql-8/">MySQL 8 忘記密碼</a>
+<a href="https://laravel.tw/docs/5.2/migrations#dropping-indexes">資料庫: 遷移</a></p>
+</div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 14 Jan 2020</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
