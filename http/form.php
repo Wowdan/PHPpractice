@@ -1,4 +1,4 @@
-<form action="auth.php" method="get">
+<form action="auth.php" method="post">
 請輸入帳號密碼 : 
 帳號 : <input type="text" name="account" /><br />
 密碼 : <input type="password" name="password" /><br />
