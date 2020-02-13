@@ -114,26 +114,35 @@
 + 安裝與設定 Laravel
   + 建立專案
     + 使用 Composer 來建立專案
-      + 在 PHP 練習的目錄(PHPexerise)下，建立一個 PHPproject 專案目錄
+      + 首先建立一個 PHPproject 專案目錄
         ```bash
-        $ composer create-project --prefer-dist laravel/laravel PHPproject
+        # composer create-project --prefer-dist laravel/laravel PHPproject
         ```
-    + 編寫 .gitignore
+    + 執行 Git 初始化
+      ```bash
+      # git init PHPproject 
+      ```
+    + 在 github 站台上，新增 PHPproject 專案
+    + 將 github 上的 PHPproject 專案，新增到本機的 PHPproject 目錄
+      ```php
+      # cd PHPproject
+      # git add remote origin https://github.com/你的帳號/PHPproject.git
+      ```
+    + 查看 .gitignore
       ```bash
       # nano .gitignore
-      PHPproject/vendor
       ```
     + 推送至 github 站台上
       ```bash
-      $ git add .
-      $ git commit -m "Add Laravel"
-      $ git push -u origin master
+      # git add .
+      # git commit -m "Add Laravel"
+      # git push -u origin master
       ```
   + 到正式環境站台設定
     + 到網頁目錄內，取得練習的專案
       ```bash
       # cd /usr/share/nginx/html
-      # git pull origin master
+      # git clone https://github.com/你的帳號/PHPproject.git
       ```
     + 安裝需要的套件
       ```php
@@ -143,14 +152,14 @@
       ```
     + 使用 Composer，將套件裝齊(Composer 安裝法，請參考前面章節)
       ```bash
-      # cd PHPexerise/PHPproject
+      # cd PHPproject
       # composer install
       ```
     + 注意一下目錄權限設定
       ```bash
       # chown -R nginx ../PHPproject
-      # semanage fcontext -a -t httpd_sys_rw_content_t "/usr/share/nginx/html/PHPexerise/PHPproject/storage(/.*)?"
-      # semanage fcontext -a -t httpd_sys_rw_content_t "/usr/share/nginx/html/PHPexerise/PHPproject/resources(/.*)?"
+      # semanage fcontext -a -t httpd_sys_rw_content_t "/usr/share/nginx/html/PHPproject/storage(/.*)?"
+      # semanage fcontext -a -t httpd_sys_rw_content_t "/usr/share/nginx/html/PHPproject/resources(/.*)?"
       # restorecon -Rvv ../PHPproject
       ```
     + 設定 .env 檔案
@@ -163,7 +172,7 @@
       # # php artisan key:generate
       ```
   + 在用戶端或是你開發的平台上，打開瀏覽器，查看結果
-    + 網址 : http://正式環境站台IP/PHPexerise/PHPproject/public/
+    + 網址 : http://正式環境站台IP/PHPproject/public/
 
 + Laravel 目錄結構
   + app : 專案核心目錄，程式邏輯全放置在這目錄下！

@@ -1,0 +1,957 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>第十五章 使用中介層</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}.hljs-comment,.hljs-quote{color:#9e8f9e}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#ca402b}.hljs-built_in,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#a65926}.hljs-bullet,.hljs-string,.hljs-symbol{color:#918b3b}.hljs-section,.hljs-title{color:#516aec}.hljs-keyword,.hljs-selector-tag{color:#7b59c0}.hljs{display:block;overflow-x:auto;background:#1b181b;color:#ab9bab;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.right .hljs-comment,.right .hljs-quote{color:#776977}.right .hljs-attribute,.right .hljs-link,.right .hljs-name,.right .hljs-regexp,.right .hljs-selector-class,.right .hljs-selector-id,.right .hljs-tag,.right .hljs-template-variable,.right .hljs-variable{color:#ca402b}.right .hljs-built_in,.right .hljs-literal,.right .hljs-meta,.right .hljs-number,.right .hljs-params,.right .hljs-type{color:#a65926}.right .hljs-bullet,.right .hljs-string,.right .hljs-symbol{color:#918b3b}.right .hljs-section,.right .hljs-title{color:#516aec}.right .hljs-keyword,.right .hljs-selector-tag{color:#7b59c0}.right .hljs{display:block;overflow-x:auto;background:#f7f3f7;color:#695d69;padding:.5em}.right .hljs-emphasis{font-style:italic}.right .hljs-strong{font-weight:700}body{color:#c8c8c8;background:#272b30;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #373d44;margin-bottom:12px}h1,h2,h3,h4,h5{color:#c8c8c8;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:white;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(200,200,200,0) 20%, rgba(200,200,200,0.2) 51.4%, rgba(39,43,48,0.2) 51.4%, rgba(39,43,48,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(200,200,200,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #2b3237}blockquote p:last-child{margin-bottom:0}pre{background-color:#202529;padding:12px;border:1px solid #424c54;border-radius:6px;overflow:auto}pre code{color:#c8c8c8;background-color:transparent;padding:0;border:none}code{color:#ddd;background-color:#373b40;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #424c54;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#22262a}table th,table td{padding:6px 12px;border:1px solid #101214}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:#c8c8c8;background-color:#2b373e;border-left:4px solid #5bc0de}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#5bc0de}.warning{color:#c8c8c8;background-color:#352b30;border-left:4px solid #e9322d}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#e9322d}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:#c8c8c8;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(200,200,200,0.7);padding:8px 12px;border-top:1px solid #202020;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid #c8c8c8}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#fff;background-color:#373d44;border-radius:10px;margin:-2px 0}.badge.get{color:white;background-color:#5bc0de}.badge.head{color:white;background-color:#5bc0de}.badge.options{color:white;background-color:#5bc0de}.badge.put{color:white;background-color:#f89406}.badge.patch{color:white;background-color:#f89406}.badge.post{color:white;background-color:#62c462}.badge.delete{color:white;background-color:#ee5f5b}.collapse-button{float:right}.collapse-button .close{display:none;color:white;cursor:pointer}.collapse-button .open{color:white;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#666}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:#272b30}.right pre{background-color:#f7f6f5;border:1px solid #f7f6f5}.right pre code{color:#333}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e98b8}.definition .method.head{color:#2e98b8}.definition .method.options{color:#2e98b8}.definition .method.post{color:#2eb82e}.definition .method.put{color:#b87f2e}.definition .method.patch{color:#b87f2e}.definition .method.delete{color:#b8322e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:#c8c8c8;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#adaaa6}.right .example-names .tab-button{color:#272b30;border:1px solid #d8d4cf;border-radius:6px}.right .example-names .tab-button.active{background-color:#95918b}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#272b30;border-right:1px solid #272b30;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#d8d4cf;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(200,200,200,0.5);background-color:#373d44;text-decoration:none !important;border-top:1px solid #202020;border-left:1px solid #202020;border-right:1px solid #202020;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:#272b30;border:1px solid #202020;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#373d44;border-bottom:1px solid #202020;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #202020}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#fff;background-color:#2390b0}.action h4.action-heading .method.head{color:#fff;background-color:#2390b0}.action h4.action-heading .method.options{color:#fff;background-color:#2390b0}.action h4.action-heading .method.put{color:#fff;background-color:#945904}.action h4.action-heading .method.patch{color:#fff;background-color:#945904}.action h4.action-heading .method.post{color:#fff;background-color:#348c34}.action h4.action-heading .method.delete{color:#fff;background-color:#ce1a15}.action h4.action-heading code{color:black;background-color:rgba(255,255,255,0.7);border-color:transparent;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid #272b30;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#202020}.action.get h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.head{border-color:#202020}.action.head h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.options{border-color:#202020}.action.options h4.action-heading{color:#2390b0;background:#5bc0de;border-bottom-color:#202020}.action.post{border-color:#202020}.action.post h4.action-heading{color:#348c34;background:#62c462;border-bottom-color:#202020}.action.put{border-color:#202020}.action.put h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.patch{border-color:#202020}.action.patch h4.action-heading{color:#945904;background:#f89406;border-bottom-color:#202020}.action.delete{border-color:#202020}.action.delete h4.action-heading{color:#ce1a15;background:#ee5f5b;border-bottom-color:#202020}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#top">Overview</a></div><div class="collapse-content"><ul><li><a href="#header-laravel-的中介層">Laravel 的中介層</a></li><li><a href="#header-laravel-內建-auth-機制">Laravel 內建 Auth 機制</a></li><li><a href="#header-自建-auth-認證登入">自建 Auth 認證登入</a></li><li><a href="#header-參考文獻">參考文獻</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">第十五章 使用中介層</h1></header><h4 id="header-laravel-的中介層">Laravel 的中介層 <a class="permalink" href="#header-laravel-的中介層" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>中介層概述</p>
+<ul>
+<li>MiddleWare : HTTP 的中介層</li>
+<li>作用
+<ul>
+<li>用來過濾任何進入應用程式的 HTTP 請求</li>
+<li>利於請求在進入路由之前對路由進行保護</li>
+<li>可對請求或回傳進行相關的操作</li>
+</ul>
+</li>
+<li>分類
+<ul>
+<li>全域中介層 : 對整個應用程式均有作用，利用 $middleware 屬性進行設定</li>
+<li>路由中介層 : 只針對特定的應用程式，利用 $routeMiddleware 屬性進行設定
+<ul>
+<li>路由中介層群組 : 可一次作用多個中介層，所有路由皆會套用 web 的路由中介層群組！
+<ul>
+<li>web : routes/web.php 檔案內，可針對 cookie、session、CSRF 保護，提供實用的中介層！</li>
+<li>api : routes/api.php 檔案內，提供上述項目以外的中介層！</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>建立中介層</p>
+<ul>
+<li>使用 artisan<pre><code class="language-bash"><span class="hljs-comment">#php artisan make:middleware [中介層名稱]</span></code></pre>
+</li>
+<li>相關目錄 : app/Http/Middleware</li>
+<li>處理請求(Request)的中介層程式內容<pre><code class="language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> [中介層名稱] </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">(<span class="hljs-variable">$request</span>, Closure <span class="hljs-variable">$next</span>)</span></span>{
+        <span class="hljs-comment">//執行過濾請求的動作</span>
+        <span class="hljs-comment">//請求通過後</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-variable">$next</span>(<span class="hljs-variable">$request</span>);
+    }
+}</code></pre>
+</li>
+<li>處理回傳(Response)的中介層程式內容<pre><code class="language-php"><span class="hljs-class"><span class="hljs-keyword">class</span> [中介層名稱] </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">(<span class="hljs-variable">$request</span>, Closure <span class="hljs-variable">$next</span>)</span></span>{
+        <span class="hljs-variable">$response</span> = <span class="hljs-variable">$next</span>(<span class="hljs-variable">$request</span>);
+        <span class="hljs-comment">//執行離開應用程式時的動作</span>
+        <span class="hljs-comment">//執行完後</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-variable">$response</span>;
+    }
+}</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>註冊中介層</p>
+<ul>
+<li>在 app/Http/kernel.php 檔案內，加上自製的中介層即可！</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-laravel-內建-auth-機制">Laravel 內建 Auth 機制 <a class="permalink" href="#header-laravel-內建-auth-機制" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>建立 Laravel 內建的 Auth 機制</p>
+<ul>
+<li>使用 artisan 建立<pre><code class="language-bash"><span class="hljs-comment"># composer require laravel/ui</span>
+<span class="hljs-comment"># php artisan ui vue --auth</span>
+<span class="hljs-comment"># npm install &amp;&amp; npm run dev</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>註冊路由</p>
+<ul>
+<li>在 routes/web.php 檔案中，將出現下列兩行 :<pre><code class="language-php">Auth::routes();
+Route::get(<span class="hljs-string">'/home'</span>, <span class="hljs-string">'HomeController@index'</span>)-&gt;name(<span class="hljs-string">'home'</span>);</code></pre>
+</li>
+<li>所有 /home 路徑的網址，將會路由到 HomeController 的 index 方法！</li>
+<li>查詢所有經由 Auth 註冊的路由<pre><code class="language-bash"><span class="hljs-comment"># php artisan route:list</span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>資料庫內容</p>
+<ul>
+<li>
+<p>Migration 路徑 : database/migrations</p>
+<ul>
+<li>create_users_table : 建立 users 資料表<pre><code class="language-php">Schema::create(<span class="hljs-string">'users'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint <span class="hljs-variable">$table</span>)</span> </span>{
+      <span class="hljs-variable">$table</span>-&gt;bigIncrements(<span class="hljs-string">'id'</span>);
+      <span class="hljs-variable">$table</span>-&gt;string(<span class="hljs-string">'name'</span>);
+      <span class="hljs-variable">$table</span>-&gt;string(<span class="hljs-string">'email'</span>)-&gt;unique();
+      <span class="hljs-variable">$table</span>-&gt;timestamp(<span class="hljs-string">'email_verified_at'</span>)-&gt;nullable();
+      <span class="hljs-variable">$table</span>-&gt;string(<span class="hljs-string">'password'</span>);
+      <span class="hljs-variable">$table</span>-&gt;rememberToken();
+      <span class="hljs-variable">$table</span>-&gt;timestamps();
+  });</code></pre>
+</li>
+<li>create_password_resets_table : 儲存 user 重設密碼的權杖(token)資料表<pre><code class="language-php">Schema::create(<span class="hljs-string">'password_resets'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Blueprint <span class="hljs-variable">$table</span>)</span> </span>{
+      <span class="hljs-variable">$table</span>-&gt;string(<span class="hljs-string">'email'</span>)-&gt;index();
+      <span class="hljs-variable">$table</span>-&gt;string(<span class="hljs-string">'token'</span>);
+      <span class="hljs-variable">$table</span>-&gt;timestamp(<span class="hljs-string">'created_at'</span>)-&gt;nullable();
+  });</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Eloquent 模組</p>
+<ul>
+<li>app/User.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Contracts</span>\<span class="hljs-title">Auth</span>\<span class="hljs-title">MustVerifyEmail</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Auth</span>\<span class="hljs-title">User</span> <span class="hljs-title">as</span> <span class="hljs-title">Authenticatable</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Notifications</span>\<span class="hljs-title">Notifiable</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Authenticatable</span> </span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">Notifiable</span>;
+  <span class="hljs-comment">/**
+  * The attributes that are mass assignable.
+  * 可大量寫入資料的欄位
+  * <span class="hljs-doctag">@var</span> array
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$fillable</span> = [
+    <span class="hljs-string">'name'</span>, <span class="hljs-string">'email'</span>, <span class="hljs-string">'password'</span>,
+  ];
+  <span class="hljs-comment">/**
+  * The attributes that should be hidden for arrays.
+  * 會被隱藏的欄位
+  * <span class="hljs-doctag">@var</span> array
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$hidden</span> = [
+    <span class="hljs-string">'password'</span>, <span class="hljs-string">'remember_token'</span>,
+  ];
+  <span class="hljs-comment">/**
+  * The attributes that should be cast to native types.
+  * 保留原始資料型態的欄位
+  * <span class="hljs-doctag">@var</span> array
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$casts</span> = [
+    <span class="hljs-string">'email_verified_at'</span> =&gt; <span class="hljs-string">'datetime'</span>,
+  ];
+}</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>取得登入資料</p>
+<ul>
+<li>可使用 auth() 函數，也可以使用靜態 Auth 介面！</li>
+<li>檢查用戶是否有登入，有登入會回傳 true<pre><code class="language-php">auth()-&gt;check();</code></pre>
+</li>
+<li>檢查用戶是否有登入，沒登入會回傳 true<pre><code class="language-php">auth()-&gt;guest();</code></pre>
+</li>
+<li>取得使用者登入資料<pre><code class="language-php">auth()-&gt;user();
+<span class="hljs-comment">//或是使用 user id 來取得</span>
+auth()-&gt;id();</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Auth 控制器</p>
+<ul>
+<li>
+<p>路徑 : app/Http/Contorllers/Auth</p>
+</li>
+<li>
+<p>RegisterController : 負責註冊使用者的工作</p>
+<ul>
+<li>顯示註冊表單給用戶</li>
+<li>如何驗證註冊資料</li>
+<li>建立帳號</li>
+<li>建立帳號後，轉址至指定網頁</li>
+</ul>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Auth</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Controller</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Providers</span>\<span class="hljs-title">RouteServiceProvider</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">User</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Auth</span>\<span class="hljs-title">RegistersUsers</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Hash</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Validator</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RegisterController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">RegistersUsers</span>;
+<span class="hljs-comment">/**
+  * Where to redirect users after registration.
+  * 註冊後的轉址網頁
+  * <span class="hljs-doctag">@var</span> string
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$redirectTo</span> = RouteServiceProvider::HOME;
+
+  <span class="hljs-comment">/**
+  * Create a new controller instance.
+  * 經登入的使用者，無法使用該實例
+  * <span class="hljs-doctag">@return</span> void
+  */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+  </span>{
+      <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'guest'</span>);
+  }
+  <span class="hljs-comment">/**
+  * Get a validator for an incoming registration request.
+  * 如何驗證註冊
+  * <span class="hljs-doctag">@param</span>  array  $data
+  * <span class="hljs-doctag">@return</span> \Illuminate\Contracts\Validation\Validator
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validator</span><span class="hljs-params">(array <span class="hljs-variable">$data</span>)</span>
+  </span>{
+      <span class="hljs-keyword">return</span> Validator::make(<span class="hljs-variable">$data</span>, [
+          <span class="hljs-string">'name'</span> =&gt; [<span class="hljs-string">'required'</span>, <span class="hljs-string">'string'</span>, <span class="hljs-string">'max:255'</span>],
+          <span class="hljs-string">'email'</span> =&gt; [<span class="hljs-string">'required'</span>, <span class="hljs-string">'string'</span>, <span class="hljs-string">'email'</span>, <span class="hljs-string">'max:255'</span>, <span class="hljs-string">'unique:users'</span>],
+          <span class="hljs-string">'password'</span> =&gt; [<span class="hljs-string">'required'</span>, <span class="hljs-string">'string'</span>, <span class="hljs-string">'min:8'</span>, <span class="hljs-string">'confirmed'</span>],
+      ]);
+  }
+
+  <span class="hljs-comment">/**
+  * Create a new user instance after a valid registration.
+  * 建立使用者
+  * <span class="hljs-doctag">@param</span>  array  $data
+  * <span class="hljs-doctag">@return</span> \App\User
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span><span class="hljs-params">(array <span class="hljs-variable">$data</span>)</span>
+  </span>{
+      <span class="hljs-keyword">return</span> User::create([
+          <span class="hljs-string">'name'</span> =&gt; <span class="hljs-variable">$data</span>[<span class="hljs-string">'name'</span>],
+          <span class="hljs-string">'email'</span> =&gt; <span class="hljs-variable">$data</span>[<span class="hljs-string">'email'</span>],
+          <span class="hljs-string">'password'</span> =&gt; Hash::make(<span class="hljs-variable">$data</span>[<span class="hljs-string">'password'</span>]),
+      ]);
+  }
+}</code></pre>
+</li>
+<li>
+<p>LoginController : 負責讓使用者登入</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Auth</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Controller</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Providers</span>\<span class="hljs-title">RouteServiceProvider</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Auth</span>\<span class="hljs-title">AuthenticatesUsers</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">AuthenticatesUsers</span>;
+
+  <span class="hljs-comment">/**
+  * Where to redirect users after login.
+  * 登入後，導向何處
+  * <span class="hljs-doctag">@var</span> string
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$redirectTo</span> = RouteServiceProvider::HOME;
+
+  <span class="hljs-comment">/**
+  * Create a new controller instance.
+  *使用 guest 中介層，登出時，則是使用 logout
+  * <span class="hljs-doctag">@return</span> void
+  */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+  </span>{
+      <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'guest'</span>)-&gt;except(<span class="hljs-string">'logout'</span>);
+  }
+}</code></pre>
+<ul>
+<li>LoginController 的路由表內容 :
+<table>
+<thead>
+<tr>
+<th style="text-align:left">HTTP Verb</th>
+<th style="text-align:left">路由</th>
+<th style="text-align:left">Controller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">GET</td>
+<td style="text-align:left">login</td>
+<td style="text-align:left">Auth\LoginController@showLoginForm</td>
+</tr>
+<tr>
+<td style="text-align:left">POST</td>
+<td style="text-align:left">login</td>
+<td style="text-align:left">Auth\LoginController@login</td>
+</tr>
+<tr>
+<td style="text-align:left">POST</td>
+<td style="text-align:left">logout</td>
+<td style="text-align:left">Auth\loginController@logout</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>HomeController : 登入的使用者才可以存取</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HomeController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> 
+</span>{
+  <span class="hljs-comment">/**
+  * Create a new controller instance.
+  * 只要是指到 home 這個網址，會被帶到 auth 這個中介層，進行身份驗證
+  * <span class="hljs-doctag">@return</span> void
+  */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+  </span>{
+      <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'auth'</span>);
+  }
+
+  <span class="hljs-comment">/**
+  * Show the application dashboard.
+  *
+  * <span class="hljs-doctag">@return</span> \Illuminate\Contracts\Support\Renderable
+  */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span>
+  </span>{
+      <span class="hljs-keyword">return</span> view(<span class="hljs-string">'home'</span>);
+  }
+}</code></pre>
+</li>
+<li>
+<p>ForgotPasswordController : 處理使用者忘記密碼</p>
+<ul>
+<li>送出 Email 進行密碼的修改</li>
+</ul>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Auth</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Controller</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Auth</span>\<span class="hljs-title">SendsPasswordResetEmails</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ForgotPasswordController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> 
+</span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">SendsPasswordResetEmails</span>;
+  <span class="hljs-comment">//以下自行加入</span>
+  <span class="hljs-comment">//沒登入的使用者，才可以進行密碼忘記的處理</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'guest'</span>);
+  }
+}</code></pre>
+<ul>
+<li>ForgotPasswordController 路由表內容
+<table>
+<thead>
+<tr>
+<th style="text-align:left">HTTP Verb</th>
+<th style="text-align:left">路由</th>
+<th style="text-align:left">Controller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">POST</td>
+<td style="text-align:left">Password/email</td>
+<td style="text-align:left">Auth\ForgotPasswordController@sendResetLinkEmail</td>
+</tr>
+<tr>
+<td style="text-align:left">GET</td>
+<td style="text-align:left">Password/reset</td>
+<td style="text-align:left">Auth\ForgotPasswordController@showLinkRequestForm</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>ResetPasswordController : 負責處理忘記密碼驗證信的控制器</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Auth</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Controller</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Providers</span>\<span class="hljs-title">RouteServiceProvider</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Auth</span>\<span class="hljs-title">ResetsPasswords</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResetPasswordController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">ResetsPasswords</span>;
+
+  <span class="hljs-comment">/**
+  * Where to redirect users after resetting their password.
+  * 引導使用者在修改好密碼時，導到相關的網址
+  * <span class="hljs-doctag">@var</span> string
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$redirectTo</span> = RouteServiceProvider::HOME;
+
+  <span class="hljs-comment">//以下自行加入</span>
+  <span class="hljs-comment">//沒登入的使用者，才可以進行密碼忘記的處理</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'guest'</span>);
+  }
+}</code></pre>
+<ul>
+<li>ResetPasswordController 的路由表內容 :
+<table>
+<thead>
+<tr>
+<th style="text-align:left">HTTP Verb</th>
+<th style="text-align:left">路由</th>
+<th style="text-align:left">Controller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">POST</td>
+<td style="text-align:left">Password/reset</td>
+<td style="text-align:left">Auth\ResetPasswordController@reset</td>
+</tr>
+<tr>
+<td style="text-align:left">GET</td>
+<td style="text-align:left">Password/reset/{token}</td>
+<td style="text-align:left">Auth\ResetPasswordController@showResetForm</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>ConfirmPasswordController : 驗證密碼</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Auth</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Controller</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Providers</span>\<span class="hljs-title">RouteServiceProvider</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Auth</span>\<span class="hljs-title">ConfirmsPasswords</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConfirmPasswordController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">ConfirmsPasswords</span>;
+
+  <span class="hljs-comment">/**
+  * Where to redirect users when the intended url fails.
+  * 驗證或網址有誤，重導回指定的頁面
+  * <span class="hljs-doctag">@var</span> string
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$redirectTo</span> = RouteServiceProvider::HOME;
+
+  <span class="hljs-comment">/**
+  * Create a new controller instance.
+  * 進行身份驗證工作
+  * <span class="hljs-doctag">@return</span> void
+  */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+  </span>{
+      <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'auth'</span>);
+  }
+}</code></pre>
+</li>
+<li>
+<p>VerificationController :  驗證 Email ，送出驗證碼到使用者的 Email 信箱</p>
+<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Auth</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">Controller</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Providers</span>\<span class="hljs-title">RouteServiceProvider</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Auth</span>\<span class="hljs-title">VerifiesEmails</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VerificationController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+  <span class="hljs-keyword">use</span> <span class="hljs-title">VerifiesEmails</span>;
+
+  <span class="hljs-comment">/**
+  * Where to redirect users after verification.
+  * 驗證完成後，重導使用者到指定的網址
+  * <span class="hljs-doctag">@var</span> string
+  */</span>
+  <span class="hljs-keyword">protected</span> <span class="hljs-variable">$redirectTo</span> = RouteServiceProvider::HOME;
+
+  <span class="hljs-comment">/**
+  * Create a new controller instance.
+  * 進行驗證、或是重送的動作
+  * <span class="hljs-doctag">@return</span> void
+  */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+  </span>{
+      <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'auth'</span>);
+      <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'signed'</span>)-&gt;only(<span class="hljs-string">'verify'</span>);
+      <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'throttle:6,1'</span>)-&gt;only(<span class="hljs-string">'verify'</span>, <span class="hljs-string">'resend'</span>);
+  }
+}</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>View 的使用</p>
+<ul>
+<li>Auth 框架所新增/異動的檔案
+<table>
+<thead>
+<tr>
+<th style="text-align:left">檔案名稱</th>
+<th style="text-align:left">功能說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">welcome.blade.php</td>
+<td style="text-align:left">增加登入與註冊項目</td>
+</tr>
+<tr>
+<td style="text-align:left">home.blade.php</td>
+<td style="text-align:left">登入後的首頁</td>
+</tr>
+<tr>
+<td style="text-align:left">auth/login.bladephp</td>
+<td style="text-align:left">登入頁面</td>
+</tr>
+<tr>
+<td style="text-align:left">auth/register.blade.php</td>
+<td style="text-align:left">註冊頁面</td>
+</tr>
+<tr>
+<td style="text-align:left">auth/erify.blade.php</td>
+<td style="text-align:left">送出驗證碼至 email</td>
+</tr>
+<tr>
+<td style="text-align:left">auth/passwords/email.blade.php</td>
+<td style="text-align:left">忘記密碼時，重送驗證碼至 email</td>
+</tr>
+<tr>
+<td style="text-align:left">auth/passwords/reset.blade.php</td>
+<td style="text-align:left">忘記密碼時，重設密碼</td>
+</tr>
+<tr>
+<td style="text-align:left">auth/passwords/confirm.blade.php</td>
+<td style="text-align:left">確認密碼</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>主樣板 layouts/app.blade.php 包含下列項目 :
+<ul>
+<li>head 標籤</li>
+<li>nav 標籤</li>
+<li>body 標籤</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-自建-auth-認證登入">自建 Auth 認證登入 <a class="permalink" href="#header-自建-auth-認證登入" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>註冊路由</p>
+<ul>
+<li>編寫 routes/web.php 檔案內容 :<pre><code class="language-php"><span class="hljs-comment">//加入下列幾行</span>
+Route::group([<span class="hljs-string">'middleware'</span> =&gt; <span class="hljs-string">'auth'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+  Route::get(<span class="hljs-string">'edit'</span>, <span class="hljs-string">'CustomerController@edit'</span>);
+  Route::post(<span class="hljs-string">'edit'</span>, <span class="hljs-string">'CustomerController@update'</span>);
+});
+
+Route::get(<span class="hljs-string">'login'</span>, <span class="hljs-string">'AuthController@getLogin'</span>);
+Route::post(<span class="hljs-string">'login'</span>, <span class="hljs-string">'AuthController@postLogin'</span>);
+Route::get(<span class="hljs-string">'logout'</span>, <span class="hljs-string">'AuthController@getLogout'</span>);</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>編寫控制器</p>
+<ul>
+<li>
+<p>使用 artisan 新增 CustomerController</p>
+<ul>
+<li>編寫 app/Http/Controllers/CustomerController.php<pre><code class="language-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Auth</span>;
+<span class="hljs-comment">//其它部份略過</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">edit</span><span class="hljs-params">()</span></span>{
+  <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'edit'</span>);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(EditRequest <span class="hljs-variable">$request</span>)</span></span>{
+  <span class="hljs-variable">$user</span> = Auth::user();
+  <span class="hljs-variable">$user</span>-&gt;Name=<span class="hljs-variable">$request</span>-&gt;Name;
+  <span class="hljs-variable">$user</span>-&gt;customer-&gt;Phone=<span class="hljs-variable">$request</span>-&gt;Phone;
+  <span class="hljs-variable">$user</span>-&gt;customer-&gt;save();
+  <span class="hljs-variable">$user</span>-&gt;save();
+
+  <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'edit'</span>, [
+    <span class="hljs-string">'msg'</span> =&gt; <span class="hljs-string">'修改成功'</span>
+  ]);
+}</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>使用 artisan 新增 AuthController 控制器</p>
+<ul>
+<li>編寫 app/Http/Controllers/AuthController.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Request</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Requests</span>\<span class="hljs-title">LoginRequest</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Auth</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Redirect</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">View</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span></span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-variable">$this</span>-&gt;middleware(<span class="hljs-string">'guest'</span>,[<span class="hljs-string">'except'</span>=&gt;[<span class="hljs-string">'getLogout'</span>]]);
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLogin</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'login'</span>);
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postLogin</span><span class="hljs-params">(LoginRequest <span class="hljs-variable">$request</span>)</span></span>{
+    <span class="hljs-variable">$authData</span> = <span class="hljs-variable">$request</span>-&gt;only([
+      <span class="hljs-string">'email'</span>,<span class="hljs-string">'password'</span>
+    ]);
+
+    <span class="hljs-keyword">if</span> (Auth::attempt(<span class="hljs-variable">$authData</span>, <span class="hljs-variable">$request</span>-&gt;has(<span class="hljs-string">'remember'</span>))){
+      <span class="hljs-keyword">return</span> Redirect::action(<span class="hljs-string">'BoardController@getIndex'</span>);
+    }<span class="hljs-keyword">else</span>{
+      <span class="hljs-keyword">return</span> Redirect::back()-&gt;withError([<span class="hljs-string">'msg'</span>=&gt; <span class="hljs-string">'帳號或密碼輸入錯誤'</span>])-&gt;withInput(<span class="hljs-variable">$request</span>-&gt;except(<span class="hljs-string">'password'</span>));
+    }
+  }
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLogout</span><span class="hljs-params">()</span></span>{
+    Auth::logout();
+    <span class="hljs-keyword">return</span> Redirect::action(<span class="hljs-string">'BoardController@getIndex'</span>);
+  }
+}</code></pre>
+</li>
+<li>編寫 app\Http\Requests\LoginRequest.php<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Requests</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">FormRequest</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginRequest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">FormRequest</span></span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">authorize</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+  }
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rules</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> [
+      <span class="hljs-string">'email'</span> =&gt; <span class="hljs-string">'required|string|email'</span>,
+      <span class="hljs-string">'password'</span> =&gt; <span class="hljs-string">'required|string|min:6'</span>
+    ];
+  }
+}</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>修改 View 內容</p>
+<ul>
+<li>修改 edit.blade.php<pre><code class="language-php"><span class="hljs-comment">//前面略過</span>
+&lt;form action=<span class="hljs-string">"{{ action('CustomerController@update') }}"</span> method=<span class="hljs-string">"POST"</span>&gt;
+  {{ csrf_filed() }}
+<span class="hljs-comment">//後面略過</span></code></pre>
+</li>
+<li>修改 nav.blade.php<pre><code class="language-php">&lt;nav class="navbar navbar-expand-lg navbar-light navbar-default"&gt;
+  &lt;div class="container"&gt;
+    &lt;a href="{{ url('/') }}" class="navbar-brand"&gt;
+      HelloWorld
+    &lt;/a&gt;
+    &lt;ul class="navbar-nav ml-auto mt-2 mt-lg-0"&gt;
+      &lt;li class="nav-item active"&gt;
+        &lt;a href="{{ action('CustomerController@index') }}" class="nav-link"&gt;
+          客戶列表
+        &lt;/a&gt;
+      &lt;/li&gt;
+      @auth
+        &lt;li class="nav-item dropdown"&gt;
+          &lt;a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"&gt;
+            {{ Auth::user()-&gt;Name }}, 您好
+          &lt;/a&gt;
+          &lt;div class="dropdown-menu" aria-labelledby="navbarDropdown"&gt;
+            &lt;a class="dropdown-itme" href="{{ action('CustomerController@edit') }}"&gt;編輯&lt;/a&gt;
+            &lt;a class="dropdown-item" href="{{ action('AuthController@getLogout') }}"&gt;登出&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      @else
+        &lt;li class="nav-item active"&gt;
+          &lt;a href="{{ action('AuthController@getLogin') }}" class="nav-link"&gt;登入&lt;/a&gt;
+        &lt;/li&gt;
+      @endauth
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+</li>
+<li>編寫 login.blade.php<pre><code class="language-php">@extends('layouts.master')
+
+@section('title', '登入')
+
+@section('content')
+&lt;div class="container"&gt;
+  &lt;div class="row justify-content-center"&gt;
+    &lt;div class="col-md-8"&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-header"&gt;登入&lt;/div&gt;
+        &lt;div class="card-body"&gt;
+          &lt;form method="POST" action="{{ action('AuthController@postLogin') }}"&gt;
+            @csrf
+              &lt;div class="form-group row"&gt;
+                &lt;label for="email" class="col-sm-4 col-form-label text-md-right"&gt;電子信箱&lt;/label&gt;
+                &lt;div class="col-md-6"&gt;
+                  &lt;input id="email" type="email" class="form-control{{ $errors-&gt;has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus&gt;
+                  @if ($errors-&gt;has('email'))
+                    &lt;span class="invalid-feedback" role="alert"&gt;
+                      &lt;strong&gt;{{ $errors-&gt;first('email') }}&lt;/strong&gt;
+                    &lt;/span&gt;
+                  @endif
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="form-group" row&gt;
+                &lt;label for="password" class="col-md-4 col-form-label text-md-right"&gt;密碼&lt;/label&gt;
+                &lt;div class="col-md-6"&gt;
+                  &lt;input id="password" type="password" class="form-control{{ $errors-&gt;has('password') ? 'is-invalid' : '' }}" name="password" required&gt;
+                  @if ($errors-&gt;has('password'))
+                    &lt;span class="invalid-feedback" role="alert"&gt;
+                      &lt;strong&gt;{{ $errors-&gt;first('password') }}&lt;/strong&gt;
+                    &lt;/span&gt;
+                  @endif
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="form-group row"&gt;
+                &lt;div class="col-md-6 offset-md-4"&gt;
+                  &lt;div class="form-check"&gt;
+                    &lt;input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}&gt;
+                      &lt;label class="form-check-lable" for="remember"&gt;記住我&lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class="form-group row mb-0"&gt;
+                &lt;div class="col-md-8 offset-md-4"&gt;
+                  &lt;button type="submit" class="btn btn-primary"&gt;登入&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+@stop</code></pre>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h4 id="header-參考文獻">參考文獻 <a class="permalink" href="#header-參考文獻" aria-hidden="true">¶</a></h4>
+</div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 07 Feb 2020</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>

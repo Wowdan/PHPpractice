@@ -695,7 +695,8 @@
   + 例 :
     ```php
     <?php
-    class DivideByZeroException extends Exception {};class DivideByNegativeException extends Exception {};
+    class DivideByZeroException extends Exception {};
+    class DivideByNegativeException extends Exception {};
     function process($denominator) {
       try	{
         if ($denominator == 0) {
